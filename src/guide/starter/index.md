@@ -42,7 +42,7 @@ This is a basic example:
       ]
     </g-script>
   </grapper-view>
-  <g-editor href="#example-starter"></g-editor>
+  <g-editor href="#example-starter" title="very basic example"></g-editor>
 </ClientOnly>
 
 Graphane is based on SVG and directives, defining a **declarative way** to build **data-driven**
@@ -50,7 +50,7 @@ graphics. This approach allows centering the effort on the design in a very natu
 and developers achieve technical efficiency and gain the means to communicate their data story to
 their audience effectively.
 
-In addition, Graphane has a **smooth rendering** and **optimal performance** with a **tiny overhead
-**. It is not just a tool but a complete system that includes specially designed mechanisms to
-update the visualization efficiently when data are changed. This feature allows Graphane to maintain
-high runtime performance without the need for pre-compilation processes.
+In addition, Graphane has a **smooth rendering** and **optimal performance** with a
+**tiny overhead**. It is not just a tool but a complete system that includes specially designed
+mechanisms to update the visualization efficiently when data are changed. This feature allows
+Graphane to maintain high runtime performance without the need for pre-compilation processes.
