@@ -1,0 +1,22 @@
+{
+  "name": "grapper-doc",
+  "version": "1.0.0-beta.1",
+  "description": "Grapper documentaion",
+  "author": "Graphery",
+  "bugs": "https://github.com/graphery/grapper-doc/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/graphery/grapper-doc.git"
+  },
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+  },
+  "devDependencies": {
+  },
+  "keywords": [
+    "documentation",
+    "graphery",
+    "grapper"
+  ]
+}
