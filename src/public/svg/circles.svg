@@ -1,0 +1,6 @@
+<svg viewBox="0 0 100 100" g-on:click="update" style="cursor: pointer">
+    <g g-for="x of circles">
+        <circle cx="50" cy="50" g-bind:r="(x + 1) * (48 / circles)"
+                fill="none" stroke="black" stroke-width="1"/>
+    </g>
+</svg>

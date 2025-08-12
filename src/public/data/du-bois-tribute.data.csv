@@ -1,0 +1,11 @@
+"group";"sector";"value";
+"negroes";"agriculture";0.62;
+"negroes";"domestic";0.28;
+"negroes";"manufacturing";0.05;
+"negroes";"transportation";0.045;
+"negroes";"professions";0.005;
+"whites";"agriculture";0.64;
+"whites";"domestic";0.055;
+"whites";"manufacturing";0.135;
+"whites";"transportation";0.13;
+"whites";"professions";0.04;
