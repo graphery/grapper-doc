@@ -5,8 +5,8 @@ title: Home
 
 hero:
   image: '/img/logo/g.svg'
-  name: grapper
-  tagline: data visualization microframework
+  name: Grapper
+  tagline: graphic wrapper for data visualization
   actions:
     - theme: brand
       text: Starter Guide

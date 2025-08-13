@@ -20,8 +20,8 @@ const fullReloadAlways = {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title       : 'grapper',
-  description : `Data Visualization Microframework - version ${ VERSION }`,
+  title       : 'Grapper',
+  description : `Graphic Wrapper for data visualization - version ${ VERSION }`,
   sitemap     : {
     hostname : 'https://grapper.dev'
   },
