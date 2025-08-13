@@ -59,7 +59,7 @@ export default defineConfig({
   themeConfig : {
     logo        : {
       light : `/img/logo/grapper.svg`,
-      dark  : `/img/logo/grapper.light.svg`
+      dark  : `/img/logo/grapper-light.svg`
     },
     siteTitle   : false,
     footer      : {

@@ -11,6 +11,7 @@
   --vp-font-family-base : -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   --vp-font-family-mono : "Consolas", "Monaco", "Menlo", monospace;
   --vp-font-title       : 'Poppins', var(--vp-font-family-base), sans-serif;
+  --vp-nav-logo-height  : 35px;
 }
 
 html, body {
