@@ -13,7 +13,7 @@ hero:
       link: /guide/starter/
     - theme: alt
       text: Examples
-      link: https://playground.grapper.dev/gallery/@grapper
+      link: https://playground.grapper.io/gallery/@grapper
 
 features:
   - title: Declarative Syntax
