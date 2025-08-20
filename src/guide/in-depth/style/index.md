@@ -2,9 +2,9 @@
 outline: deep
 ---
 
-# Styling the SVG with Graphane
+# Styling the SVG with Grapper
 
-In this section, you will understand how to style SVGs with Graphane Web Component, and what to
+In this section, you will understand how to style SVGs with Grapper Web Component, and what to
 keep in mind for good maintainability of the styles.
 
 We can use:

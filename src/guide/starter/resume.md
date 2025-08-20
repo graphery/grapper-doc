@@ -1,11 +1,11 @@
-## **Introduction to GRAPHANE**
+## **Introduction to GRAPPER**
 
-**GRAPHANE** is an open-source micro-framework optimized for **data visualization** (**data-viz**),
+**GRAPPER** is an open-source micro-framework optimized for **data visualization** (**data-viz**),
 providing a way to create interactive and responsive visual elements directly within a web
 application. It allows developers to use declarative syntax similar to modern JavaScript frameworks
 but focuses specifically on SVG and graphical elements.
 
-### **Key Characteristics of GRAPHANE:**
+### **Key Characteristics of GRAPPER:**
 
 - **Declarative Syntax**: `grapper-view` utilizes declarative attributes and directives that bind data
   and events dynamically within SVG elements.
@@ -16,7 +16,7 @@ but focuses specifically on SVG and graphical elements.
 
 ## **Basic Structure of a `grapper-view` Component**
 
-A `grapper-view` component is the building block of GRAPHANE and acts as a container for all elements.
+A `grapper-view` component is the building block of GRAPPER and acts as a container for all elements.
 It allows the use of directives, properties, and event bindings to manage and manipulate SVG
 elements dynamically.
 
@@ -43,11 +43,11 @@ elements dynamically.
 
 The `<template>` section defines the main SVG structure. This section can contain SVG elements such
 as `circle`, `line`, `rect`, and more, enriched with dynamic attributes and directives provided by
-GRAPHANE.
+GRAPPER.
 
 ## **Directives in `grapper-view`**
 
-GRAPHANE extends SVG functionality with several directives and dynamic attributes that allow for
+GRAPPER extends SVG functionality with several directives and dynamic attributes that allow for
 interactive and reactive SVG elements:
 
 - **`g-for`**: Iterates over arrays or objects in the data to create repeated elements.
@@ -134,7 +134,7 @@ customizing the visualization.
 
 ## **External Plugins**
 
-GRAPHANE supports external plugins, allowing the integration of additional functionality or shapes
+GRAPPER supports external plugins, allowing the integration of additional functionality or shapes
 beyond the built-in features.
 
 ```html
@@ -197,20 +197,20 @@ data.
   and `value`, which makes the component flexible for different sets of values.
 
 
-## **Getting Started with GRAPHANE**
+## **Getting Started with GRAPPER**
 
-To get started with GRAPHANE:
+To get started with GRAPPER:
 
 1. Install the framework using npm:
    ```bash
    npm install grapper
    ```
-2. Load GRAPHANE into your project:
+2. Load GRAPPER into your project:
    ```html
    <script src="node_modules/grapper/component/composer.js"></script>
    ```
 
-Alternatively, you can use GRAPHANE from a CDN without installing anything on your computer:
+Alternatively, you can use GRAPPER from a CDN without installing anything on your computer:
 
   ```html
 
@@ -219,9 +219,9 @@ Alternatively, you can use GRAPHANE from a CDN without installing anything on yo
 
 ## **Summary**
 
-GRAPHANE and its core component, `grapper-view`, offer a **flexible micro-framework** for creating
+GRAPPER and its core component, `grapper-view`, offer a **flexible micro-framework** for creating
 interactive data visualizations. By combining declarative SVG structures with data manipulation
-methods, GRAPHANE enables developers and designers to build complex visualizations that respond to
+methods, GRAPPER enables developers and designers to build complex visualizations that respond to
 user input and dynamically adapt to data changes.
 
 ### **Key Advantages**

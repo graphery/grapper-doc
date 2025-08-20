@@ -2,7 +2,7 @@
 
 ## Capture events
 
-The preferred way to capture events in Graphane is through the `g-on:` directive.
+The preferred way to capture events in Grapper is through the `g-on:` directive.
 
 A simple way to capture the 'click' event is this:
 

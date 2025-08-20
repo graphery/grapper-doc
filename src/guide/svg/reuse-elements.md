@@ -57,9 +57,9 @@ for (let column = 0; column < 100; column += 10) {
   <use href="#circle2" x="90"></use>
 </svg>
 
-### In Graphane
+### In Grapper
 
-In Graphane is widespread to use the `defs` element with `g-for` directive for duplicate the
+In Grapper is widespread to use the `defs` element with `g-for` directive for duplicate the
 content. All elements defined in the `defs` block are copied to each occurrence of the values
 indicated in the `g-for` directive. In this way, lists of elements can be created based on the data.
 
@@ -137,7 +137,7 @@ $.svg.attachTo('#example1');
 </svg>
 
 How the reference must be absolutely unique into the browser DOM and can have a collision between
-two or more SVG included on the same page. Graphane Javascript Library provides an internal not
+two or more SVG included on the same page. Grapper Javascript Library provides an internal not
 duplicated `id` for each element. This unique identification can be access with the
 methods `.id()` (return the id) and `.ref()` (return `#` and the id concatenated).
 
@@ -287,6 +287,6 @@ $.svg.add('polyline')
             marker-end="url(#marker3)"/>
 </svg>
 
-The SVG Graphane API provides an internal not duplicated `id` for each element, and you can get this
+The SVG Grapper API provides an internal not duplicated `id` for each element, and you can get this
 with `.url()`. It returns an `url(#id)`. This method simplifies using the unique id when it is
 necessary to include the `url()` pseudo-function.

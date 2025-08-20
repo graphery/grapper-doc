@@ -4,7 +4,7 @@ outline: deep
 
 # Methods
 
-In Graphane, methods are powerful tools for handling data transformation, event handling, and
+In Grapper, methods are powerful tools for handling data transformation, event handling, and
 accessing and manipulating SVG elements and configurations. These methods are defined with the
 keyword `function` within the **`<script type="methods">`** tag and provide essential logic for
 interacting into the `grapper-view`.
@@ -80,7 +80,7 @@ You can also load methods from an external JavaScript file:
 
 ---
 
-## Data Transformation in Graphane
+## Data Transformation in Grapper
 
 If a function called **`data()`** is defined in the `<script type="methods">`, this function is
 called to transform the raw data before it is rendered in the template. This allows for
@@ -104,7 +104,7 @@ preprocessing or manipulation of the data before it is looped through or bound t
 
 ## Using Functions in the Template
 
-You can call functions defined in the `<script type="methods">` from any **Graphane directive**
+You can call functions defined in the `<script type="methods">` from any **Grapper directive**
 expression:
 
 - **`g-for`**: Loops over data or a function result.
@@ -141,7 +141,7 @@ expression:
 
 ---
 
-## Event Handlers in Graphane
+## Event Handlers in Grapper
 
 When handling events using `g-on`, the `this` keyword refers to a **wrapper** of the SVG
 element that triggered the event. This wrapper exposes all attributes and properties as methods,

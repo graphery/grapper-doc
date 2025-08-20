@@ -68,9 +68,9 @@ Here is a short list of available commands in `d`:
 | `A` `a` | arc                             | `rx, ry, rot, arc-flag, sweep-flag, x, y, [,...]` |
 
 
-### In Graphane
+### In Grapper
 
-In the SVG Graphane API we can use `.d` with methods like `.d.M()` or `.d.L()` and build the path
+In the SVG Grapper API we can use `.d` with methods like `.d.M()` or `.d.L()` and build the path
 data step by step with these helpers. All these methods return `.d` and as a result, you can chain
 calls to them.
 

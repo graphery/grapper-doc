@@ -4,7 +4,7 @@ outline: deep
 
 # Animation in and out the viewport
 
-In this section, you discover how to animate the SVG graph Graphane when the component is visible
+In this section, you discover how to animate the SVG graph Grapper when the component is visible
 into the viewport.
 
 ## Attribute `viewport-ratio`

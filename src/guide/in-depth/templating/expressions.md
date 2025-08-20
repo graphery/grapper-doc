@@ -4,7 +4,7 @@ outline: deep
 
 # Expressions in Directives
 
-In Graphane, you can use different types of JavaScript expressions within directives to achieve
+In Grapper, you can use different types of JavaScript expressions within directives to achieve
 various functionalities. Here are the commonly used JavaScript expressions in directives:
 
 ## Simple Data Binding
@@ -30,7 +30,7 @@ elements.
 ## Conditional expression
 
 You can use conditional expressions to conditionally render SVG elements based on certain
-conditions. In Graphane, you can use the ternary operator condition `? ok : ko` or the boolean
+conditions. In Grapper, you can use the ternary operator condition `? ok : ko` or the boolean
 operators `&&` and `||` to define conditional expressions. For example:
 
 <ClientOnly>
@@ -44,7 +44,7 @@ operators `&&` and `||` to define conditional expressions. For example:
 
 ## Destructuring in `g-for`
 
-In Graphane, you can use the `g-for` directive to loop over an array and generate SVG elements
+In Grapper, you can use the `g-for` directive to loop over an array and generate SVG elements
 dynamically. With JavaScript destructuring, you can extract specific values from the array elements
 and use them within the SVG elements.
 
@@ -89,7 +89,7 @@ use the function name, but also you can use other expressions.
 
 ## Restricted access
 
-In Graphane, the template expressions are *sandboxed* and have limited access. They can only access
+In Grapper, the template expressions are *sandboxed* and have limited access. They can only access
 the `data`, `config`, `methods` and some commonly used built-in global objects such as `Math`
 and `Date` and other global functions. This restricted access ensures a secure and predictable
 environment for evaluating expressions within the SVG document.

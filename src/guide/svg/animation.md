@@ -5,7 +5,7 @@ outline: deep
 # Animation
 
 Natively SVG animations can be achieved through various methods, each with its own approach and
-potential problems. We recommend using [Graphane Animation](../in-depth/animation/) functionality rather than using 
+potential problems. We recommend using [Grapper Animation](../in-depth/animation/) functionality rather than using 
 the native animations directly, although they will always be available for use.
 
 

@@ -1,4 +1,4 @@
-# Manage SVG elements in Graphane
+# Manage SVG elements in Grapper
 
 ## The SVG tree
 
@@ -209,7 +209,7 @@ for (let n = 2.5, l = 0; n <= 510; n += 50, l++) {
 
 ## Navigate by the DOM
 
-To understand how Graphane hands the SVG DOM, we will cover an existing SVG and manage the 
+To understand how Grapper hands the SVG DOM, we will cover an existing SVG and manage the 
 elements easily with its specific methods. You can use `$.svg.querySelector()` with an `id` 
 or other CSS selectors for getting the element and pass this to the `$.svg` constructor.
 
@@ -275,7 +275,7 @@ const g     = line1.next();
 ## Search
 
 You can get any nested element with `.querySelector()` or `.querySelectorAll()`. These methods
-return an object, and an array of objects. Those objects are a Graphane wrapper over the original
+return an object, and an array of objects. Those objects are a Grapper wrapper over the original
 elements with all library features. 
 
 You can use all query selectors available without restrictions for searching deep elements into the

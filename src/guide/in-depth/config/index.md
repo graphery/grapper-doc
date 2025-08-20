@@ -29,5 +29,5 @@ You can load the config with several methods:
 - with `<script type="config"></script>` with the [embebed configuration](embebed.md).
 - with the `methods-src`  for [load as external resource](external.md) a CSV, JSON or JSON5 file.
 
-In Graphane, the configuration defined is accesibles from the template directives, and also be called
+In Grapper, the configuration defined is accesibles from the template directives, and also be called
 from the property [`.config`](property.md).

@@ -4,14 +4,14 @@ outline: deep
 
 # `$.svg`
 
-You can access the **SVG Graphane Object** from the methods with `$.svg`. The `$` object is
+You can access the **SVG Grapper Object** from the methods with `$.svg`. The `$` object is
 accesible from the `<script type="methods"></script>` content as a global variable.
 
-In **SVG Graphane Object** all are methods; thus, when you want to work with SVG attributes or
+In **SVG Grapper Object** all are methods; thus, when you want to work with SVG attributes or
 properties, you must use methods. For example, set an `id` to an SVG element is
 `element.id('unique_id')` and for getting this identification it is necessary to use `element.id()`.
 
-Graphane dynamically constructs the methods, which can chain together to make successive calls. Each
+Grapper dynamically constructs the methods, which can chain together to make successive calls. Each
 call returns the original object and can include one call after another.
 
 <ClientOnly>

@@ -22,7 +22,7 @@ In SVG source the text is include into the tag body:
 <text x="10" y="10">hello</text>
 ```
 
-In the SVG Graphane API we can use the method `.content("hello")` to includes the content text in
+In the SVG Grapper API we can use the method `.content("hello")` to includes the content text in
 the element.
 
 ::: code-group
@@ -171,7 +171,7 @@ text.add('tspan').style.fill('red').style.fontSize(20).content('&gt;');
     </text>
 </svg>
 
-### In Graphane
+### In Grapper
 
-In Graphane is widespread to use the `g-content` directive for add text to `span` and `text`
-elements. Also, we can use the SVG Graphane API and use the method `.content()`.
+In Grapper is widespread to use the `g-content` directive for add text to `span` and `text`
+elements. Also, we can use the SVG Grapper API and use the method `.content()`.

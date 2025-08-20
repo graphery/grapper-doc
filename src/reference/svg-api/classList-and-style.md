@@ -42,7 +42,7 @@ svg.style.strokeWidth('10px').style.stroke('#000000');
 
 ::: tip Note
 Many SVG attributes are visuals and can also be used as properties CSS
-so in Graphane you can choose to use  
+so in Grapper you can choose to use  
 `.stroke_width()` or `.style.strokeWidth()`.
 :::
 

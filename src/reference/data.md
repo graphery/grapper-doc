@@ -4,7 +4,7 @@ outline: deep
 
 # Data
 
-In Graphane, data is the backbone of dynamic visualizations. It is defined using the
+In Grapper, data is the backbone of dynamic visualizations. It is defined using the
 `<script type="data">` tag or loaded as external resource using
 `<script type="data" src="data.json"></script>` or `<grapper-view data-src="data.json">`. The data can
 be in JSON, JSON5 or CSV formats. Inside the template, data is accessed as data, while in the
@@ -91,7 +91,7 @@ the values within the dataset.
 ### CSV (Comma-Separated Values) format
 
 - **Description**: CSV is a text-based format for representing tabular data, where each row
-  corresponds to a record and fields are separated by commas or semicolons. Graphane offers flexible
+  corresponds to a record and fields are separated by commas or semicolons. Grapper offers flexible
   support for:
   - Header records with field names that can be unquoted or quoted using double quotes (`"`) or
     single quotes (`'`).
@@ -118,7 +118,7 @@ the values within the dataset.
 
 ## Usage in Template
 
-In Graphane, data is directly accessible in the **template** through the `data` object. It can be
+In Grapper, data is directly accessible in the **template** through the `data` object. It can be
 used to dynamically generate elements and bind attributes, content, and event handlers.
 
 - **Looping**: You can loop through arrays using the **`g-for`** directive to dynamically generate
@@ -179,7 +179,7 @@ used to dynamically generate elements and bind attributes, content, and event ha
 
 ## Implicit destructing with `data` object
 
-In Graphane, when the data is defined as an object rather than an array, each property of the object
+In Grapper, when the data is defined as an object rather than an array, each property of the object
 can be accessed directly within the template. This allows you to bind attributes and content to
 specific properties of the object without needing to loop over an array.
 
@@ -196,7 +196,7 @@ specific properties of the object without needing to loop over an array.
   </template>
   <script type="data">
     {
-      "title": "Graphane Example",
+      "title": "Grapper Example",
       "value": 75,
       "color": "green"
     }
@@ -208,7 +208,7 @@ specific properties of the object without needing to loop over an array.
 
 ## Data helpers
 
-When `data` is an array, Graphane adds helper functions to quickly perform operations and
+When `data` is an array, Grapper adds helper functions to quickly perform operations and
 calculations on the data. These helpers are accessible as `data.$sum()`, `data.$min()`, and so on.
 These helpers are accessible in the data object both in the template and in the
 `function data()`.

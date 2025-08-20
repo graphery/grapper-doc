@@ -5,7 +5,7 @@ outline: deep
 # Data helpers
 
 When the data is an array, we may need helper functions to get the maximum, minimum, average, unique
-values, etc. You can use Javascript functions to perform these operations, but Graphane offers a
+values, etc. You can use Javascript functions to perform these operations, but Grapper offers a
 series of helpers that allow us to obtain this information in a very efficient way.
 
 To access these helper functions we will use `data.$min()`, `data.$max()`, etc., inside the

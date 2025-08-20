@@ -4,7 +4,7 @@ outline: deep
 
 # Conditional Rendering
 
-The `g-if` directive is a feature in Graphane that allows you to conditionally display elements
+The `g-if` directive is a feature in Grapper that allows you to conditionally display elements
 based on a boolean value. It provides a simple way to toggle the visibility of SVG elements.
 
 In this example, the `g-if` directive is applied to a `<g>` element. The `data.isVisible` is a

@@ -4,7 +4,7 @@ outline: deep
 
 # `$$.dynamic()` with `g-bind`
 
-Graphane Template Engine provides a very simple for of animation in collaboration with the
+Grapper Template Engine provides a very simple for of animation in collaboration with the
 `g-bind` directive. When you use `$$.dynamic()` into the `g-bind` expression and the value is applied
 progressively and show an animation.
 

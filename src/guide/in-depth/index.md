@@ -7,10 +7,10 @@ prev:
 
 # In-Depth
 
-In this guide, we will delve into the different aspects of Graphane, describing its operation and
+In this guide, we will delve into the different aspects of Grapper, describing its operation and
 architecture.
 
-If you are new to Graphane, we recommend start with the [Starter Guide](/guide/starter/).
+If you are new to Grapper, we recommend start with the [Starter Guide](/guide/starter/).
 
 This in-depth guide include:
 

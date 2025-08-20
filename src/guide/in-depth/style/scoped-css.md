@@ -14,7 +14,7 @@ it can be useful to keep a coherent style between graphs, by can be complex to m
 
 You can define a `<style>` directly in the template or into the `<svg>` into the template, it will
 be used only inside the component and will avoid collision with other styles and components.
-Graphane component moves the template into its *Shandow DOM* and applies the style internally.
+Grapper component moves the template into its *Shandow DOM* and applies the style internally.
 
 This is a scoped CSS:
 

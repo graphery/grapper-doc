@@ -4,7 +4,7 @@ outline: deep
 
 # Config
 
-In Graphane, the `<script type="config">` section is used to define configuration settings that are
+In Grapper, the `<script type="config">` section is used to define configuration settings that are
 shared across your component. These configuration settings can include default colors, dimensions,
 and other customizable parameters that are applied globally throughout the template.
 

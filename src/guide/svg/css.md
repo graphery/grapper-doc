@@ -33,7 +33,7 @@ $.svg.add('rect').style('x: 10px; y: 10px; width: 180px; height: 180px; fill: #0
   <rect style="x: 10; y: 10; width: 180; height: 180; fill: #00D800"/>
 </svg>
 
-You can define and obtain the style with the Graphane SVG API:
+You can define and obtain the style with the Grapper SVG API:
 
 ```js
 $.svg.viewBox(0, 0, 200, 200).width(200).height(200);

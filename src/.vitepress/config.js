@@ -238,7 +238,7 @@ export default defineConfig({
                 //   items     : [
                 //     {
                 //       link : '/guide/in-depth/architecture/why',
-                //       text : 'Why Graphane?'
+                //       text : 'Why Grapper?'
                 //     },
                 //     {
                 //       link : '/guide/in-depth/architecture/microframework',
@@ -293,7 +293,7 @@ export default defineConfig({
                 },
                 {link : '/guide/svg/manage-elements.md', text : 'Manage Elements'},
                 {link : '/guide/svg/events.md', text : 'Handle Events'},
-                {link : '/guide/svg/grapper-svg.md', text : 'How to extents SVG with Graphane'},
+                {link : '/guide/svg/grapper-svg.md', text : 'How to extents SVG with Grapper'},
               ]
             }]
         },

@@ -4,7 +4,7 @@ outline: deep
 
 # Helpers
 
-For some cases, Graphane offers helper functions to simplify the construction of the values accepted
+For some cases, Grapper offers helper functions to simplify the construction of the values accepted
 by the SVG attribute. These helpers are available in the `$$` object, accessible from the `g-bind`
 and `g-content` expressions:
 
@@ -61,7 +61,7 @@ Example:
 ## `g-bind:d` in `path`
 
 Constructing the `d` attribute of a `path` in SVG may seem complicated, but it is a series of
-relatively simple instructions. Graphane offers a series of helpers to construct the value of `d`
+relatively simple instructions. Grapper offers a series of helpers to construct the value of `d`
 step by step, chaining the different functions.
 
 - `M(<x>, <y>)` `m(<x>, <y>)` move to absolute and relative point.

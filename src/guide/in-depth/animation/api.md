@@ -4,7 +4,7 @@ outline: deep
 
 # Animation  API
 
-Into the Graphane methods we can use `.animateTo()` for every SVG elements. This method accepts as
+Into the Grapper methods we can use `.animateTo()` for every SVG elements. This method accepts as
 parameter an object with attributes as keys and the target values.
 
 Optionally, we can include a transition duration in milliseconds as a second parameter. By default,

@@ -4,7 +4,7 @@ outline: deep
 
 # Data
 
-The Graphane goal is to display information based on data. 
+The Grapper goal is to display information based on data. 
 Therefore, data is one of the elements that `grapper-view` integrates, allowing the `template` to 
 build the graph on top of the data information.
 
@@ -51,8 +51,8 @@ To load external data, we can use:
 
 ## Formats
 
-Graphane allows the use of data in different formats, without the need to identify them in advance.
-The format used is automatically identified by Graphane. 
+Grapper allows the use of data in different formats, without the need to identify them in advance.
+The format used is automatically identified by Grapper. 
 
 The supported formats are:
 
@@ -62,7 +62,7 @@ The supported formats are:
 Each line in a CSV file represents a single record, and fields within the record are separated by 
 commas or semicolon. 
 The first line often contains headers that define the names of the columns. 
-Graphane can use the Comma Separated Values (CSV) format in its different variants.
+Grapper can use the Comma Separated Values (CSV) format in its different variants.
 
 <ClientOnly>
 <grapper-view style="width: 200px" id="data-example-2">

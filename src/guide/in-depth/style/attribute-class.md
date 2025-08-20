@@ -48,7 +48,7 @@ classes to an element. You can bind a single class or an array of classes.
 ## API
 
 
-By the Graphane SVG API, you can use the `.classList` object and its methods:
+By the Grapper SVG API, you can use the `.classList` object and its methods:
 
 - `.classList.contains( class )` - returns true if the list contains the given class, otherwise
   false.

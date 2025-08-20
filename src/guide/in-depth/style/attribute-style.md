@@ -35,7 +35,7 @@ values for those properties.
 
 ## API
 
-You can define and get the style with the Graphane SVG API `.style`. Each style property is now
+You can define and get the style with the Grapper SVG API `.style`. Each style property is now
 a method, and you can call with parameter to set value or without parameter to get the current value.
 
 <ClientOnly>

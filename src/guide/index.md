@@ -1,19 +1,19 @@
-# Graphane Guide
+# Grapper Guide
 
-Welcome to Graphane Guide, your resource for mastering Graphane for graphical data representation.
+Welcome to Grapper Guide, your resource for mastering Grapper for graphical data representation.
 Whether you're a beginner looking for the essentials, a seasoned pro digging more intensely, or a
 complete unknown ready to explore the capabilities of scalable vector graphics (SVG), we've got you
 covered.
 
 ## [Starter](starter/)
 
-Embark on your Graphane journey with our essentials section, designed for those taking their first
+Embark on your Grapper journey with our essentials section, designed for those taking their first
 steps into the capabilities of this micro-framework. Here, you'll find fundamental concepts and practical
 tips to build a solid foundation.
 
 ## [In-Depth](./in-depth/)
 
-For curious minds hungry for deeper insights, our In-Depth section delves deeper into Graphane's
+For curious minds hungry for deeper insights, our In-Depth section delves deeper into Grapper's
 capabilities, exploring advanced data visualization capabilities. Discover its secrets and best
 practices, unlock its full potential, and how to integrate it into your projects.
 

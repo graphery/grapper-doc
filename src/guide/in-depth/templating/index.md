@@ -4,7 +4,7 @@ outline: deep
 
 # Templating
 
-Graphane templates combine SVG template markup with data by powerful directives, similar to
+Grapper templates combine SVG template markup with data by powerful directives, similar to
 Angular or Vue. Rendering is done efficiently at runtime and does not require a compiler or
 transpiler as other frameworks.
 
@@ -35,7 +35,7 @@ interactions within the SVG components.
 - [`g-content`](./content): add the element content.
 - [`g-on`](./events) (or the shorthand `@`): handle events.
 
-Graphane Templating would enable the creation of interactive SVG graphics by supporting event
+Grapper Templating would enable the creation of interactive SVG graphics by supporting event
 handling. Developers could attach event listeners to SVG elements and respond to user interactions,
 such as clicks, hovers, or touches.
 

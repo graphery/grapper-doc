@@ -8,7 +8,7 @@ CSV (comma-separated values) files are a simple open format document type for re
 table form, in which columns are separated by commas (or semicolons where the comma is the decimal
 separator as in Chile, Peru, Argentina, Spain, Brazil, among others) and rows by line breaks.
 
-Graphane has support to CSV with:
+Grapper has support to CSV with:
 
 - record by line
 - header record with field names

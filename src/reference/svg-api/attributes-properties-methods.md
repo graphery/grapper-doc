@@ -2,10 +2,10 @@
 
 ## Attributes
 
-In Graphane the attributes are handled as methods where the hyphenated name (`-`) is replaced by the underscore (`_`).
+In Grapper the attributes are handled as methods where the hyphenated name (`-`) is replaced by the underscore (`_`).
 The rest of the name stays the same.
 
-| attribute name   | Graphane method     |
+| attribute name   | Grapper method     |
 |------------------|-------------------------|
 | `x`              | `.x()`                  |                               
 | `viewBox`        | `.viewBox()`            |                   
@@ -22,9 +22,9 @@ const radius = circle.r();
 
 ## Properties
 
-In Graphane the properties are handled as methods with the original name:
+In Grapper the properties are handled as methods with the original name:
 
-| property name         | Graphane method     |
+| property name         | Grapper method     |
 |-----------------------|-------------------------|
 | `.tagName`            | `.tagName()`            |
 | `.nextElementSibling` | `.nextElementSibling()` |
@@ -41,9 +41,9 @@ console.log(circle.tagName());
 
 ## Methods
 
-In Graphane the methods are handled without changes in its behavior, parameters, or return.
+In Grapper the methods are handled without changes in its behavior, parameters, or return.
 
-| method name           | Graphane method   |
+| method name           | Grapper method   |
 |-----------------------|-----------------------|
 | `.getScreenCTM()`     | `.getScreenCTM()`     |
 | `.addEventListener()` | `.addEventListener()` |
@@ -52,11 +52,11 @@ In Graphane the methods are handled without changes in its behavior, parameters,
 These methods receive the same parameters and return the same values as the original method, except when:
 
 - the return is `undefined`, the wrapped element is returned.
-- the return is an SVG element or an array of SVG elements, those elements are converted into a Graphane wrapped object.
+- the return is an SVG element or an array of SVG elements, those elements are converted into a Grapper wrapped object.
 
 ```js
 ssvg.add('circle').cx(3).cy(3).r(1);
 svg.add('circle').cx(6).cy(6).r(1);
 svg.add('circle').cx(9).cy(9).r(1);
-const circles = $.svg.querySelectorAll('circle'); // return an array with Graphane objects
+const circles = $.svg.querySelectorAll('circle'); // return an array with Grapper objects
 ```

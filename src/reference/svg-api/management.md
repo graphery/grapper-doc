@@ -3,7 +3,7 @@
 
 ## *element*.add( *tagName* )
 
-Creates and attach a nested SVG element and returns its Graphane wrapper object.
+Creates and attach a nested SVG element and returns its Grapper wrapper object.
 
 ```js
 const rect = parentElement.add('rect');
@@ -93,7 +93,7 @@ console.log($.svg.content());
 ## *element*.content(source)
 
 If you need to put the SVG element content from a text, you can use the method
-`.content(source)`. This method returns the current Graphane wrapper and puts the text as inner the
+`.content(source)`. This method returns the current Grapper wrapper and puts the text as inner the
 source.
 
 ```js

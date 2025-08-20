@@ -6,9 +6,9 @@ outline: deep
 
 ## `<template></template>`
 
-The `<template>` tag contains SVG code where dynamic elements are generated using Graphane
+The `<template>` tag contains SVG code where dynamic elements are generated using Grapper
 directives. Use standard SVG elements such as `<g>`, `<circle>`, `<rect>`, `<line>`, `<path>`,
-`<text>`, and others, powered with Graphane directives.
+`<text>`, and others, powered with Grapper directives.
 
 The template can be inserted inline or loaded as an external resource:
 
@@ -16,7 +16,7 @@ The template can be inserted inline or loaded as an external resource:
 
 ```html
 <template>
-  <!-- SVG with Graphane directives -->
+  <!-- SVG with Grapper directives -->
 </template>
 ```
 
@@ -1328,7 +1328,7 @@ it is possible to query other attributes of the element such as `$$.element.x()`
 
 #### `<svg g-on:init="intilizer">`
 
-- **Description**: Executes the `initializer` function when the SVG is created and the Graphane
+- **Description**: Executes the `initializer` function when the SVG is created and the Grapper
   `init` event is triggered. This event is fired only once when the `grapper-view` template is
   created.
 
@@ -1340,7 +1340,7 @@ it is possible to query other attributes of the element such as `$$.element.x()`
 
 #### `<svg g-on:render="updater">`
 
-- **Description**: Executes the `updater` function when the SVG is rendered by Graphane and the
+- **Description**: Executes the `updater` function when the SVG is rendered by Grapper and the
   `render` event is triggered. This event `render` is fired when the template is evaluated, for
   example, if any data changes.
 

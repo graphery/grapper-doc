@@ -4,7 +4,7 @@ outline: deep
 
 # Lists Rendering
 
-The `g-for` directive is a powerful feature in Graphane that allows you to render a block of SVG
+The `g-for` directive is a powerful feature in Grapper that allows you to render a block of SVG
 elements multiple times based on an array or an object's properties. It provides a convenient way to
 iterate over data and dynamically generate content in your templates.
 

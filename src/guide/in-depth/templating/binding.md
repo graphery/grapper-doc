@@ -5,7 +5,7 @@ outline: deep
 # Binding Attribute Values
 
 The `g-bind` directive, also known as the shorthand `:` syntax, is a fundamental directive in
-Graphane that enables you to bind values or expressions to SVG attributes, styles and classes in
+Grapper that enables you to bind values or expressions to SVG attributes, styles and classes in
 your templates. This directive must include the name of the attribute to which you want to assign a
 value, for example, `g-bind:r="expression"` or simply `:r="expression"`.
 
@@ -21,7 +21,7 @@ a dynamic value:
 <textarea><circle g-bind:r="size"/></textarea></g-editor></ClientOnly>
 
 In this case, `size` refers to a data property that holds the radius value. The `g-bind` directive
-binds the `r` attribute of the circle element to that value. When `size` changes in the Graphane
+binds the `r` attribute of the circle element to that value. When `size` changes in the Grapper
 component, the radius attribute will be automatically updated.
 
 

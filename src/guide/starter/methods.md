@@ -4,13 +4,13 @@ outline: deep
 
 # Methods
 
-In Graphane we can include Javascript code if we need it.
+In Grapper we can include Javascript code if we need it.
 In many occasions the declarative system of the templates and the data contained in `grapper-view` 
 will be enough to build the graph. 
 If we want to respond to user interactions by events, or we need to transform the data, we can use 
-Javascript code inside Graphane.
+Javascript code inside Grapper.
 If we want to respond to user interactions via events, or need to perform calculations or transform
-data, we can use Javascript code within Graphane.
+data, we can use Javascript code within Grapper.
 
 You can add Javascript code with a simple `<script type="methods"></script>`. 
 All functions defined into this tag are available into the template. 

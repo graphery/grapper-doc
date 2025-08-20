@@ -4,8 +4,8 @@ outline: deep
 
 # Grapper View
 
-Graphane is based on the custom tag `<grapper-view></grapper-view>`. 
-This web component is the main element of Graphane and everything happens inside it. 
+Grapper is based on the custom tag `<grapper-view></grapper-view>`. 
+This web component is the main element of Grapper and everything happens inside it. 
 We will include the other elements in a nested way.
 
 <ClientOnly>

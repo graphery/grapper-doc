@@ -4,7 +4,7 @@ outline: deep
 
 # Adding Content
 
-The `g-content` directive in Graphane is a feature that enables to incorporate content from data
+The `g-content` directive in Grapper is a feature that enables to incorporate content from data
 into an elements. This directive provides the flexibility to dynamically generate and populate the 
 SVG based on the provided data. When the SVG is rendered, the directive will be processed, and the 
 specified content will be inserted in the appropriate locations.

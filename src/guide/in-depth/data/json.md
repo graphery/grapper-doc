@@ -4,7 +4,7 @@ outline: deep
 
 # JSON Formats
 
-Graphane supports JSON and JSON5 formats, both of which are transformed into an object for use in
+Grapper supports JSON and JSON5 formats, both of which are transformed into an object for use in
 the template.
 
 ## JSON

@@ -4,13 +4,13 @@ outline: deep
 
 # Grapper View
 
-At the heart of Graphane is the `<grapper-view>` element, which serves as the main container for all
+At the heart of Grapper is the `<grapper-view>` element, which serves as the main container for all
 components of your visualization. This container encapsulates the template, data, methods,
 configuration, and external plugins necessary to render interactive and customizable graphics.
 
 ## `<grapper-view>` Element
 
-The `<grapper-view>` element is the foundational container in Graphane. It holds all the parts of your
+The `<grapper-view>` element is the foundational container in Grapper. It holds all the parts of your
 visualization and is responsible for rendering the final SVG output.
 
 - **Purpose**: Encapsulates the entire component, including the template, data, methods,
@@ -49,14 +49,14 @@ visualization and is responsible for rendering the final SVG output.
 
 - **Purpose**: Contains the dynamic SVG structure and layout of the component.
 - **Functionality**: Defines how visual elements are rendered and interact with the data.
-- **Usage**: Incorporates SVG elements with Graphane directives to bind data and methods.
+- **Usage**: Incorporates SVG elements with Grapper directives to bind data and methods.
 
 **Inline Template Example**:
 
 ```html
 <template>
   <svg viewBox="0 0 100 100">
-    <!-- SVG elements with Graphane directives -->
+    <!-- SVG elements with Grapper directives -->
   </svg>
 </template>
 ```

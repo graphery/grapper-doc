@@ -4,7 +4,7 @@ outline: deep
 
 # Embebed configuration
 
-Graphane allow defining the data visualization configuration into `<script type="config">` with
+Grapper allow defining the data visualization configuration into `<script type="config">` with
 formats CSV, JSON and JSON5. 
 
 <ClientOnly>

@@ -7,12 +7,12 @@ next:
 
 # Starter Guide
 
-Graphane is a free and open-source **data visualization low-level microframework** designed to
-facilitate the creation of custom, dynamic and interactive visualizations. Graphane offers
-**flexibility in designs**, allowing creators to make unique aesthetic visualizations that are far
+Grapper is a free and open-source **data visualization web component** designed as a micro-framework
+to facilitate the **creation of custom, dynamic and interactive visualizations**. Grapper offers
+flexibility in designs, allowing creators to make unique aesthetic visualizations that are far
 from becoming monotonous charts seen everywhere.
 
-Graphane is composed of:
+Grapper is composed of:
 
 - [**A web component**](./composer.md) for combining:
   - [**SVG template**](./template.md) with directives.
@@ -45,12 +45,12 @@ This is a basic example:
   <g-editor href="#example-starter" title="very basic example"></g-editor>
 </ClientOnly>
 
-Graphane is based on SVG and directives, defining a **declarative way** to build **data-driven**
+Grapper is based on SVG and directives, defining a **declarative way** to build **data-driven**
 graphics. This approach allows centering the effort on the design in a very natural form. Designers
 and developers achieve technical efficiency and gain the means to communicate their data story to
 their audience effectively.
 
-In addition, Graphane has a **smooth rendering** and **optimal performance** with a
+In addition, Grapper has a **smooth rendering** and **optimal performance** with a
 **tiny overhead**. It is not just a tool but a complete system that includes specially designed
 mechanisms to update the visualization efficiently when data are changed. This feature allows
-Graphane to maintain high runtime performance without the need for pre-compilation processes.
+Grapper to maintain high runtime performance without the need for pre-compilation processes.

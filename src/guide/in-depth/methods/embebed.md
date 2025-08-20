@@ -4,7 +4,7 @@ outline: deep
 
 # Embebed methods
 
-The `<script type="methods">` tag allow loading functions into the Graphane component. You can
+The `<script type="methods">` tag allow loading functions into the Grapper component. You can
 include functions in the code, and these functions are available into the template.
 
 <ClientOnly>
@@ -38,7 +38,7 @@ the event `click`. When the user clicks, the label is changed.
 Only the named functions are translated to the template environment. Constants, variables, arrow
 function or anonymous functions are not linked to the template.
 
-Into the methods code `$` is a reference to the Graphane template component. As a result, you can
+Into the methods code `$` is a reference to the Grapper template component. As a result, you can
 access to the [$.svg]($-svg) element or the [$.data](./$-data.md) object.
 
 ::: warning 

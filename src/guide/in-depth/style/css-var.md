@@ -7,7 +7,7 @@ outline: deep
 CSS custom properties, also known as CSS variables, are a way to define reusable values in CSS. They
 provide a way to store values in variables and use them throughout a stylesheet. Custom properties
 are prefixed with two dashes (`--`), followed by a name that you choose. You can define a complete
-style system with CSS custom properties and Graphane.
+style system with CSS custom properties and Grapper.
 
 ## Declaration
 

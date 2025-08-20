@@ -9,9 +9,9 @@ With these transformations, we can scale, rotate, move or deform the SVG element
 receive a list of pseudo-functions with parameters separated by space. With this pseudo-function, we
 define how we want to transform the graph.
 
-### In Graphane
+### In Grapper
 
-In SVG Graphane API we can use `.transform` with methods such as `.scale()` or `.translate()`
+In SVG Grapper API we can use `.transform` with methods such as `.scale()` or `.translate()`
 and build the transformation step by step with these helpers. All these methods return
 the `.transform` object. And, as a result, you can chain the calls of them.
 
