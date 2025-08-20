@@ -40,7 +40,7 @@ the SVG template model and directives.
     {circles: 3}
   </g-script>
 </grapper-view>
-<g-editor href="#example" lines-highlight="4;8"></g-editor>
+<g-editor href="#example" title="concentric circles" lines-highlight="4;8"></g-editor>
 </ClientOnly>
 
 In the following, we will describe how it works each directive:
@@ -77,7 +77,7 @@ change is reflected in the chart.
   </label>
 </p>
 </div>
-<g-editor href="#circle-example" lines-highlight="4"></g-editor>
+<g-editor href="#circle-example" title="dynamic radius" lines-highlight="4"></g-editor>
 </ClientOnly>
 
 > See more about [`g-bind`](../in-depth/templating/binding.md)
@@ -116,7 +116,7 @@ As many circles will be shown as the `circles` value has.
   </label>
 </p>
 </div>
-<g-editor href="#circles-example-2" lines-highlight="4"></g-editor>
+<g-editor href="#circles-example-2" title="number of items" lines-highlight="4"></g-editor>
 </ClientOnly>
 
 > See more about [`g-for`](../in-depth/templating/lists.md)
@@ -162,7 +162,7 @@ The values are modified by two checkboxes that update the `data` property of `gr
     </label>
   </p>
 </div>
-<g-editor href="#odd-even-example" lines-highlight="6"></g-editor>
+<g-editor href="#odd-even-example" title="conditional items" lines-highlight="6"></g-editor>
 </ClientOnly>
 
 > See more about [`g-if`](../in-depth/templating/conditional.md).
@@ -209,7 +209,7 @@ They are dynamically updated by two inputs.
     </label>
   </p>
 </div>
-<g-editor href="#content-example" lines-highlight="6;12"></g-editor>
+<g-editor href="#content-example" title="dynamic content" lines-highlight="6;12"></g-editor>
 </ClientOnly>
 
 > See more about [`g-content`](../in-depth/templating/content). 

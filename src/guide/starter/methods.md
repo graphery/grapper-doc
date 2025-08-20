@@ -33,7 +33,7 @@ template only can access to functions define as `function`.
     }
   </g-script>
 </grapper-view>
-<g-editor href="#methods-example" lines-highlight="11-14"></g-editor>
+<g-editor href="#methods-example" title="changes color when clicked" lines-highlight="11-14"></g-editor>
 </ClientOnly>
 
 In the defined functions we can access the `$` object with which we can access the SVG (`$.svg`) or
@@ -71,7 +71,7 @@ In this other example the `click` event on all SVG content, updates the `circles
     }
   </g-script>
 </grapper-view>
-<g-editor href="#event-example" lines-highlight="5;26-33"></g-editor>
+<g-editor href="#event-example" title="add circles with click and reduce with ctrl+click" lines-highlight="5;26-33"></g-editor>
 </ClientOnly>
 
 ## Data transformation
@@ -110,5 +110,5 @@ add calculated values, etc.
     }
   </g-script>
 </grapper-view>
-<g-editor href="#data-example" lines-highlight="21-23"></g-editor>
+<g-editor href="#data-example" title="data sorting" lines-highlight="21-23"></g-editor>
 </ClientOnly>

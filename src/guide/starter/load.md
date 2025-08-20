@@ -9,25 +9,8 @@ This is done by adding a `script` tag pointing to the Grapper file.
 The easiest and fastest is to use this URL from the CDN:
 
 ```html
-<script src="https://cdn.graphery.online/grapper/1.0.0/composer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/grapper/dist/view.js"></script>
 ```
-
-::: details Understanding the CDN path
-
-This is the detailed description of each URL part:
-
-```
-https://cdn.graphery.online/grapper/1.0.0/composer.js
-|-----|--------------------|--------|-----|-----------|
-   |            |               |      |        |-----> filename
-   |            |               |      |--------------> version
-   |            |               |------------------------------------> package
-   |            |----------------------------------------------------> domain
-   |-----------------------------------------------------------------> protocol
-```
-
-:::
-
 
 You can install locally the [Grapper package](https://www.npmjs.com/package/grapper) with:
 

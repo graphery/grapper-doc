@@ -78,7 +78,7 @@ Grapper can use the Comma Separated Values (CSV) format in its different variant
     {{ "x,y,radix,color\n20,20,20,red\n45,45,30,blue\n80,80,10,green" }}
   </g-script>
 </grapper-view>
-<g-editor href="#data-example-2" lines-highlight="15-18"></g-editor>
+<g-editor href="#data-example-2" title="CSV format" lines-highlight="15-18"></g-editor>
 </ClientOnly>
 
 ### JSON or JSON5
@@ -116,7 +116,7 @@ We can use both as a format for the data used in `grapper-view`.
     ]
   </g-script>
 </grapper-view>
-<g-editor href="#data-example-3" lines-highlight="15-19"></g-editor>
+<g-editor href="#data-example-3" title="JSON5 format" lines-highlight="15-19"></g-editor>
 </ClientOnly>
 
 ## Data Structure
@@ -167,5 +167,5 @@ data nested in depth.
   </label>
 </p>
 </div>
-<g-editor href="#reactivity-example-wrapper" lines-highlight="28"></g-editor>
+<g-editor href="#reactivity-example-wrapper" title="dynamic number of concentric circles" lines-highlight="28"></g-editor>
 </ClientOnly>
