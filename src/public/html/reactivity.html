@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body, html {
+      font-family : Arial, Helvetica, sans-serif;
+      font-size   : 14px;
+    }
+    .code {
+      font-family : Consolas, "Courier New", monospace;
+    }
+    #data {
+      max-height  : 20em;
+      overflow-y  : auto;
+    }
+
+    #data div {
+      margin-left : 1em;
+    }
+  </style>
+  <script src="https://cdn.graphery.online/grapper/0.1.0-alpha/component/composer.js"></script>
+</head>
+<body>
+<main>
+  <div class="row">
+    <div class="col-6">
+      <h2>graph</h2>
+      <grapper-view>
+        <svg viewBox="0 0 100 100" style="border: 1px solid grey; width: 250px; height: 250px">
+          <g g-for="{x,y, color} of data">
+            <circle :cx="x" :cy="y" r="5" :fill="color" style="stroke:grey; stroke-width: 0.5"/>
+          </g>
+        </svg>
+        <script type="data">
+          [
+            {x: 10, y: 10, color: "#D80000"},
+            {x: 15, y: 20, color: "#00D800"},
+            {x: 30, y: 90, color: "#0000D8"}
+          ]
+        </script>
+      </grapper-view>
+    </div>
+    <h2>data</h2>
+    <div class="code">
+      [
+      <div id="data">
+        <span id="content"></span>
+      </div>
+      ]
+      <p>
+        <button id="add" title="add">+</button>
+      </p>
+    </div>
+</main>
+<script>
+  const gTemplate = document.querySelector('grapper-view');
+  const pre       = document.querySelector('#data');
+  pre.addEventListener('input', (evt) => {
+    const value               = evt.target.value;
+    const axis                = evt.target.name;
+    const row                 = Number(evt.target.parentElement.id);
+    gTemplate.data[row][axis] = value;
+  });
+  pre.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('delete')) {
+      const row = Number(evt.target.parentElement.id);
+      gTemplate.data.splice(row, 1);
+    }
+  });
+  document.querySelector('#add').addEventListener('click', () => {
+    gTemplate.data.push({x : 50, y : 50, color : '#d8d8d8'});
+  });
+  let size = 0;
+  gTemplate.addEventListener('render', () => {
+    if (size !== gTemplate.data.length) {
+      size          = gTemplate.data.length;
+      const content = document.querySelector('#content');
+      let text      = '';
+      gTemplate.data.forEach((row, idx) => {
+        text += `<div id="${ idx }">
+        {x: <input type="number" min="0" max="100" value="${ row.x }" name="x">,
+        y: <input type="number" min="0" max="100" value="${ row.y }" name="y">,
+        color: <input type="color" value="${ row.color }" name="color">},
+        <button class="delete" title="remove">&#x1F5D1;</button>
+      </div>`;
+      });
+      content.innerHTML = text;
+    }
+  });
+</script>
+</body>
+</html>

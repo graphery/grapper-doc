@@ -1,0 +1,11 @@
+<svg viewBox="0 0 100 100">
+    <g g-for="value of data">
+        <circle
+                g-bind:cx="value.x"
+                g-bind:cy="value.y"
+                g-bind:r="value.radix"
+                g-bind:fill="value.color"
+                g-content="JSON.stringify(data)"
+        ></circle>
+    </g>
+</svg>

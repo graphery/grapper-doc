@@ -220,3 +220,7 @@ test-results
 
 ### NPM helpers
 package.json.backup
+
+### Vitepress
+/src/.vitepress/cache/
+/src/.vitepress/dist/
