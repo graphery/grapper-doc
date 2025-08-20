@@ -3,7 +3,6 @@ import { h } from 'vue'
 import Theme from 'vitepress/theme-without-fonts'
 import './style.css'
 import './custom.css'
-import '../components/welcome.comp.js'
 
 export default {
   extends: Theme,

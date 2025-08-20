@@ -50,6 +50,10 @@ export default defineConfig({
       type : 'module'
     }],
     ['script', {
+      src : './components/welcome.comp.js',
+      type : 'module'
+    }],
+    ['script', {
       src           : 'https://plausible.io/js/script.js',
       defer         : '',
       'data-domain' : 'grapper.dev',
