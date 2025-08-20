@@ -32,7 +32,7 @@ export default defineConfig({
   vue         : {
     template : {
       compilerOptions : {
-        isCustomElement : (tag) => tag.startsWith('g-')
+        isCustomElement : (tag) => tag.startsWith('grapper-') || tag.startsWith('g')
       }
     }
   },

@@ -4,7 +4,7 @@
   visibility : hidden;
 }
 
-/*
+/**
  * Typography
  */
 :root {
@@ -19,17 +19,16 @@ html, body {
   -webkit-text-size-adjust : 100%;
 }
 
-/**
+/*
  * Headings
- * -------------------------------------------------------------------------- */
-
+ */
 
 .name.clip {
   font-weight : 500;
 }
 
 h1, h2, h3, .tagline {
-  font-family: var(--vp-font-title), 'sans-serif';
+  font-family : var(--vp-font-title), 'sans-serif';
 }
 
 .vp-doc h2 {
@@ -97,19 +96,74 @@ aside {
 }
 
 .VPSidebarItem .level-1 {
-  margin-left: 1em;
+  margin-left : 1em;
 }
-  
-  
-  /*
-  * Component: Home
-  */
+
+
+/*
+ * Component: Home
+ */
 :root {
   --vp-home-hero-name-color             : var(--vp-c-text-1);
   --vp-home-hero-name-background        : none;
   --vp-home-hero-image-background-image : none;
   --vp-home-hero-image-filter           : none;
 }
+
+.VPHome .vp-doc.container {
+  margin-top : 4rem;
+  max-width  : 800px;
+}
+
+.VPHero .heading {
+  opacity : 0;
+}
+
+grapper-welcome {
+  min-width : 500px;
+}
+
+@media (min-width : 960px) {
+  .VPHero .container {
+    flex-direction : row-reverse;
+  }
+  
+  .VPHero.has-image .container {
+    text-align : right !important;
+  }
+  
+  .VPHero .main {
+    width : 25%;
+  }
+  
+  .VPHero .main {
+    width : calc(100% / 3);
+  }
+  
+  .VPHero.has-image .actions {
+    justify-content : flex-end !important;
+  }
+  
+  .VPHero {
+    padding : calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 80px) 64px 0;
+  }
+  
+  grapper-welcome {
+    min-width : 600px;
+  }
+}
+
+@media (min-width : 640px) {
+  .VPHero .image-container {
+    width  : 100%;
+    height : auto;
+  }
+  
+  .VPHero .tagline {
+    max-width : 100%;
+  }
+}
+
 
 /*
  * Footer
@@ -121,18 +175,10 @@ footer img {
   width          : 120px;
 }
 
-/**
- Input type text
+/*
+ * Input type text
  */
 input[type=text] {
-  border-bottom : 1px solid gray;
-  padding-bottom: 0;
-}
-
-/**
- Home
- */
-.VPHome .vp-doc.container {
-  margin-top: 4rem;
-  max-width : 800px;
+  border-bottom  : 1px solid gray;
+  padding-bottom : 0;
 }

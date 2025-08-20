@@ -4,9 +4,8 @@ layout: home
 title: Home
 
 hero:
-  image: '/img/logo/g.svg'
   name: Grapper
-  tagline: graphic wrapper for data visualization
+  tagline: A modern & powerful way <br/>for great data visualization
   actions:
     - theme: brand
       text: Starter Guide
@@ -18,46 +17,23 @@ hero:
 features:
   - title: Declarative Syntax
     details: Easily create and manage powerful graphs using intuitive templating directives, reducing the learning curve and increasing productivity.
-  - title: Data Binding
-    details: The rendering engine detects and applies changes to the graphical representation, ensuring seamless updates that stay in sync with your data.
-  - title: Powerful and Open
-    details: Create any type of data-driven graphic, with low-level access to all visual elements without limitations.
-  - title: Seamless Integration
-    details: Built with web components, it integrates smoothly with plain HTML and popular Javascript frameworks.
-  - title: Performance Optimization
-    details: Optimized for performance, the solution includes efficient rendering algorithms and element reuse for fast, effective rendering.
-  - title: Tiny size
-    details: Designed as a microframework with a minimal footprint, it ensures a quick and smooth download experience.
+  - title: Reactive Data Binding
+    details: The rendering engine automatically updates graphics when data changes, ensuring perfect synchronization between data and visuals.
+  - title: Full Control
+    details: Access and customize any visual element at a low level, while still benefiting from high-level abstractions.
+  - title: Open Source
+    details: Free and standards-based web components for easy integration with plain HTML and modern frameworks. Fully open to the community.
+  - title: Performance Optimized
+    details: Efficient rendering algorithms and element reuse ensure smooth interactions and fast performance even with complex datasets.
+  - title: Lightweight Core
+    details: Designed as a microframework with a minimal footprint, Grapper delivers powerful features in a tiny package (12 kB gzipped).
 ---
 
-## Simple example
-
-```html
-<grapper-view>
-  <svg viewBox="0 0 200 100" width="200px" height="100px">
-    <g stroke-width="12" stroke-linecap="round">
-      <g g-for="(record, index) of data">
-        <line  x1="22"
-              :x2="record.value"
-              :y1="index * 20 + 30"
-              :y2="index * 20 + 30"
-              :stroke="record.color"
-        ></line>
-      </g>
-    </g>
-  </svg>
-  <script type="data">
-    [
-      {"color": "#D80000", "value": 130},
-      {"color": "#00D800", "value": 170},
-      {"color": "#0000D8", "value": 100}
-    ]
-  </script>
-</grapper-view>
-```
+## Very simple example
 
 <ClientOnly>
-  <grapper-view>
+  <g-editor href="#horizontal-bars" title="horizontal bars"></g-editor>
+  <grapper-view id="horizontal-bars">
     <svg viewBox="0 0 200 100" width="200px" height="100px">
     <g stroke-width="12" stroke-linecap="round">
       <g g-for="(record, index) of data">
