@@ -12,6 +12,11 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
+    env:
+      # ONE source of truth for the remote dir. Put the full absolute path here.
+      # You can keep it as a secret if you prefer: REMOTE_DIR: ${{ secrets.FTP_FOLDER }}
+      REMOTE_DIR: "/grapper-doc"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,22 +27,69 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install deps
+      - name: Install dependencies
         run: npm ci
 
-      - name: Build VitePress
+      - name: Build VitePress (root = src)
         run: npx vitepress build src
 
+      - name: Sanity - build output present
+        run: ls -la src/.vitepress/dist
+
+      - name: Preflight - validate SFTP secrets
+        run: |
+          test -n "${FTP_SERVER}"   || (echo "Missing secret: FTP_SERVER" && exit 1)
+          test -n "${FTP_USERNAME}" || (echo "Missing secret: FTP_USERNAME" && exit 1)
+          test -n "${FTP_PASSWORD}" || (echo "Missing secret: FTP_PASSWORD" && exit 1)
+          test -n "${REMOTE_DIR}"   || (echo "REMOTE_DIR env is empty" && exit 1)
+        env:
+          FTP_SERVER:   ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+
+      # Create the full parent chain via SFTP (SFTP-only servers don't create parents)
+      - name: Ensure remote directory exists (SFTP-only)
+        run: |
+          set -euo pipefail
+          sudo apt-get update -y
+          sudo apt-get install -y sshpass
+
+          TARGET="${REMOTE_DIR%/}"  # strip trailing slash
+          IFS='/' read -ra PARTS <<< "$TARGET"
+          CURRENT=""
+          : > sftp_mkdir.txt
+          for p in "${PARTS[@]}"; do
+            [ -z "$p" ] && continue
+            CURRENT="${CURRENT}/${p}"
+            echo "mkdir ${CURRENT}" >> sftp_mkdir.txt
+          done
+          echo "quit" >> sftp_mkdir.txt
+
+          # IMPORTANT: put -b BEFORE the destination
+          SSHPASS="${FTP_PASSWORD}" sshpass -e sftp \
+            -P 22 -oBatchMode=no -oStrictHostKeyChecking=accept-new \
+            -b sftp_mkdir.txt "${FTP_USERNAME}@${FTP_SERVER}" || true
+
+          # Verify it is reachable (again, -b BEFORE destination)
+          printf "ls -la %s/\nquit\n" "$TARGET" > sftp_verify.txt
+          SSHPASS="${FTP_PASSWORD}" sshpass -e sftp \
+            -P 22 -oBatchMode=no -oStrictHostKeyChecking=accept-new \
+            -b sftp_verify.txt "${FTP_USERNAME}@${FTP_SERVER}"
+        env:
+          FTP_SERVER:   ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          REMOTE_DIR:   ${{ env.REMOTE_DIR }}
+
+      # Deploy (important: no wildcard; remote_path ends with / to indicate a directory)
       - name: Deploy via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          host: ${{ secrets.FTP_HOST }}
+          server: ${{ secrets.FTP_SERVER }}
           port: 22
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local_path: ".vitepress/dist/*"
-          remote_path: grapper-doc
-          delete: true
-          exclude: |
-            **/.git*
-            **/.DS_Store
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}   # or use ssh_private_key
+          sftp_only: true
+          local_path: "src/.vitepress/dist/"      # upload the folder itself (no *)
+          remote_path: "${{ env.REMOTE_DIR }}/"   # same path as ensured above, trailing slash
+          delete_remote_files: true               # set false on the first run if you want to be safe
