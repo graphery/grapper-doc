@@ -11,7 +11,9 @@ export default defineComponent(
           </clipPath>
         </defs>
         <path id="brackets" fill="none" stroke="black" stroke-width="4"/>
-        <text id="name" clip-path="url(#clip)" x="500" y="250" font-size="58" font-weight="500" dominant-baseline="middle" text-anchor="middle" g-content="name[0]"></text>
+        <text id="name" clip-path="url(#clip)" x="500" y="250" font-size="58" font-weight="500" dominant-baseline="middle" text-anchor="middle">
+          <tspan id="name-content" g-content="name[0]"></tspan>
+        </text>
   
         <g g-for="(element, n) of elements">
           <path :id="element.id" :stroke="$.config.colors[n]" :transform="$$.translate(n * 180, 0)" fill="none" stroke-width="4" opacity="0" d="M320,250L320,250L320,250L320,250L320,250L320,250Z"/>
@@ -85,6 +87,7 @@ export default defineComponent(
         const brackets = $.svg.querySelector('#brackets');
         const clip     = $.svg.querySelector('#clip rect');
         const name     = $.svg.querySelector('#name');
+        const nameCont = $.svg.querySelector('#name-content');
         const logo     = $.svg.querySelector('#logo');
         const slogan   = $.svg.querySelector('#slogan');
   
@@ -110,13 +113,13 @@ export default defineComponent(
         setTimeout(() => {
           $.data.name.forEach((text, i) => {
             setTimeout(() => {
-              name.content(text);
+              nameCont.content(text);
             }, 100 * i);
           });
         }, 2500);
   
         // Step 04: move name
-        setTimeout(() => name.animateTo({y: 100}, 500), 4500);
+        name.animateTo([{y: 250},{y: 100}], {duration: 500, delay: 4500});
   
         // Step 05: show hexagons
         $.data.elements.forEach((element, i) => {

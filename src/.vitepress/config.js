@@ -42,7 +42,7 @@ export default defineConfig({
     ['script', {
       // src : 'http://localhost:7000/src/component/composer.js',
       // type : 'module'
-      src : `https://cdn.jsdelivr.net/npm/grapper/dist/view.js`
+      src : `https://cdn.jsdelivr.net/npm/grapper@1.1.0-beta.3/dist/view.js`
     }],
     ['script', {
       // src : 'http://localhost:8000/editor/src/component/editor.js',
@@ -56,7 +56,7 @@ export default defineConfig({
     ['script', {
       src           : 'https://plausible.io/js/script.js',
       defer         : '',
-      'data-domain' : 'grapper.dev',
+      'data-domain' : 'grapper.io',
     }]
   ],
   // https://vitepress.dev/reference/default-theme-config

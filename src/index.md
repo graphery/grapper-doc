@@ -17,16 +17,34 @@ hero:
 features:
   - title: Declarative Syntax
     details: Easily create and manage powerful graphs using intuitive templating directives, reducing the learning curve and increasing productivity.
+    icon:
+      src: /img/icons/declarative.svg
+      alt: declarative
   - title: Reactive Data Binding
     details: The rendering engine automatically updates graphics when data changes, ensuring perfect synchronization between data and visuals.
+    icon:
+      src: /img/icons/reactive.svg
+      alt: reactive
   - title: Full Control
     details: Access and customize any visual element at a low level, while still benefiting from high-level abstractions.
+    icon:
+      src: /img/icons/control.svg
+      alt: control
   - title: Open Source
     details: Free and standards-based web components for easy integration with plain HTML and modern frameworks. Fully open to the community.
+    icon:
+      src: /img/icons/opensource.svg
+      alt: open source
   - title: Performance Optimized
     details: Efficient rendering algorithms and element reuse ensure smooth interactions and fast performance even with complex datasets.
+    icon:
+      src: /img/icons/performance.svg
+      alt: performance
   - title: Lightweight Core
     details: Designed as a microframework with a minimal footprint, Grapper delivers powerful features in a tiny package (12 kB gzipped).
+    icon:
+      src: /img/icons/lightweight.svg
+      alt: lightweight
 ---
 
 ## Very simple example
