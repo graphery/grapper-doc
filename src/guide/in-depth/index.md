@@ -1,8 +1,5 @@
 ---
 outline: deep
-prev:
-  text: 'Starter'
-  link: '/guide/starter/'
 ---
 
 # In-Depth
@@ -10,7 +7,7 @@ prev:
 In this guide, we will delve into the different aspects of Grapper, describing its operation and
 architecture.
 
-If you are new to Grapper, we recommend start with the [Starter Guide](/guide/starter/).
+If you are new to Grapper, we recommend starting with the [Quick Guide](../../quick-guide).
 
 This in-depth guide include:
 

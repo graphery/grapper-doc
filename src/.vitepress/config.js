@@ -33,17 +33,11 @@ export default defineConfig({
       routex({
         "/guide/starter/" : "/quick-guide",
         "/guide/starter/index" : "/quick-guide",
-        "/guide/starter/index.html" : "/quick-guide",
         "/guide/starter/load" : "/quick-guide",
-        "/guide/starter/load.html" : "/quick-guide",
         "/guide/starter/composer" : "/quick-guide",
-        "/guide/starter/composer.html" : "/quick-guide",
         "/guide/starter/data" : "/quick-guide",
-        "/guide/starter/data.html" : "/quick-guide",
         "/guide/starter/methods" : "/quick-guide",
-        "/guide/starter/methods.html" : "/quick-guide",
         "/guide/starter/template" : "/quick-guide",
-        "/guide/starter/template.html" : "/quick-guide",
       })
     ],
   },

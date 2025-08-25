@@ -5,12 +5,6 @@ Whether you're a beginner looking for the essentials, a seasoned pro digging mor
 complete unknown ready to explore the capabilities of scalable vector graphics (SVG), we've got you
 covered.
 
-## [Starter](starter/)
-
-Embark on your Grapper journey with our essentials section, designed for those taking their first
-steps into the capabilities of this micro-framework. Here, you'll find fundamental concepts and practical
-tips to build a solid foundation.
-
 ## [In-Depth](./in-depth/)
 
 For curious minds hungry for deeper insights, our In-Depth section delves deeper into Grapper's
