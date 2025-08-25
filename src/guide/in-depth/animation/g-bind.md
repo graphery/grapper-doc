@@ -2,13 +2,13 @@
 outline: deep
 ---
 
-# `$$.dynamic()` with `g-bind`
+# `$.dynamic()` with `g-bind`
 
 Grapper Template Engine provides a very simple for of animation in collaboration with the
-`g-bind` directive. When you use `$$.dynamic()` into the `g-bind` expression and the value is applied
+`g-bind` directive. When you use `$.dynamic()` into the `g-bind` expression and the value is applied
 progressively and show an animation.
 
-The syntax is: `g-bind:attribute="$$.dynamic(<value> [, <duration>] [, <delay>])`.
+The syntax is: `g-bind:attribute="$.dynamic(<value> [, <duration>] [, <delay>])`.
 
 <ClientOnly>
 <grapper-view id="dynamic-1" style="width: 200px;">
@@ -16,7 +16,7 @@ The syntax is: `g-bind:attribute="$$.dynamic(<value> [, <duration>] [, <delay>])
     <circle fill="red"
             cx="50"
             cy="50"
-            g-bind:r="$$.dynamic(radius, 4000)"/>
+            g-bind:r="$.dynamic(radius, 4000)"/>
     <text x="50"
           y="50"
           font-size="10"
@@ -47,12 +47,12 @@ valid expression for calculated values.
 ### `<duration>`
 
 By default, the animation duration is 200ms. You can change this behavior passing a second parameter
-to `$$.dynamic()` function.
+to `$.dynamic()` function.
 
 ### `<delay>`
 
 By default, the animation duration starts immediately. You can change this behavior passing a third
-parameter to `$$.dynamic()` function in milliseconds.
+parameter to `$.dynamic()` function in milliseconds.
 
 ## Keyframes as values
 
@@ -64,7 +64,7 @@ You can pass an array of values to describe non-linear progressing.
     <circle cx="50"
             cy="50"
             fill="red"
-            g-bind:r="$$.dynamic([radius * 0.1, 
+            g-bind:r="$.dynamic([radius * 0.1, 
                               radius * 0.5, 
                               radius * 0.9, 
                               radius * 0.7, 
@@ -91,7 +91,7 @@ control over the execution of the animation.
     <circle cx="50"
             cy="50"
             fill="red"
-            g-bind:r="$$.dynamic([{value: 0,            offset: 0},
+            g-bind:r="$.dynamic([{value: 0,            offset: 0},
                                   {value: radius,       offset: 0.8},
                                   {value: radius * 0.9, offset: 0.9},
                                   {value: radius,       offset: 1}], 2000)"/>

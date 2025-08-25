@@ -114,12 +114,44 @@ In all cases, the key can include dots for get values in deep objects, e.g., `ke
 
 ## Use Javascript function for data manipulation
 
-Of course, you can still make use of the functions offered by Javascript for handling and analyzing
+Of course, you can still make use of the functions offered by JavaScript for handling and analyzing
 arrays.
 
 ```svg
 <tspan g-content="data.filter(x => x < 4).map(x => x * 2)"></tspan>
 ```
+
+| Method               | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| `data.push()`        | Adds one or more elements to the end of an array                            |
+| `data.pop()`         | Removes the last element from an array                                      |
+| `data.shift()`       | Removes the first element from an array                                     |
+| `data.unshift()`     | Adds one or more elements to the beginning of an array                      |
+| `data.concat()`      | Joins two or more arrays and returns a new array                            |
+| `data.slice()`       | Returns a shallow copy of a portion of an array                             |
+| `data.splice()`      | Adds, removes, or replaces elements in an array                             |
+| `data.indexOf()`     | Returns the first index of a given element                                  |
+| `data.lastIndexOf()` | Returns the last index of a given element                                   |
+| `data.includes()`    | Checks if an array contains a certain element                               |
+| `data.find()`        | Returns the first element that satisfies a condition                        |
+| `data.findIndex()`   | Returns the index of the first element that satisfies a condition           |
+| `data.filter()`      | Creates a new array with elements that satisfy a condition                  |
+| `data.map()`         | Creates a new array with the results of calling a function on every element |
+| `data.forEach()`     | Executes a function once for each array element                             |
+| `data.reduce()`      | Reduces array to a single value using an accumulator function               |
+| `data.reduceRight()` | Same as reduce(), but works from right to left                              |
+| `data.sort()`        | Sorts the elements of an array                                              |
+| `data.reverse()`     | Reverses the order of the elements in an array                              |
+| `data.flat()`        | Flattens nested arrays into a single array                                  |
+| `data.flatMap()`     | Maps and flattens the result into a new array                               |
+| `data.join()`        | Joins all elements into a string                                            |
+| `data.toString()`    | Converts an array to a string of comma-separated values                     |
+| `data.every()`       | Checks if all elements satisfy a condition                                  |
+| `data.some()`        | Checks if at least one element satisfies a condition                        |
+
+**Note:** The `data` in the directives is not reactive, you don't change the original data. If you
+want to update the data, you need to use `$.data` instead.
+
 
 ::: warning 
 If you need to do a transformation, filter or other complex adaptation on the data

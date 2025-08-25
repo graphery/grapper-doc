@@ -30,7 +30,7 @@ giving you a wide range of possibilities for data-driven visualizations or custo
 <g-editor href="#content-1" lines-highlight="3;12;18"></g-editor>
 </ClientOnly>
 
-If you want to load the content from an external resource, you can use the `$$.fromURL()` helper as 
+If you want to load the content from an external resource, you can use the `$.fromURL()` helper as 
 an expression of the `g-content` directive indicating the URL from which the content to be inserted 
 inside the element will be downloaded.
 
@@ -38,8 +38,8 @@ inside the element will be downloaded.
 <grapper-view id="content-2" style="width: 300px">
   <svg viewBox="0 0 200 40">
     <g g-for="(location, idx) of data">
-      <g g-content="$$.fromURL(location)" 
-         g-bind:transform="$$.translate( idx * -50, 0)">
+      <g g-content="$.fromURL(location)" 
+         g-bind:transform="$.translate( idx * -50, 0)">
       </g>
     </g>
   </svg>

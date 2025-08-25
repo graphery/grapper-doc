@@ -46,7 +46,7 @@ component, the radius attribute will be automatically updated.
 </ClientOnly>
 
 If you need to query the current value of an attribute in the expression that has the `g-bind` 
-directive, you can use the `$$.curentVale()` helper to get the value before executing the 
+directive, you can use the `$.curentVale()` helper to get the value before executing the 
 expression.
 
 ## Style

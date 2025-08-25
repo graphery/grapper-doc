@@ -589,12 +589,12 @@ The template can be inserted inline or loaded as an external resource:
 #### Bind helpers
 
 - **Description**: The `g-bind` directive has several helper functions that can be used in
-  expressions, which always begin with `$$.` followed by the name of the helper. These general
+  expressions, which always begin with `$.` followed by the name of the helper. These general
   helpers work with all attributes except for the special cases of `style` and `class`.
 
-##### `$$.currentValue()`
+##### `$.currentValue()`
 
-**`g-bind:attribute_name="$$.currentValue()"`**
+**`g-bind:attribute_name="$.currentValue()"`**
 
 - **Description**: This helper function retrieves the current attribute value. It is useful when you
   need to access to the value into the expression.
@@ -602,25 +602,25 @@ The template can be inserted inline or loaded as an external resource:
 **Example**:
 
 ```svg
-<circle r="10" :r="$$.currentValue() + item.r"
+<circle r="10" :r="$.currentValue() + item.r"
         cx="10" cy="10" fill="red"/>
 ```
 
-##### `$$.element`
+##### `$.element`
 
 It is a  wrapper of the element where the `g-bind` directive has been included. With this reference
-it is possible to query other attributes of the element such as `$$.element.x()` or
-`$$.element.stroke()`.
+it is possible to query other attributes of the element such as `$.element.x()` or
+`$.element.stroke()`.
 
 
-##### `$$.attribute`
+##### `$.attribute`
 
 It is the name of the attribute in which the `g-bind` directive has been included.
 
 
-##### `$$.dynamic()`
+##### `$.dynamic()`
 
-**`g-bind:attribute_name="$$.dynamic(value)"`**
+**`g-bind:attribute_name="$.dynamic(value)"`**
 
 - **Description**: This helper animates the transition of the value over time, creating smooth
   transitions for the attribute it is bound to. It is typically used to animate attributes like
@@ -629,11 +629,11 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<circle r="0" :r="$$.dynamic(10)"
+<circle r="0" :r="$.dynamic(10)"
         cx="10" cy="10" fill="red"/>
 ```
 
-**`g-bind:attribute_name="$$.dynamic(value, time)"`**
+**`g-bind:attribute_name="$.dynamic(value, time)"`**
 
 - **Description**: This helper animates the change of the value over a specified time interval. It
   is useful for controlling the speed of the animation, allowing for more refined and timed
@@ -642,7 +642,7 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<circle r="0" :r="$$.dynamic(10, 1000)"
+<circle r="0" :r="$.dynamic(10, 1000)"
         cx="10" cy="10" fill="red"/>
 ```
 
@@ -651,18 +651,18 @@ It is the name of the attribute in which the `g-bind` directive has been include
 #### Transform helpers
 
 - Description: The `g-bind` directive on the `transform` attribute has a number of helper functions
-  that can be used to construct the transformation. It always starts with `$$.` followed by
+  that can be used to construct the transformation. It always starts with `$.` followed by
   the name of the transformation. Transform functions can be chained together.
 
 **Example**:
 ```svg
-<rect g-bind:transform="$$.scale(2).translate(30, 30).skewY(30)"
+<rect g-bind:transform="$.scale(2).translate(30, 30).skewY(30)"
       width="50" height="50" fill="pink"/>
 ```
 
-##### `$$.scale()`
+##### `$.scale()`
 
-**`g-bind:transform="$$.scale(x, y)"`**
+**`g-bind:transform="$.scale(x, y)"`**
 
 - **Description**: This helper applies a scale transformation, scaling the element by x along the
   horizontal axis and by y along the vertical axis. It is useful for resizing elements dynamically
@@ -670,15 +670,15 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<rect g-bind:transform="$$.scale(2, 1.5)"
+<rect g-bind:transform="$.scale(2, 1.5)"
       width="50" height="50" fill="blue"/>
 ```
 
 ---
 
-##### `$$.translate()`
+##### `$.translate()`
 
-**`g-bind:transform="$$.translate(x, y)"`**
+**`g-bind:transform="$.translate(x, y)"`**
 
 - **Description**: This helper applies a translation (movement) transformation, shifting the element
   by x units horizontally and y units vertically. It is used to move elements to a new position
@@ -686,15 +686,15 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<rect g-bind:transform="$$.translate(30, 50)"
+<rect g-bind:transform="$.translate(30, 50)"
       width="50" height="50" fill="green"/>
 ```
 
 ---
 
-##### `$$.rotate()`
+##### `$.rotate()`
 
-**`g-bind:transform="$$.rotate(a, x, y)"`**
+**`g-bind:transform="$.rotate(a, x, y)"`**
 
 - **Description**: This helper applies a rotation transformation. It rotates the element by a
   degrees around the point (x, y). If x and y are not provided, the rotation happens around the
@@ -703,15 +703,15 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<rect g-bind:transform="$$.rotate(45, 25, 25)"
+<rect g-bind:transform="$.rotate(45, 25, 25)"
       width="50" height="50" fill="red"/>
 ```
 
 ---
 
-##### `$$.skewX()`
+##### `$.skewX()`
 
-**`g-bind:transform="$$.skewX(a)"`**
+**`g-bind:transform="$.skewX(a)"`**
 
 - **Description**: This helper applies a skew transformation along the X-axis, skewing the element
   by a degrees. It distorts the shape horizontally
@@ -719,15 +719,15 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<rect g-bind:transform="$$.skewX(30)"
+<rect g-bind:transform="$.skewX(30)"
       width="50" height="50" fill="orange"/>
 ```
 
 ---
 
-##### `$$.skewY()`
+##### `$.skewY()`
 
-**`g-bind:transform="$$.skewY(a)"`**
+**`g-bind:transform="$.skewY(a)"`**
 
 - **Description**: This helper applies a skew transformation along the Y-axis, skewing the element
   by a degrees. It distorts the shape vertically
@@ -735,15 +735,15 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<rect g-bind:transform="$$.skewY(30)"
+<rect g-bind:transform="$.skewY(30)"
       width="50" height="50" fill="purple"/>
 ```
 
 ---
 
-##### `$$.matrix()`
+##### `$.matrix()`
 
-**`g-bind:transform="$$.matrix(a, b, c, d, e, f)"`**
+**`g-bind:transform="$.matrix(a, b, c, d, e, f)"`**
 
 - **Description**: This helper applies a matrix transformation using the six parameters (a, b, c, d,
   e, f), which define a combination of translation, scaling, rotation, and skewing in a single
@@ -752,7 +752,7 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<rect g-bind:transform="$$.matrix(1, 0.5, 0, 1, 30, 50)"
+<rect g-bind:transform="$.matrix(1, 0.5, 0, 1, 30, 50)"
       width="50" height="50" fill="yellow"/>
 ```
 
@@ -762,19 +762,19 @@ It is the name of the attribute in which the `g-bind` directive has been include
 
 - **Description**: the g-bind directive over the d attribute of SVG paths can use several
   helpers for building complex geometrical forms dynamically. These helpers allow you to define
-  movements, lines, curves, and other path elements. t always starts with `$$.` followed by
+  movements, lines, curves, and other path elements. t always starts with `$.` followed by
   the name of the path command. Path helpers can be chained together.
 
 **Example**
 ```svg
-<path :d="$$.M(50, 50).L(100, 50).L(100, 100).Z()"></path>
+<path :d="$.M(50, 50).L(100, 50).L(100, 100).Z()"></path>
 ```
 
 ---
 
-##### `$$.M()` `$$.m()` Move To
+##### `$.M()` `$.m()` Move To
 
-**`g-bind:d="$$.M(x, y)`**
+**`g-bind:d="$.M(x, y)`**
 
 - **Description**: Moves the pen to the coordinates (x, y) without drawing a line. This defines the
   starting point of the path.
@@ -782,12 +782,12 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50)" stroke="black"/>
+<path g-bind:d="$.M(50, 50)" stroke="black"/>
 ```
 
 ---
 
-**`g-bind:d="$$.m(dx, dy)`**
+**`g-bind:d="$.m(dx, dy)`**
 
 - **Description**: Moves the pen by a relative offset (dx, dy) from the current position without
   drawing a line.
@@ -795,13 +795,13 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).m(10, 20)"
+<path g-bind:d="$.M(50, 50).m(10, 20)"
       stroke="black"/>
 ```
 
-##### `$$.L()` `$$.l()` Line To
+##### `$.L()` `$.l()` Line To
 
-**`g-bind:d="$$.L(x, y)`**
+**`g-bind:d="$.L(x, y)`**
 
 - **Description**: Draws a straight line from the current position to the new coordinates (`x`,
   `y`).
@@ -809,59 +809,59 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).L(100, 100)"
+<path g-bind:d="$.M(50, 50).L(100, 100)"
       stroke="black"/>
 ```
 
-**`g-bind:d="$$.l(dx, dy)`**
+**`g-bind:d="$.l(dx, dy)`**
 
 - **Description**: Draws a relative line from the current position, offset by (`dx`, `dy`)
 
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).l(50, 50)"
+<path g-bind:d="$.M(50, 50).l(50, 50)"
       stroke="black"/>
 ```
 
 ---
 
-##### `$$.H()` `$$.h()` Line To
+##### `$.H()` `$.h()` Line To
 
-**`g-bind:d="$$.H(x)`**
+**`g-bind:d="$.H(x)`**
 
 - **Description**: Draws a horizontal line to the x position.
 
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).H(100)"
+<path g-bind:d="$.M(50, 50).H(100)"
       stroke="black"/>
 ```
 
-**`g-bind:d="$$.h(dx)`**
+**`g-bind:d="$.h(dx)`**
 
 - **Description**: Draws a relative horizontal line by dx from the current position.
 
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).h(50)"
+<path g-bind:d="$.M(50, 50).h(50)"
       stroke="black"/>
 ```
 
 ---
 
-##### `$$.V()` `$$.v()` Line To
+##### `$.V()` `$.v()` Line To
 
-**`g-bind:d="$$.V(y)`**
+**`g-bind:d="$.V(y)`**
 
 - **Description**: Draws a vertical line to the y position.
 
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).V(100)"
+<path g-bind:d="$.M(50, 50).V(100)"
       stroke="black"/>
 ```
 

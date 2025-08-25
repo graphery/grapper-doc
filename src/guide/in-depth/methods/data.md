@@ -18,7 +18,7 @@ before the template evaluation.
     <g g-for="n of spokes">
       <line x1="50" y1="0" x2="50" y2="50"
             stroke-width="4" stroke="red"
-            g-bind:transform="$$.rotate((360 / spokes) * n, 50, 50)"/>
+            g-bind:transform="$.rotate((360 / spokes) * n, 50, 50)"/>
     </g>
     <text x="50" y="115" font-size="12"
           dominant-baseline="middle" text-anchor="middle"
