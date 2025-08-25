@@ -93,26 +93,23 @@ A `grapper-view` web component is the building block of **Grapper** and acts as 
 elements. It allows you to use directives, properties, and event bindings to manage and
 manipulate SVG elements dynamically.
 
-<ClientOnly>
-  <div style="display: none">
-    <grapper-view id="scafolding">
-      <template>
-        <!-- SVG with directives  -->
-      </template>>
-      <g-script type="data">
-        <!-- Data in CSV or JSON format -->
-      </g-script>
-      <g-script type="methods">
-        <!-- Methods to handle events or transform data -->
-      </g-script>
-      <g-script type="config">
-        <!-- Static configuration -->
-      </g-script>
-      <g-script type="plugin" src="../plugin-url.js"></g-script> <!-- External plugin -->
-    </grapper-view>
-  </div>
-  <g-editor href="#scafolding" mode="readonly" highlight-lines="2-4"></g-editor>
-</ClientOnly>
+```html
+<grapper-view id="scafolding">
+  <template>
+    <!-- SVG with directives  -->
+  </template>
+  <script type="data">
+    <!-- Data in CSV or JSON format -->
+  </script>
+  <script type="methods">
+    <!-- Methods to handle events or transform data -->
+  </script>
+  <script type="config">
+    <!-- Static configuration -->
+  </script>
+  <g-script type="plugin" src="../plugin-url.js"></g-script> <!-- External plugin --> 
+</grapper-view>
+```
 
 ### SVG directives, data, and methods
 
@@ -485,19 +482,85 @@ evaluated in the context of the current element and have access to the following
 - `$.svg`: The SVG wrapper.
 - `$.grapperView`: The `grapper-view` instance.
 
-Additionally, `$` includes specific helpers in some directives.
+::: details Example
 
+In this example, the rectangle takes the `x`, `y`, `width` and `height` values from the data by
+accessing its properties directly, without using `data.`. The `stroke` and `fill` values are
+obtained from the `$.config`.
+
+<ClientOnly>
+<grapper-view id="example-directive-expressions" style="width: 100px">
+  <svg viewBox="0 0 100 100">
+    <rect g-bind:x="x"
+          g-bind:y="y"
+          g-bind:width="width"
+          g-bind:height="height"
+          g-bind:stroke="$.config.stroke"
+          g-bind:fill="$.config.fill"/>
+  </svg>
+  <g-script type="data">
+    {
+      x: 10,
+      y: 10,
+      width: 80,
+      height: 80
+    }
+  </g-script>
+  <g-script type="config">
+    {
+      fill: 'orange',
+      stroke: 'red'
+    }
+  </g-script>
+</grapper-view>
+<g-editor href="#example-directive-expressions"></g-editor>
+</ClientOnly>
+
+:::
+
+Additionally, `$` includes specific helpers in some directives.
 
 ### `g-bind` helpers
 
-- `$.currentValue()` returns the current value of the attribute.
 - `$.dynamic(<value>, [<duration> = 200], [<delay> = 0])` progressively applies the value to the
   attribute, from the current value to the indicated value, with the possibility of defining the
   duration and delay, i.e., `g-bind:x="$.dynamic(item.x, 1000, 500)"`.
+- `$.currentValue()` returns the current value of the attribute.
 - `$.element` refers to the wrapper of the element where the `g-bind` directive has been included.
   With this reference it is possible to query other attributes of the element, i.e.,
   `g-bind:y="$.element.x()/2"`.
 - `$.attribute` is the name of the attribute in which the `g-bind` directive has been applied.
+
+::: details Example
+
+In this example the radius of the circle is progressively changed from the current value to the new 
+value, creating an animation effect.
+
+<ClientOnly>
+<div id="example-g-bind-helpers">
+<grapper-view id="circle-animated">
+  <svg viewBox="0 0 100 100" width="100">
+    <circle
+      g-bind:r="$.dynamic(size, 1000)"
+      cx="50" 
+      cy="50" 
+      fill="red"/>
+  </svg>
+  <g-script type="data">
+    {size: 25}
+  </g-script>
+</grapper-view>
+<p>
+<label>Change the size:
+  <input type="range" max="50" value="25"
+         oninput="document.querySelector('#circle-animated').data.size = this.value">
+  </label>
+</p>
+</div>
+<g-editor href="#example-g-bind-helpers" title="dynamic radius" lines-highlight="5"></g-editor>
+</ClientOnly>
+
+:::
 
 ### Path helpers: `g-bind:d=""`
 
@@ -531,7 +594,7 @@ Basic path helpers:
       g-bind:d="$.M(42.5,52.35).L(55,74).L(42.5,95.65).L(17.5,95.65).L(5,74).L(17.5,52.35).Z()"/>
   </svg>
 </grapper-view>
-<g-editor href="#example-path-helpers"></g-editor>
+<g-editor href="#example-path-helpers" lines-highlight="8;14;20"></g-editor>
 </ClientOnly>
 
 :::
@@ -618,17 +681,32 @@ single-quoted strings, and unquoted keys.
 data. Each line in a CSV file represents a single record, and fields within the record are separated
 by commas or semicolons.
 
-```html
-<script type="data">
-  "wind";"country"
-  441895;"China"
-  148020;"U.S."
-  ...
-</script>
-```
-
 **Grapper** supports both JSON/JSON5 and CSV and detects the format automatically. The data is then
 parsed and converted to an array of objects or an object, depending on the structure.
+
+::: details Example
+
+In this example, several circles are created with the data from the CSV table that is included in
+`<script type="data">`.
+
+<ClientOnly>
+<grapper-view style="width: 100px" id="example-data">
+  <svg viewBox="0 0 100 100">
+    <g g-for="value of data">
+      <circle g-bind:cx="value.x"
+              g-bind:cy="value.y"
+              g-bind:r="value.radix"
+              g-bind:fill="value.color"/>
+    </g>
+  </svg>
+  <g-script type="data">
+    {{ "x,y,radix,color\n20,20,20,red\n45,45,30,blue\n80,80,10,green" }}
+  </g-script>
+</grapper-view>
+<g-editor href="#example-data" lines-highlight="15-18"></g-editor>
+</ClientOnly>
+
+::: 
 
 ### Accessing data
 
@@ -731,7 +809,7 @@ If the helper does not receive a key, it assumes that the array contents are num
 receive a key, it uses this key to get the value of each object in the array. The key can include
 dots to access values in nested objects, e.g., `key.subkey.subkey`.
 
-### Transformations with `function data() {}` in `<script type="methods">`.
+### Transformations with `function data() {}`
 
 The methods section can include a function with the name `data` that receives the original data and
 returns the transformed data. This function allows complex data transformations and validations.
