@@ -16,7 +16,8 @@
     "preview": "vitepress preview src"
   },
   "devDependencies": {
-    "vitepress" : "1.6.4"
+    "@itznotabug/routex": "^0.0.2",
+    "vitepress": "^1.6.4"
   },
   "keywords": [
     "documentation",

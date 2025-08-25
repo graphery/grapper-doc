@@ -60,32 +60,29 @@ The following example demonstrates how to create a simple bar chart visualizatio
 `grapper-view`. The chart dynamically renders lines based on the values and colors specified in the
 data.
 
-```html
-<grapper-view id="example-starter">
-  <template>
+<ClientOnly>
+  <grapper-view id="example-starter">
     <svg viewBox="0 0 200 100" width="200px" height="100px">
       <g stroke-width="12" stroke-linecap="round">
-        <defs g-for="(record, index) of data">
-          <line
-            x1="22"
-            g-bind:x2="record.value"
-            g-bind:y1="index * 20 + 30"
-            g-bind:y2="index * 20 + 30"
-            g-bind:stroke="record.color"
-          ></line>
-        </defs>
+        <g g-for="(record, index) of data"> 
+          <line x1="22" 
+                g-bind:x2="record.value" 
+                g-bind:y1="index * 20 + 30" 
+                g-bind:y2="index * 20 + 30" 
+                g-bind:stroke="record.color"/>
+      </g>
       </g>
     </svg>
-  </template>
-  <script type="data">
-    [
-      { color: "#D80000", value: 130 },
-      { color: "#00D800", value: 170 },
-      { color: "#0000D8", value: 100 }
-    ]
-  </script>
-</grapper-view>
-```
+    <g-script type="data">
+      [
+        { color: "#D80000", value: 130 },
+        { color: "#00D800", value: 170 },
+        { color: "#0000D8", value: 100 },
+      ]
+    </g-script>
+  </grapper-view>
+  <g-editor href="#example-starter" title="very basic example"></g-editor>
+</ClientOnly>
 
 
 ## 3. Core Concepts
@@ -96,23 +93,26 @@ A `grapper-view` web component is the building block of **Grapper** and acts as 
 elements. It allows you to use directives, properties, and event bindings to manage and
 manipulate SVG elements dynamically.
 
-```html
-<grapper-view id="unique-id" data="value: 50" style="width: 100%">
-  <template>
-    <!-- SVG with directives  -->
-  </template>
-  <script type="data">
-    <!-- Data in CSV or JSON format -->
-  </script>
-  <script type="methods">
-    <!-- Methods to handle events or transform data -->
-  </script>
-  <script type="config">
-    <!-- Static or dynamic configuration -->
-  </script>
-  <script type="plugin" src="plugin-url.js"></script> <!-- External plugin -->
-</grapper-view>
-```
+<ClientOnly>
+  <div style="display: none">
+    <grapper-view id="scafolding">
+      <template>
+        <!-- SVG with directives  -->
+      </template>>
+      <g-script type="data">
+        <!-- Data in CSV or JSON format -->
+      </g-script>
+      <g-script type="methods">
+        <!-- Methods to handle events or transform data -->
+      </g-script>
+      <g-script type="config">
+        <!-- Static configuration -->
+      </g-script>
+      <g-script type="plugin" src="../plugin-url.js"></g-script> <!-- External plugin -->
+    </grapper-view>
+  </div>
+  <g-editor href="#scafolding" mode="readonly" highlight-lines="2-4"></g-editor>
+</ClientOnly>
 
 ### SVG directives, data, and methods
 
@@ -147,26 +147,6 @@ On the other hand, **Grapper extends the standard** with a series of additional 
 **Grapper** provides several directives and dynamic attributes that allow for interactive and
 reactive SVG elements:
 
-#### `g-for`
-
-Iterates over arrays or objects in the data to create repeated elements.
-
-```html
-<g g-for="(item, index) of data">
-  <!-- Elements generated based on 'data' -->
-</g>
-```
-
-When the data is an array, you can use `g-for` to iterate over each element of the array. When the
-data is an object, `g-for` can be used to iterate over each property of the object.
-
-#### `g-if`
-
-Conditionally renders elements based on a boolean expression.
-
-```html
-<path g-if="item.value > 0" d="..."></path>
-```
 
 #### `g-bind:[attribute]`
 
@@ -178,12 +158,140 @@ Binds SVG attributes dynamically to data values or method results.
 
 It is possible to use `:[attribute]` as an abbreviation for `g-bind:[attribute]`:
 
+When the SVG element attribute must contain a comma-separated or space-separated list of values, an 
+array of values can be used with `g-bind`.
+
+::: details Example
+
+In this example, the circle radius (`r` attribute) is defined with `size` data value with
+`g-bind:r="size"`.
+When we change the value of the slider, the `data.size` value of the component is updated and the
+change is reflected in the chart.
+
+<ClientOnly>
+<div id="example-g-bind">
+<grapper-view id="circle">
+  <svg viewBox="0 0 100 100" width="100">
+    <circle
+      g-bind:r="size"
+      cx="50" 
+      cy="50" 
+      fill="red"/>
+  </svg>
+  <g-script type="data">
+    {size: 25}
+  </g-script>
+</grapper-view>
+<p>
+<label>Change the size:
+  <input type="range" max="50" value="25"
+         oninput="document.querySelector('#circle').data.size = this.value">
+  </label>
+</p>
+</div>
+<g-editor href="#example-g-bind" title="dynamic radius" lines-highlight="4"></g-editor>
+</ClientOnly>
+
+:::
+
+#### `g-for`
+
+Iterates over arrays or objects in the data to create repeated elements.
+
 ```html
-<circle :cx="item.x" :cy="item.y" :r="item.radius"></circle>
+<g g-for="(item, index) of data">
+  <!-- Elements generated based on 'data' -->
+</g>
 ```
 
-When the SVG element attribute must contain a comma-separated or space-separated list of values, an
-array of values can be used with `g-bind`.
+When the data is an array, you can use `g-for` to iterate over each element of the array. When the
+data is an object, `g-for` can be used to iterate over each property of the object. When data is a 
+numeric value `g-for`, it executes the core `n` times.
+
+::: details Example
+
+In this example, a set of circles is displayed. As many circles will be shown as the `circles`
+value has.
+
+<ClientOnly>
+<div id="circles-example-g-for">
+<grapper-view id="circles">
+  <svg viewBox="0 0 100 100" width="100">
+    <g g-for="n of circles">
+      <circle
+        r="4"
+        g-bind:cx="((n % 10) * 10) + 5" 
+        g-bind:cy="(Math.floor(n / 10) * 10) + 5" 
+        fill="red"/>
+    </g>
+  </svg>
+  <g-script type="data">
+    {circles: 40}
+  </g-script>
+</grapper-view>
+<p>
+<label>Change the number of circles:
+  <input type="range" max="100" value="40"
+  oninput="document.querySelector('#circles').data.circles = Number(this.value)">
+  </label>
+</p>
+</div>
+<g-editor href="#circles-example-g-for" title="number of items" lines-highlight="4"></g-editor>
+</ClientOnly>
+
+:::
+
+#### `g-if`
+
+Conditionally renders elements based on a boolean expression.
+
+```html
+<path g-if="item.value > 0" d="..."></path>
+```
+
+::: details Example
+
+In this example, the odd and even circles are displayed if the values `odd` and `event` are true or
+false.
+The values are modified by two checkboxes that update the `data` property of `grapper-view`.
+
+<ClientOnly>
+<div id="example-g-if">
+  <grapper-view id="odd-even">
+    <svg viewBox="0 0 100 100" width="100">
+      <g g-for="n of 100">
+        <circle
+          g-if="((n + 1) % 2 === 0 && even) || ((n + 1) % 2 !== 0 && odd)"
+          r="4"
+          g-bind:cx="((n % 10) * 10) + 5" 
+          g-bind:cy="(Math.floor(n / 10) * 10) + 5" 
+          fill="red"/>
+      </g>
+    </svg>
+    <g-script type="data">
+      {
+        odd: true,
+        even: true
+      }
+    </g-script>
+  </grapper-view>
+  <p>
+    <label>
+      <input type="checkbox" checked
+             oninput="document.querySelector('#odd-even').data.odd = this.checked">
+      show odd
+    </label>
+    <label>
+      <input type="checkbox" checked
+             oninput="document.querySelector('#odd-even').data.even = this.checked">
+      show even
+    </label>
+  </p>
+</div>
+<g-editor href="#example-g-if" title="conditional items" lines-highlight="6"></g-editor>
+</ClientOnly>
+
+:::
 
 #### `g-content`
 
@@ -192,6 +300,50 @@ Inserts text content into an SVG element.
 ```html
 <text g-content="item.label"></text>
 ```
+
+::: details Example
+
+In this example, the text content is defined with `title` and `subtitle` data values.
+They are dynamically updated by two inputs.
+
+<ClientOnly>
+<div id="content-example">
+  <grapper-view id="content">
+    <svg viewBox="0 0 100 100" width="100">
+      <rect x="0" y="0" width="100" height="100" fill="green"/>
+      <text style="font-size:20px; fill:white"
+            g-content="title"
+            x="5" 
+            y="40"></text>
+      <text style="font-size:12px; fill:white"
+            g-content="subtitle"
+            x="5" 
+            y="65"></text>
+    </svg>
+    <g-script type="data">
+      {
+        title: 'hello',
+        subtitle: 'world'
+      }
+    </g-script>
+  </grapper-view>
+  <p>
+    <label>title: 
+      <input type="text" value="hello"
+             oninput="document.querySelector('#content').data.title = this.value">
+    </label>
+  </p>
+  <p>
+    <label>subtitle: 
+      <input type="text" value="world"
+             oninput="document.querySelector('#content').data.subtitle = this.value">
+    </label>
+  </p>
+</div>
+<g-editor href="#content-example" title="dynamic content" lines-highlight="6;12"></g-editor>
+</ClientOnly>
+
+:::
 
 #### `g-on:[event]`
 
@@ -202,27 +354,42 @@ the `methods` section.
 <rect g-on:click="handleClick(index)"></rect>
 ```
 
+::: details Example
+
+In this example the `click` event on all SVG content, updates the `circles` data value.
+
+<ClientOnly>
+<grapper-view id="event-example">
+  <svg viewBox="0 0 100 100" g-on:click="click" style="cursor: pointer" width="200" height="200">
+    <g g-for="x of circles">
+      <circle cx="50" cy="50" fill="none" stroke="black" stroke-width="1"
+              g-bind:r="(x + 1) * (48 / circles)"/>
+    </g>
+  </svg>
+  <g-script type="data">
+    { "circles": 5 }
+  </g-script>
+  <g-script type="methods">
+    function click(evt) {
+      evt.preventDefault();
+      if (evt.ctrlKey) {
+        $.data.circles--;
+      } else {
+        $.data.circles++;
+      }
+    }
+  </g-script>
+</grapper-view>
+<g-editor href="#event-example" title="add circles with click and reduce with ctrl+click" lines-highlight="5;26-33"></g-editor>
+</ClientOnly>
+
+:::
+
 It is possible to use `@[event]` as an abbreviation for `g-on:[event]`:
 
 ```html
 <rect @click="handleClick(index)"></rect>
 ```
-
-### Directives expressions
-
-It's possible to use JavaScript expressions in directives. The expressions in directives are
-evaluated in the context of the current element. The following variables are available:
-
-- `data`: The data array or object.
-- `$.grapperView`: The `grapper-view` instance.
-- `$.data`: The data array or object. (?)
-- `$.methods`: The methods functions object.
-- `$.config`: The configuration object.
-- `$.svg`: The SVG wrapper.
-
-If the data is an object, all its properties are directly accessible.
-
-In addition, some directives provide an additional variable `$` with specific helpers.
 
 ### Special binding with `style` and `class`
 
@@ -233,6 +400,29 @@ When using `g-bind` with the `style` attribute, you can dynamically bind an obje
 styles to an element. The keys of the object represent the CSS properties, and the values represent
 the corresponding values for those properties: `g-bind:style="{fill: value.color}"`.
 
+::: details Example
+
+<ClientOnly>
+<grapper-view id="example-style" style="width: 200px;">
+  <svg viewBox="0 0 100 100">
+    <g g-for="value of data">
+      <circle g-bind:cx="value.x"
+              g-bind:cy="value.y"
+              g-bind:r="value.radix"
+              g-bind:style="{fill: value.color}"/>
+    </g>
+  </svg>
+  <g-script type="data">[
+    {x: 20, y: 20, radix: 20, color: "red"},
+    {x: 45, y: 45, radix: 30, color: "blue"},
+    {x: 80, y: 80, radix: 10, color: "green"}
+  ]</g-script>
+</grapper-view>
+<g-editor href="#example-style" lines-highlight="9"></g-editor>
+</ClientOnly>
+
+::: 
+
 When using `g-bind` with the `class` attribute, you can dynamically bind:
 
 - a string with a single class name: `g-bind:class="data.class"`.
@@ -240,20 +430,74 @@ When using `g-bind` with the `class` attribute, you can dynamically bind:
 - an object with classes with values `true` to add or `false` to remove the class name: 
   `g-bind:class="{active: true, disabled: false}"`.
 
+::: details Example
+
+<ClientOnly>
+<div id="example-class"></div>
+<g-editor href="#example-class" lines-highlight="4-14;20">
+<textarea><grapper-view style="width: 200px">
+  <template>
+    <svg viewBox="0 0 100 100">
+      <style>
+        .regular {
+          fill : green;
+        }
+        .warning {
+          fill : blue;
+        }
+        .error {
+          fill : red;
+        }
+      </style>
+      <g g-for="value of data">
+        <circle :cx="value.x"
+                :cy="value.y"
+                :r="value.radix"
+                :class="value.class"/>
+      </g>
+    </svg>
+  </template>
+  <script type="data">[
+    {x: 20, y: 20, radix: 20, class: "regular"},
+    {x: 45, y: 45, radix: 30, class: "warning"},
+    {x: 80, y: 80, radix: 10, class: "error"}
+  ]</script>
+</grapper-view></textarea>
+</g-editor>
+</ClientOnly>
+
+:::
+
+### Directives expressions
+
+It's possible to use JavaScript expressions in directives. The expressions in directives are
+evaluated in the context of the current element and have access to the following variables:
+
+- **data**: From the directives you can access the data with `data`, for example: 
+  `g-for="(item, index) of data"` or `g-bind:x="data.x"`. As you can see, `data` can be an array of 
+  objects or an object. It is also accessible via `$.data`.
+- **data properties**: If `data` is an object, its properties can be accessed directly without 
+  using `data`, i.e., in the case of `g-bind:x="data.x"` you can directly use `g-bind:x="x"`.
+- **methods**: Functions defined in `<script type="methods">` can also be accessed from the 
+  directives, we only have to use the function name, i.e., `g-on:click="handleClick"`. It is also 
+  accessible via `$.methods`.
+- `$.config`: The configuration object.
+- `$.svg`: The SVG wrapper.
+- `$.grapperView`: The `grapper-view` instance.
+
+Additionally, `$` includes specific helpers in some directives.
+
 
 ### `g-bind` helpers
 
-- `$.attribute` is the name of the attribute in which the `g-bind` directive has been applied.
-
 - `$.currentValue()` returns the current value of the attribute.
-
-- `$.element` refers to the wrapper of the element where the `g-bind` directive has been included.
-  With this reference it is possible to query other attributes of the element, i.e.,
-  `g-bind:y="$.element.x() * 2"`
-
 - `$.dynamic(<value>, [<duration> = 200], [<delay> = 0])` progressively applies the value to the
   attribute, from the current value to the indicated value, with the possibility of defining the
-  duration and delay, i.e., `g-bind:x="$.dynamic(item.x, 1000, 500)"`.`.
+  duration and delay, i.e., `g-bind:x="$.dynamic(item.x, 1000, 500)"`.
+- `$.element` refers to the wrapper of the element where the `g-bind` directive has been included.
+  With this reference it is possible to query other attributes of the element, i.e.,
+  `g-bind:y="$.element.x()/2"`.
+- `$.attribute` is the name of the attribute in which the `g-bind` directive has been applied.
 
 ### Path helpers: `g-bind:d=""`
 
@@ -273,6 +517,24 @@ Basic path helpers:
 - `$.T(<x>, <y>)` `$.t(<x>, <y>)` absolute and relative smooth quadratic Bézier curve.
 - `$.A(<rx>, <ry>, <rot>, <arc-flag>, <sweep-flag>, <x>, <y>)`
   `$.a(<rx>, <ry>, <rot>, <arc-flag>, <sweep-flag>, <x>, <y>)` absolute and relative arc curve.
+
+::: details Example
+
+<ClientOnly>
+<grapper-view id="example-path-helpers" style="width: 100px">
+  <svg viewBox="0 0 100 100">
+    <path fill="none" stroke="#D80000" stroke-width="2" 
+      g-bind:d="$.M(42.5,4.35).L(55,26).L(42.5,47.65).L(17.5,47.65).L(5,26).L(17.5,4.35).Z()"/>
+    <path fill="none" stroke="#00D800" stroke-width="2" 
+      g-bind:d="$.M(83.5,28.35).L(96,50).L(83.5,71.65).L(58.5,71.65).L(46,50).L(58.5,28.35).Z()"/>
+    <path fill="none" stroke="#0000D8" stroke-width="2" 
+      g-bind:d="$.M(42.5,52.35).L(55,74).L(42.5,95.65).L(17.5,95.65).L(5,74).L(17.5,52.35).Z()"/>
+  </svg>
+</grapper-view>
+<g-editor href="#example-path-helpers"></g-editor>
+</ClientOnly>
+
+:::
 
 Advanced path helpers:
 
@@ -297,15 +559,35 @@ You can concatenate the calls as `$.M(10, 20).L(30, 40).L(60, 80).Z()`.
   respectively.
 - `$.matrix(<a>, <b>, <c>, <d>, <e>, <f>)` transformation matrix.
 
-### `g-content` helpers
+::: details Example
 
-- `$.element` refers to the wrapper of the element where the `g-content` directive has been
-  included. With this reference it is possible to query attributes of the element.
+<ClientOnly>
+<grapper-view id="example-transform-helpers" style="width: 100px">
+  <svg viewBox="0 0 100 100">
+    <path fill="none" stroke="#D80000" stroke-width="2" 
+      d="M42.5,4.35L55,26L42.5,47.65L17.5,47.65L5,26L17.5,4.35Z"/>
+    <path fill="none" stroke="#00D800" stroke-width="2" 
+      d="M42.5,4.35L55,26L42.5,47.65L17.5,47.65L5,26L17.5,4.35Z"
+      g-bind:transform="$.translate(41,24)"/>
+    <path fill="none" stroke="#0000D8" stroke-width="2" 
+      d="M42.5,4.35L55,26L42.5,47.65L17.5,47.65L5,26L17.5,4.35Z"
+      g-bind:transform="$.translate(0,48).rotate(60,30,26)"/>
+  </svg>
+</grapper-view>
+<g-editor href="#example-transform-helpers" lines-highlight="15;22"></g-editor>
+</ClientOnly>
+
+:::
+
+You can make a changing of call like `$.translate(10, 20).rotate(45).scale(2, 2).Z()`.
+
+### `g-content` helpers
 
 - `$.currentContent()` returns the content of the element. It can be useful to add elements instead
   of replacing them or to check the content before modifying it.
-
 - `$.fromURL()` gets an external resource via a URL and inserts it as element content.
+- `$.element` refers to the wrapper of the element where the `g-content` directive has been
+  included. With this reference it is possible to query attributes of the element.
 
 
 ## 5. Data
@@ -348,7 +630,7 @@ by commas or semicolons.
 **Grapper** supports both JSON/JSON5 and CSV and detects the format automatically. The data is then
 parsed and converted to an array of objects or an object, depending on the structure.
 
-### Accessing data: `data`, `$.data`.
+### Accessing data
 
 #### From template
 
@@ -394,6 +676,8 @@ From the methods you can access the data with `$.data`.
 Like any array in JavaScript, you can query and manipulate its data by these functions, which are
 available in the directives and methods of `grapper-view`.
 
+::: details Array JavaScript methods
+
 | Method               | Description                                                                 |
 |----------------------|-----------------------------------------------------------------------------|
 | `data.push()`        | Adds one or more elements to the end of an array                            |
@@ -422,8 +706,11 @@ available in the directives and methods of `grapper-view`.
 | `data.every()`       | Checks if all elements satisfy a condition                                  |
 | `data.some()`        | Checks if at least one element satisfies a condition                        |
 
-**Note:** The `data` in the directives is not reactive, you don't change the original data. If you
-want to update the data, you need to use `$.data` instead.
+:::
+
+**Note:** Some JavaScript methods modify the array. Don't worry, the `data` in the directives is not
+reactive, you don't change the original data. If you want to update the data, you need to use
+`$.data` instead.
 
 ### Data array helpers: `$sum`, `$avg`, `$count`, `$min`, `$max`, `$distinct`.
 
@@ -486,13 +773,9 @@ updates the visualization, keeping the UI perfectly synchronized. **Grapper** tr
 dependencies and triggers updates only where needed. Changes are detected at both surface and deep
 levels, including arrays and dates.
 
-### Dynamic attributes and directives.
-
-With directives like `g-bind`, `g-if`, and g-for, attributes and elements respond directly to data
+With directives like `g-bind`, `g-if`, and `g-for`, attributes and elements respond directly to data
 changes. This allows you to dynamically update values, toggle visibility, or generate elements,
 making the visualization both reactive and interactive without extra code.
-
-Aquí te dejo la **sección 6 completa** con una redacción homogénea con el resto de la guía:
 
 
 ## 6. Methods
@@ -906,110 +1189,6 @@ The renaming was done to avoid conflicts with other products and to improve sear
 2. Update helper calls from `$$.` to `$.` when possible.
 3. Test components — deprecated syntax will still work but gradually move to the new conventions.
 
-
-## 12. Best Practices
-
-### `$.data` vs `$.config`
-
-Although both are accessible from directives and methods, their **purpose** is different:
-
-| Use case               | `$.data` (data)                                     | `$.config` (parameters)                                               |
-|------------------------|-----------------------------------------------------|-----------------------------------------------------------------------|
-| **Nature**             | Dynamic, changes with user interaction or app flow  | Static or semi-static, defines adjustments and constants              |
-| **Origin**             | `<script type="data">` (JSON/JSON5 or CSV)          | `<script type="config">` (JSON/JSON5)                                 |
-| **Typical structure**  | Business records, metrics, states                   | Palettes, sizes, margins, limits, style/feature flags                 |
-| **When to modify**     | Often: filtering, sorting, adding/removing elements | Occasionally: theme change, layout or user preferences                |
-| **Who changes it**     | The app or the user (events, animations, fetches)   | The developer (or user if preferences are exposed)                    |
-| **Expected impact**    | Updates trigger re-rendering of dependent elements  | Updates reconfigure the render (without altering the meaning of data) |
-| **Examples**           | Chart series, points, active/selected states        | `barWidth`, `margin`, `colors`, `yMax`, `tooltip.format`, `locale`    |
-| **External source**    | Usually comes from API or storage                   | Usually defined in the component or a shared theme                    |
-
-#### Recommended patterns
-
-- **Use `$.data` for data**  
-  Content being visualized: values, labels, selection states, filtered results.
-
-```html
-  <rect g-for="(d,i) of data" :height="d.value"></rect>
-````
-
-- **Use `$.config` for parameters**
-  Things that configure the view: sizes, palettes, margins, limits, formats.
-
-  ```html
-  <rect :width="$.config.barWidth" 
-        :fill="$.config.colors[i % $.config.colors.length]"></rect>
-  ```
-
-- **Controlled changes**
-
-  * If the user changes the **theme** → update `$.config`.
-  * If the user filters data or zooms in a range → update `$.data`.
-
-#### Anti-patterns (avoid)
-
-- ❌ Storing real data inside `$.config` (e.g., a full dataset).
-- ❌ Using `$.data` for style constants (e.g., colors, margins).
-
-
-### Reuse SVG components
-
-Sometimes you need to **repeat the same graphic element** multiple times in a visualization.
-Instead of duplicating SVG code, you can define the element once with `<defs>` and then reuse it 
-with `<use>`. This improves readability and reduces the amount of markup.
-
-#### Basic example
-
-```html
-<svg viewBox="0 0 200 100">
-  <defs>
-    <circle id="myCircle" cx="0" cy="0" r="10" fill="blue"></circle>
-  </defs>
-  <use href="#myCircle" x="30" y="30"></use>
-  <use href="#myCircle" x="70" y="30"></use>
-  <use href="#myCircle" x="110" y="30"></use>
-</svg>
-```
-
-Here, the circle is defined once inside `<defs>` and reused multiple times at different positions.
-
-#### With Grapper directives
-
-Because `<use>` supports attributes like `x`, `y`, `transform`, and `fill`, you can combine it 
-with **Grapper directives** for dynamic repetition.
-
-```html
-<grapper-view>
-  <template>
-    <svg viewBox="0 0 200 100">
-      <defs>
-        <circle id="point" cx="0" cy="0" r="6"></circle>
-      </defs>
-      <use g-for="(item, index) of data"
-           href="#point"
-           :x="item.x"
-           :y="item.y"
-           :fill="item.color"></use>
-    </svg>
-  </template>
-  <script type="data">
-    [
-      { "x": 30, "y": 40, "color": "red" },
-      { "x": 80, "y": 60, "color": "green" },
-      { "x": 130, "y": 20, "color": "blue" }
-    ]
-  </script>
-</grapper-view>
-```
-
-This pattern reduces repetition and keeps your **Grapper templates** clean and efficient.
-
-### Aliases for `<script>` in CMS
-
-If you want to include `<grapper-view>` in a CMS, you can use an alias for `<script type="">` so
-that the file type is not rewritten or an exception is thrown because it is a disallowed tag. In
-these cases you can use `<g-script type="data">` or `<g-script type="methods">` to indicate the
-content type without problems with HTML sanitation processes.
 
 
 ## Additional Resources

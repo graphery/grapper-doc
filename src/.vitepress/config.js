@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import { routex } from '@itznotabug/routex'
 
 const URL     = '/';
 const VERSION = '1.0.0';
@@ -27,7 +28,24 @@ export default defineConfig({
   },
   base        : URL,
   vite        : {
-    plugins : [fullReloadAlways],
+    plugins : [
+      fullReloadAlways,
+      routex({
+        "/guide/starter/" : "/quick-guide",
+        "/guide/starter/index" : "/quick-guide",
+        "/guide/starter/index.html" : "/quick-guide",
+        "/guide/starter/load" : "/quick-guide",
+        "/guide/starter/load.html" : "/quick-guide",
+        "/guide/starter/composer" : "/quick-guide",
+        "/guide/starter/composer.html" : "/quick-guide",
+        "/guide/starter/data" : "/quick-guide",
+        "/guide/starter/data.html" : "/quick-guide",
+        "/guide/starter/methods" : "/quick-guide",
+        "/guide/starter/methods.html" : "/quick-guide",
+        "/guide/starter/template" : "/quick-guide",
+        "/guide/starter/template.html" : "/quick-guide",
+      })
+    ],
   },
   vue         : {
     template : {
@@ -42,7 +60,7 @@ export default defineConfig({
     ['script', {
       // src : 'http://localhost:7000/src/component/composer.js',
       // type : 'module'
-      src : `https://cdn.jsdelivr.net/npm/grapper@1.1.0-beta.3/dist/view.js`
+      src : `https://cdn.jsdelivr.net/npm/grapper@1.1.0-beta.5/dist/view.js`
     }],
     ['script', {
       // src : 'http://localhost:8000/editor/src/component/editor.js',
@@ -79,12 +97,12 @@ export default defineConfig({
       {
         text : 'Guides',
         items : [
-          {link : '/guide/starter/', text : 'Starter'},
+          {link : '/quick-guide', text : 'Quick Guide'},
           {link : '/guide/in-depth/', text : 'In-Depth'},
           {link : '/guide/svg/', text : 'Discover SVG'},
+          {link : '/reference/load.md', text : 'Reference'},
         ]
       },
-      {link : '/reference/composer.md', text : 'Reference'},
       // {link : '/plugins/', text : 'Plugins'},
       {link : 'https://playground.grapper.dev/gallery/@grapper', text : 'Examples & Playground'},
       {link : 'https://github.com/graphery/grapper/blob/main/CHANGELOG.md', text : VERSION},
@@ -94,18 +112,6 @@ export default defineConfig({
         {
           text  : 'Guide',
           items : [
-            {
-              text      : 'Starter',
-              link      : '/guide/starter/index',
-              collapsed : true,
-              items     : [
-                {link : '/guide/starter/load', text : 'Load'},
-                {link : '/guide/starter/composer', text : 'Grapper View'},
-                {link : '/guide/starter/template', text : 'Template'},
-                {link : '/guide/starter/data', text : 'Data'},
-                {link : '/guide/starter/methods', text : 'Methods'},
-              ]
-            },
             {
               text      : 'In-Depth',
               link      : '/guide/in-depth/',
@@ -272,6 +278,10 @@ export default defineConfig({
                       text : 'Manage Elements'
                     }
                   ]
+                },
+                {
+                  text      : 'Best Practices',
+                  link      : '/guide/in-depth/best-practices',
                 },
               ],
             },

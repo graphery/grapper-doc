@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Starter Guide
-      link: /guide/starter/
+      link: /quick-guide
     - theme: alt
       text: Examples
       link: https://playground.grapper.io/gallery/@grapper
