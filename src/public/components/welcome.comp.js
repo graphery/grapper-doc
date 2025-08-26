@@ -166,7 +166,7 @@ export default defineComponent(
         slogan.animateTo({opacity: 1}, {duration: 400, delay: 21500})
   
         // Reload
-        setTimeout(() => $.load(), 27000);
+        setTimeout(() => $.grapperView.load(), 27000);
       }
     </script>
   </grapper-view>`
