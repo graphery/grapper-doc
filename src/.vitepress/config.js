@@ -98,7 +98,7 @@ export default defineConfig({
         ]
       },
       // {link : '/plugins/', text : 'Plugins'},
-      {link : 'https://playground.grapper.dev/gallery/@grapper', text : 'Examples & Playground'},
+      {link : 'https://playground.grapper.io/gallery/', text : 'Examples & Playground'},
       {link : 'https://github.com/graphery/grapper/blob/main/CHANGELOG.md', text : VERSION},
     ],
     sidebar     : {
@@ -537,6 +537,9 @@ export default defineConfig({
       // }],
     },
     socialLinks : [
+      {
+        link : 'https://blog.grapper.io',
+        icon : 'medium'},
       {
         link : 'https://www.npmjs.com/package/grapper',
         icon : {svg : `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" xml:space="preserve"><g><path d="M10,10v980h980V10H10z M806.3,806.3H683.8v-490H500v490H193.8V193.8h612.5V806.3z"/></g> </svg>`}
