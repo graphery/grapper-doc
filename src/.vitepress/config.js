@@ -97,16 +97,40 @@ export default defineConfig({
           {link : '/reference/load.md', text : 'Reference'},
         ]
       },
-      // {link : '/plugins/', text : 'Plugins'},
       {link : 'https://playground.grapper.io/gallery/', text : 'Examples & Playground'},
       {link : 'https://github.com/graphery/grapper/blob/main/CHANGELOG.md', text : VERSION},
     ],
     sidebar     : {
-      '/guide/' :
+      '/guide/svg/' :
         {
           text  : 'Guide',
-          items : [
-            {
+          items : [{
+              text      : 'Discover SVG',
+              link      : '/guide/svg/',
+              collapsed : true,
+              items     : [
+                {link : '/guide/svg/svg-structure.md', text : 'Structure'},
+                {link : '/guide/svg/basic-shapes.md', text : 'Basic Shapes'},
+                {link : '/guide/svg/path-element.md', text : 'Path'},
+                {link : '/guide/svg/text-element.md', text : 'Text'},
+                {link : '/guide/svg/fill-and-stroke.md', text : 'Fill and Stroke'},
+                {link : '/guide/svg/reuse-elements.md', text : 'Reuse elements'},
+                {link : '/guide/svg/gradients-and-patterns.md', text : 'Gradients and Patters'},
+                {link : '/guide/svg/aspect-ratio.md', text : 'Size and Aspect Ratio'},
+                {link : '/guide/svg/transform.md', text : 'Transform'},
+                {link : '/guide/svg/css.md', text : 'CSS'},
+                {link : '/guide/svg/animation.md', text : 'Animation'},
+                {link : '/guide/svg/text-path-and-clip-path.md', text : 'Text Path and Clip Path'},
+                {link : '/guide/svg/manage-elements.md', text : 'Manage Elements'},
+                {link : '/guide/svg/events.md', text : 'Handle Events'},
+                {link : '/guide/svg/grapper-svg.md', text : 'How to extents SVG with Grapper'},
+              ]
+            }]
+        },
+      '/guide/in-depth/' :
+        {
+          text  : 'Guide',
+          items : [{
               text      : 'In-Depth',
               link      : '/guide/in-depth/',
               collapsed : true,
@@ -124,10 +148,7 @@ export default defineConfig({
                     {link : '/guide/in-depth/data/property', text : '<code>.data</code> property'},
                     {link : '/guide/in-depth/data/value', text : '<code>value</code>'},
                     {link : '/guide/in-depth/data/helpers', text : 'Helpers'},
-                    {
-                      link : '/guide/in-depth/data/transform',
-                      text : '<code>function data()</code>'
-                    },
+                    {link : '/guide/in-depth/data/transform', text : '<code>function data()</code>'},
                     {link : '/guide/in-depth/data/reactivity', text : 'Reactivity'},
                   ]
                 },
@@ -166,14 +187,8 @@ export default defineConfig({
                   link      : '/guide/in-depth/style/',
                   collapsed : true,
                   items     : [
-                    {
-                      link : '/guide/in-depth/style/attribute-style',
-                      text : 'Attribute <code>style</code>'
-                    },
-                    {
-                      link : '/guide/in-depth/style/attribute-class',
-                      text : 'Attribute <code>class</code>'
-                    },
+                    {link : '/guide/in-depth/style/attribute-style', text : 'Attribute <code>style</code>'},
+                    {link : '/guide/in-depth/style/attribute-class', text : 'Attribute <code>class</code>'},
                     {link : '/guide/in-depth/style/scoped-css', text : 'Scoped CSS'},
                     {link : '/guide/in-depth/style/load-css', text : 'Load External CSS'},
                     {link : '/guide/in-depth/style/css-var', text : 'CSS Custom Properties'}
@@ -184,14 +199,8 @@ export default defineConfig({
                   link      : '/guide/in-depth/animation/',
                   collapsed : true,
                   items     : [
-                    {
-                      link : '/guide/in-depth/animation/g-bind',
-                      text : '<code>$$.dynamic()</code> with <code>g-bind</code>'
-                    },
-                    {
-                      link : '/guide/in-depth/animation/viewport',
-                      text : 'Animation in and out the viewport'
-                    },
+                    {link : '/guide/in-depth/animation/g-bind', text : '<code>$$.dynamic()</code> with <code>g-bind</code>'},
+                    {link : '/guide/in-depth/animation/viewport', text : 'Animation in and out the viewport'},
                     {link : '/guide/in-depth/animation/api', text : 'Animation API'}
                   ]
                 },
@@ -205,115 +214,19 @@ export default defineConfig({
                     {link : '/guide/in-depth/config/property', text : 'Property'}
                   ]
                 },
-                // {
-                //   text      : 'Grapper View',
-                //   link      : '/guide/in-depth/composer/',
-                //   collapsed : true,
-                //   items     : [
-                //     {link : '/guide/in-depth/composer/attributes', text : 'Attributes'},
-                //     {link : '/guide/in-depth/composer/events', text : 'Events'},
-                //     {link : '/guide/in-depth/composer/html', text : 'Use in HTML'},
-                //     {link : '/guide/in-depth/composer/vue', text : 'Use in VUE'},
-                //     {link : '/guide/in-depth/composer/react', text : 'Use in React'},
-                //     {link : '/guide/in-depth/composer/svelte', text : 'Use in Svelte'},
-                //     {link : '/guide/in-depth/composer/angular', text : 'Use in Angular'},
-                //     {link : '/guide/in-depth/composer/custom-component', text : 'Encapsulate in a component'},
-                //   ]
-                // },
-                // {
-                //   text      : 'Plugin',
-                //   link      : '/guide/in-depth/plugins/',
-                //   collapsed : true,
-                //   items     : [
-                //     {
-                //       link : '/guide/in-depth/plugins/load',
-                //       text : 'Load a plugin'
-                //     },
-                //     {
-                //       link : '/guide/in-depth/plugins/create',
-                //       text : 'Custom plugin'
-                //     }
-                //   ]
-                // },
-                // {
-                //   text      : 'Architecture',
-                //   link      : '/guide/in-depth/architecture/',
-                //   collapsed : true,
-                //   items     : [
-                //     {
-                //       link : '/guide/in-depth/architecture/why',
-                //       text : 'Why Grapper?'
-                //     },
-                //     {
-                //       link : '/guide/in-depth/architecture/microframework',
-                //       text : 'Microframework'
-                //     },
-                //     {
-                //       link : '/guide/in-depth/architecture/webcomponent',
-                //       text : 'Web Component'
-                //     },
-                //     {
-                //       link : '/guide/in-depth/architecture/declarative',
-                //       text : 'Declarative vs. Imperative'
-                //     },
-                //   ]
-                // },
                 {
                   text      : 'SVG API',
                   link      : '/guide/in-depth/svg-api/',
                   collapsed : true,
                   items     : [
-                    {
-                      link : '/guide/in-depth/svg-api/wrapper',
-                      text : 'Wrapper'
-                    },
-                    {
-                      link : '/guide/in-depth/svg-api/manage-elements',
-                      text : 'Manage Elements'
-                    }
+                    {link : '/guide/in-depth/svg-api/wrapper', text : 'Wrapper'},
+                    {link : '/guide/in-depth/svg-api/manage-elements', text : 'Manage Elements'}
                   ]
                 },
-                {
-                  text      : 'Best Practices',
-                  link      : '/guide/in-depth/best-practices',
-                },
+                {text : 'Best Practices', link : '/guide/in-depth/best-practices',},
               ],
-            },
-            {
-              text      : 'Discover SVG',
-              link      : '/guide/svg/',
-              collapsed : true,
-              items     : [
-                {link : '/guide/svg/svg-structure.md', text : 'Structure'},
-                {link : '/guide/svg/basic-shapes.md', text : 'Basic Shapes'},
-                {link : '/guide/svg/path-element.md', text : 'Path'},
-                {link : '/guide/svg/text-element.md', text : 'Text'},
-                {link : '/guide/svg/fill-and-stroke.md', text : 'Fill and Stroke'},
-                {link : '/guide/svg/reuse-elements.md', text : 'Reuse elements'},
-                {link : '/guide/svg/gradients-and-patterns.md', text : 'Gradients and Patters'},
-                {link : '/guide/svg/aspect-ratio.md', text : 'Size and Aspect Ratio'},
-                {link : '/guide/svg/transform.md', text : 'Transform'},
-                {link : '/guide/svg/css.md', text : 'CSS'},
-                {link : '/guide/svg/animation.md', text : 'Animation'},
-                {
-                  link : '/guide/svg/text-path-and-clip-path.md',
-                  text : 'Text Path and Clip Path'
-                },
-                {link : '/guide/svg/manage-elements.md', text : 'Manage Elements'},
-                {link : '/guide/svg/events.md', text : 'Handle Events'},
-                {link : '/guide/svg/grapper-svg.md', text : 'How to extents SVG with Grapper'},
-              ]
             }]
         },
-      // '/plugins/'   : [{
-      //   text  : 'Plugins',
-      //   link : '/plugins/',
-      //   items     : [
-      //     {link : '/plugins/catalog/shapes', text : 'Shapes'},
-      //     {link : '/plugins/catalog/observe-resize', text : 'Observe Resize'},
-      //     {link : '/plugins/catalog/non-scaling-size', text : 'Non Scaling Size'},
-      //   ]
-      // }],
       '/reference/' : [{
         text  : 'Reference',
         link : '/reference/load.md',
@@ -504,37 +417,6 @@ export default defineConfig({
         //   }
         // ]
       }],
-      // '/examples/'  : [{
-      //   text  : 'Examples',
-      //   items : [
-      //     {link : '/examples/', text : 'Basic bars'},
-      //     {link : '/examples/bars', text : 'Chart Bars'},
-      //     {link : '/examples/bump-chart', text : 'Bump chart'},
-      //     {link : '/examples/circle-bars', text : 'Circle Bars'},
-      //     {link : '/examples/clock', text : 'Clock'},
-      //     {link : '/examples/comparison', text : 'Comparison'},
-      //     {link : '/examples/dog-or-cat', text : 'Dog or Cat'},
-      //     {link : '/examples/map', text : 'EU Map'},
-      //     {link : '/examples/gauge', text : 'Gauge'},
-      //     {link : '/examples/bottle', text : 'Half-full Bottle'},
-      //     {link : '/examples/world-population', text : 'Horizontal bars: population'},
-      //     {link : '/examples/evolution', text : 'Human Evolution'},
-      //     {link : '/examples/heatmap-day-hour', text : 'Heatmap: day & hour'},
-      //     {link : '/examples/line-chart', text : 'Line Chart'},
-      //     {link : '/examples/otto-neurath-tribute', text : 'Otto Neumath tribute'},
-      //     {link : '/examples/percentage', text : 'Percentage'},
-      //     {link : '/examples/process', text : 'Process'},
-      //     {link : '/examples/quadrant', text : 'Quadrant'},
-      //     {link : '/examples/radial-temp', text : 'Radial: temperature range'},
-      //     {link : '/examples/ranking', text : 'Population Ranking'},
-      //     {link : '/examples/ranking-evolution', text : 'Ranking Evolution'},
-      //     {link : '/examples/survey', text : 'Survey'},
-      //     {link : '/examples/timeline-horizontal', text : 'Timeline (horizontal)'},
-      //     {link : '/examples/treemap', text : 'Treemap'},
-      //     {link : '/examples/votes', text : 'Votes'},
-      //     {link : '/examples/du-bois-tribute', text : 'W.E.B. Du Bois Tribute'},
-      //   ]
-      // }],
     },
     socialLinks : [
       {
