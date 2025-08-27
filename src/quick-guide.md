@@ -869,76 +869,72 @@ the data provided in `grapper-view` are not enough. Typical use cases are:
 
 You can add JavaScript code inside `<script type="methods"></script>`. This code is evaluated in 
 **script mode** (not module mode). Imports are **not allowed**, but all global variables, browser
-APIs, and any libraries loaded as globals are available.
+APIs, and any libraries loaded as globals are available. This environment is **sandboxed** and 
+isolated per component, ensuring that code execution remains safe and predictable.
 
-This environment is **sandboxed** and isolated per component, ensuring that code execution remains
-safe and predictable.
+Functions defined within `<script type="methods"></script>` can be called from directives.
+Additionally, you can define several variables or constants or global code into the script, but the
+template only can access to functions define as `function`.
 
-### Access from directives
-
-The functions defined in `<script type="methods"></script>` are automatically available in the
-template directives.
-
-You can also declare variables, constants, or other code inside the script, but only **top-level
-`function` declarations** are accessible from the template.
-
-```html
-<script type="methods">
-  const double = 2; // not accessible from template
-  
-  function doubleValue(x) {
-    return x * double;
-  }
-</script>
-
-<template>
-  <circle cx="50" cy="50" g-bind:r="doubleValue(value)"></circle>
-</template>
-```
-
-The method receives any arguments passed from the template, plus it has access to the full component
-API (`$.svg`, `$.data`, `$.config`, etc.).
+<ClientOnly>
+<div id="example-methods"></div>
+<g-editor href="#example-methods">
+<textarea><grapper-view id="example-methods">
+  <svg viewBox="0 0 100 100" width="150" height="150">
+    <g g-on:click="update" 
+       style="cursor: pointer">
+      <rect x="1" y="1" width="98" height="90" fill="blue"/>
+      <text x="24" y="48" fill="white">click me</text>
+    </g>
+  </svg>
+  <script type="methods">
+    // Variables are not available outside the script
+    const rect = $.svg.querySelector('rect');
+    const b = 'blue';
+    const r = 'red';
+    // Functions are available from the template
+    function update() {
+      rect.fill(rect.fill() === b ? r : b);
+    }
+  </script>
+</grapper-view></textarea>
+</g-editor>
+</ClientOnly>
 
 ### Event handling
 
 You can capture events with the directive `g-bind:[event]="<handler>"` or `@[event]="<handler>"`.
-directive. `<handler>` must be a function name defined in `<script type="methods"></script>`.
-
-You can handle user interactions by linking events in the template to methods.
+directive. `<handler>` must be a function name defined in `<script type="methods"></script>`. You
+can handle user interactions by linking events in the template to methods.
 
 ```html
-<rect x="10" y="10" width="80" height="80"
-      @click="handleClick"/>
+<rect x="10" y="10" width="80" height="80" @click="handleClick"/>
 ```
 
 ::: details Example
 
+In this example, the `pointerdown` event increments the value of `data.circles` and the template 
+displays more circles.
+
 <ClientOnly>
-<grapper-view id="example-event-click" style="width: 150px">
-  <svg viewBox="0 0 100 100" style="cursor: pointer">
-    <rect x="10" 
-          y="10" 
-          width="80" 
-          height="80" 
-          fill="blue"
-          g-on:click="change"/>
-    <text x="18" 
-          y="52" 
-          fill="white"
-          g-on:click="change">click here</text>
+<div id="example-methods-event"></div>
+<g-editor href="#example-methods-event" lines-highlight="7;21-24">
+<textarea><grapper-view>
+  <svg viewBox="0 0 100 100" width="150" height="150" style="cursor: pointer"  g-on:pointerdown="click" >
+    <circle g-for="x of circles" cx="50" cy="50" fill="none" stroke="black" stroke-width="1"
+            g-bind:r="(x + 1) * (48 / circles)"/>
   </svg>
-  <g-script type="methods">
-    function change() {
-      const rect = $.svg.querySelector('rect');
-      if (rect.fill() === 'blue') {
-        rect.fill('red')
-      } else {
-        rect.fill('blue')
-      }
-    }
+  <g-script type="data">
+    { "circles": 5 }
   </g-script>
-</grapper-view>
-<g-editor href="#example-event-click" lines-highlight="10;12"></g-editor>
+  <script type="methods">
+    function click(evt) {
+      evt.preventDefault();
+      $.data.circles++;
+    }
+  </script>
+</grapper-view></textarea>
+</g-editor>
 </ClientOnly>
 
 :::
@@ -1095,31 +1091,63 @@ render process result.
 <p>
   Please scroll the page to see how the background color changes.
 </p>
-<g-editor href="#example-event-intersection" lines-highlight="5-6;13-18"></g-editor>
+<g-editor href="#example-event-intersection" lines-highlight="3;9-10"></g-editor>
 </ClientOnly>
 
 :::
 
 ### Data transformation
 
-The methods section can also include a special function called `data (originalData)`. This function
-receives the raw data defined in `<script type="data">` and returns a transformed dataset.
+The methods section can also include a special function `function data (originalData) {...}`. This
+function receives the raw data defined in `<script type="data">` and returns a transformed data set.
+You can use the `data` function to normalize, filter, sort, add calculated values, etc., before the
+template is evaluated.
 
-```html
-<script type="methods">
-  function data(originalData) {
-    const max = Math.max(...originalData.map(d => d.value));
-    return originalData.map(d => ({
-      ...d,
-      normalized: d.value / max
-    }));
-  }
-</script>
-```
+::: details Example
 
-This allows you to prepare or validate data before it is used in the template.
+In this example, the `data` function is used to sort the values.
 
-### Access the SVG with `$.svg`
+<ClientOnly>
+<grapper-view id="example-methods-data">
+  <svg viewBox="0 0 200 100" width="200px" height="100px">
+    <g stroke-width="10" stroke-linecap="round">
+      <g g-for="(record, index) of data">
+        <line
+          x1="10"
+          g-bind:x2="record.value"
+          g-bind:y1="index * 18 + 10"
+          g-bind:y2="index * 18 + 10"
+          g-bind:stroke="$.config.colors[index]"
+        ></line>
+      </g>
+    </g>
+  </svg>
+  <g-script type="data">
+    [{ value: 100 }, { value: 150 }, { value: 70 }, { value: 50 }, { value: 90 }]
+  </g-script>
+  <g-script type="methods">
+    function data(records) {
+      return records.sort((a, b) => a.value - b.value);
+    }
+  </g-script>
+  <g-script type="config">
+    {
+      colors: ["#D80000", "#8D0000", "#00008D", "#008D00", "#00D800"],
+    }
+  </g-script>
+</grapper-view>
+<g-editor href="#example-methods-data" lines-highlight="21-23"></g-editor>
+</ClientOnly>
+
+:::
+
+### Access to methods from directives
+
+Remember that all the functions defined in `<script type="methods"></script>` are automatically 
+available in the template directives. You can use them in the template to perform complex logic or
+calculation.
+
+### Access to SVG from methods with `$.svg`
 
 The `$.svg` object exposes the **SVG wrapper** of the component, allowing you to query and
 manipulate elements programmatically.
@@ -1136,7 +1164,7 @@ manipulate elements programmatically.
 Wrapper methods mirror SVG attributes as functions (`.fill()`, `.id()`, `.stroke()`, etc.), and can 
 be chained.
 
-### Access the Configuration with `$.config`
+### Access to config from methods with `$.config`
 
 The `$.config` object contains the configuration defined in `<script type="config">`. This is useful
 for separating styling or constants from logic.
@@ -1148,7 +1176,6 @@ for separating styling or constants from logic.
     "radius": 20
   }
 </script>
-
 <script type="methods">
   function colorByIndex(i) {
     return $.config.colors[i % $.config.colors.length];
@@ -1156,7 +1183,7 @@ for separating styling or constants from logic.
 </script>
 ```
 
-### Access the Data with `$.data`
+### Access to data from methods with `$.data`
 
 From methods, you can access and even modify the **reactive dataset** through `$.data`. Any change
 here will automatically update the visualization.
@@ -1171,12 +1198,6 @@ here will automatically update the visualization.
 
 Updating `$.data` triggers re-rendering of only the affected elements, keeping the visualization
 efficient.
-
-¡Bien visto! 👍
-Tienes razón: en las **directivas** también debe usarse `$.config` (no `config` a secas).
-Aquí te dejo la **sección 7 corregida** con ese detalle ajustado:
-
----
 
 
 ## 7. Configuration
@@ -1428,8 +1449,8 @@ The renaming was done to avoid conflicts with other products and to improve sear
 ### Main changes
 
 - **Component rename**:
-  `g-composer` → `grapper-view`. 
-  *Backward compatibility is maintained:* existing projects using `g-composer` will still work, but 
+  `grapper-view` → `grapper-view`. 
+  *Backward compatibility is maintained:* existing projects using `grapper-view` will still work, but 
   it is **deprecated**.
 
 - **Access to the component from methods**:
@@ -1447,7 +1468,7 @@ The renaming was done to avoid conflicts with other products and to improve sear
 
 ### Migration strategy
 
-1. Replace `<g-composer>` with `<grapper-view>`.
+1. Replace `<grapper-view>` with `<grapper-view>`.
 2. Update directly calls to component from methods from `$` to `$.grapperView`.
 3. Update helper calls from `$$.` to `$.` when possible.
 4. Test components — deprecated syntax will still work but gradually move to the new conventions.
@@ -1455,7 +1476,7 @@ The renaming was done to avoid conflicts with other products and to improve sear
 
 ## Additional Resources
 
-- [Grapper documentation](https://grapper.io/).
+- [In-Depth Guide](/guide/in-depth/).
 - [Grapper Playground](https://playground.grapper.io)
 - [Grapper on GitHub](https://github.com/graphery/grapper)
 - [Grapper on NPM](https://www.npmjs.com/package/grapper)
