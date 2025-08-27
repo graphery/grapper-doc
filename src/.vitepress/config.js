@@ -54,7 +54,7 @@ export default defineConfig({
     ['script', {
       // src : 'http://localhost:7000/src/component/composer.js',
       // type : 'module'
-      src : `https://cdn.jsdelivr.net/npm/grapper@1.1.0-beta.7/dist/view.js`
+      src : `https://cdn.jsdelivr.net/npm/grapper@1.1.0-beta.9/dist/view.js`
     }],
     ['script', {
       // src : 'http://localhost:8000/editor/src/component/editor.js',

@@ -41,42 +41,47 @@ associated method.
 </ClientOnly>
 
 
-## `load` event
+## `init` event
 
-The 'load' event is fired for `grapper-view` when the component and each element are loaded, and 
-before the template has been processed; therefore, you can change the template. This event is 
-captured with `$.addEventListener('load', ...)`.
+The `init` event is fired for `grapper-view` when the component and each element are loaded, and
+before the template has been processed.
 
 <ClientOnly>
 <grapper-view id="events-2">
-  <svg viewBox="0 0 100 100">
+  <svg viewBox="0 0 100 100" g-on:init="init">
     <rect x="10" y="10" width="80" height="80" fill="blue"/>
     <text x="18" y="52" fill="white"></text>
   </svg>
+  <g-script type="data">
+    {
+      value: 'uninitialized'
+    }
+  </g-script>
   <g-script type="methods">
-    $.addEventListener('load', (e) => {
-      $.svg.querySelector('text').innerHTML('loaded');
-    });
+    function init() {
+      $.svg.querySelector('text').g_content('value');
+      $.data.value = 'initialized';
+    }
   </g-script>
 </grapper-view>
-<g-editor href="#events-2" lines-highlight="9-11"></g-editor>
+<g-editor href="#events-2"></g-editor>
 </ClientOnly>
 
 ## `render` event
 
 The 'render' event is fired when the template has been processed; therefore, you can change the 
-render process result. This event is captured with `$.addEventListener('render', ...)`.
+render process result.
 
 <ClientOnly>
 <grapper-view id="events-3">
-  <svg viewBox="0 0 100 100">
+  <svg viewBox="0 0 100 100" g-on:render="render">
     <rect x="10" y="10" width="80" height="80" fill="blue"></rect>
     <text x="18" y="52" fill="white"></text>
   </svg>
   <g-script type="methods">
-    $.addEventListener('render', (e) => {
+    function render() {
       $.svg.querySelector('text').innerHTML('rendered');
-    });
+    }
   </g-script>
 </grapper-view>
 <g-editor href="#events-3" lines-highlight="9-11"></g-editor>
@@ -94,17 +99,17 @@ When the `intersection-ratio` attribute is set between `0` and `1`:
 
 <ClientOnly>
 <grapper-view id="events-4" style="width: 200px;" intersection-ratio="1">
-  <svg viewBox="0 0 100 100">
+  <svg viewBox="0 0 100 100" g-on:intersection.enter="enter" g-on:intersection.exit="exit">
     <rect x="5" y="5" width="90" height="90" fill="red"/>
   </svg>
   <g-script type="methods">
     const rect = $.svg.querySelector('rect');
-    $.addEventListener('intersection.enter', () => {
+    function enter() {
       rect.fill('green');
-    });
-    $.addEventListener('intersection.exit', () => {
+    }
+    function exit () {
       rect.fill('red');
-    });
+    }
   </g-script>
 </grapper-view>
 <p>

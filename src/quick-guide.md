@@ -792,7 +792,7 @@ reactive, you don't change the original data. If you want to update the data, yo
 
 ### Data array helpers: `$sum`, `$avg`, `$count`, `$min`, `$max`, `$distinct`.
 
-When data is a matrix, we may need auxiliary functions to get the maximum, minimum, average, unique
+When data is an array, we may need auxiliary functions to get the maximum, minimum, average, unique
 values, etc. **Grapper** offers a series of helpers that allow us to collect this information
 efficiently. To access these auxiliary functions, we will use `data.$min()`, `data.$max()`, etc.
 
@@ -896,29 +896,209 @@ You can also declare variables, constants, or other code inside the script, but 
 </template>
 ```
 
+The method receives any arguments passed from the template, plus it has access to the full component
+API (`$.svg`, `$.data`, `$.config`, etc.).
+
 ### Event handling
+
+You can capture events with the directive `g-bind:[event]="<handler>"` or `@[event]="<handler>"`.
+directive. `<handler>` must be a function name defined in `<script type="methods"></script>`.
 
 You can handle user interactions by linking events in the template to methods.
 
 ```html
-<script type="methods">
-  function handleClick(index) {
-    alert("Clicked bar " + index);
-  }
-</script>
-
-<template>
-  <rect g-for="(item, index) of data"
-        :x="index * 30"
-        y="20"
-        width="20"
-        :height="item.value"
-        @click="handleClick(index)"></rect>
-</template>
+<rect x="10" y="10" width="80" height="80"
+      @click="handleClick"/>
 ```
 
-The method receives any arguments passed from the template, plus it has access to the full component
-API (`$.svg`, `$.data`, `$.config`, etc.).
+::: details Example
+
+<ClientOnly>
+<grapper-view id="example-event-click" style="width: 150px">
+  <svg viewBox="0 0 100 100" style="cursor: pointer">
+    <rect x="10" 
+          y="10" 
+          width="80" 
+          height="80" 
+          fill="blue"
+          g-on:click="change"/>
+    <text x="18" 
+          y="52" 
+          fill="white"
+          g-on:click="change">click here</text>
+  </svg>
+  <g-script type="methods">
+    function change() {
+      const rect = $.svg.querySelector('rect');
+      if (rect.fill() === 'blue') {
+        rect.fill('red')
+      } else {
+        rect.fill('blue')
+      }
+    }
+  </g-script>
+</grapper-view>
+<g-editor href="#example-event-click" lines-highlight="10;12"></g-editor>
+</ClientOnly>
+
+:::
+
+A wide variety of SVG events are available to you.
+
+::: details Standard SVG Events
+
+| **Event**               | **Description**                                                                    |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| **Focus & Blur Events** |                                                                                    |
+| `focus`                 | Fired when an element gains focus (via mouse, keyboard, or script).                |
+| `blur`                  | Fired when an element loses focus.                                                 |
+| **Keyboard Events**     |                                                                                    |
+| `keydown`               | Fired when a key is pressed down.                                                  |
+| `keyup`                 | Fired when a key is released.                                                      |
+| **Mouse Events**        |                                                                                    |
+| `click`                 | Fired when the pointing device button is pressed and released on the same element. |
+| `dblclick`              | Fired when the pointing device button is clicked twice on the same element.        |
+| `mousedown`             | Fired when a mouse button is pressed on an element.                                |
+| `mouseup`               | Fired when a mouse button is released over an element.                             |
+| `mousemove`             | Fired when the pointing device is moved over an element.                           |
+| `mouseenter`            | Fired when the pointing device enters an element (does not bubble).                |
+| `mouseleave`            | Fired when the pointing device leaves an element (does not bubble).                |
+| `mouseover`             | Fired when the pointing device is moved onto an element or one of its children.    |
+| `mouseout`              | Fired when the pointing device is moved out of an element or one of its children.  |
+| `contextmenu`           | Fired when the right mouse button is clicked to open a context menu.               |
+| **Wheel Events**        |                                                                                    |
+| `wheel`                 | Fired when the user rotates a mouse wheel or similar device.                       |
+| **Drag & Drop Events**  |                                                                                    |
+| `drag`                  | Fired continuously while an element is being dragged.                              |
+| `dragstart`             | Fired when the user starts dragging an element.                                    |
+| `dragend`               | Fired when the drag operation ends.                                                |
+| `dragenter`             | Fired when a dragged element enters a valid drop target.                           |
+| `dragleave`             | Fired when a dragged element leaves a valid drop target.                           |
+| `dragover`              | Fired when a dragged element is over a valid drop target (fired continuously).     |
+| `drop`                  | Fired when a dragged element is dropped on a valid drop target.                    |
+| **Clipboard Events**    |                                                                                    |
+| `copy`                  | Fired when the user copies content.                                                |
+| `cut`                   | Fired when the user cuts content.                                                  |
+| `paste`                 | Fired when the user pastes content.                                                |
+| **Touch Events**        | (on mobile/touch devices)                                                          |
+| `touchstart`            | Fired when one or more fingers touch the surface.                                  |
+| `touchmove`             | Fired when one or more fingers move along the surface.                             |
+| `touchend`              | Fired when one or more fingers are removed from the surface.                       |
+| `touchcancel`           | Fired when the system cancels a touch (e.g., due to a popup).                      |
+| **Pointer Events**      | (unified model for mouse, pen, touch)                                              |
+| `pointerover`           | Fired when a pointing device is moved onto an element or its children.             |
+| `pointerenter`          | Fired when a pointing device enters an element (no bubbling).                      |
+| `pointerdown`           | Fired when a pointer makes contact with the element.                               |
+| `pointermove`           | Fired when a pointer changes position.                                             |
+| `pointerup`             | Fired when a pointer is lifted off the element.                                    |
+| `pointercancel`         | Fired when the pointer is canceled (e.g., hardware switch).                        |
+| `pointerout`            | Fired when a pointing device leaves an element or its children.                    |
+| `pointerleave`          | Fired when a pointing device leaves the element (no bubbling).                     |
+| `gotpointercapture`     | Fired when an element gains pointer capture.                                       |
+| `lostpointercapture`    | Fired when an element loses pointer capture.                                       |
+| **Animation Events**    |                                                                                    |
+| `animationstart`        | Fired when a CSS animation starts.                                                 |
+| `animationend`          | Fired when a CSS animation ends.                                                   |
+| `animationiteration`    | Fired when a CSS animation repeats.                                                |
+| **Transition Events**   |                                                                                    |
+| `transitionstart`       | Fired when a CSS transition starts.                                                |
+| `transitionend`         | Fired when a CSS transition ends.                                                  |
+| `transitioncancel`      | Fired when a CSS transition is canceled.                                           |
+| `transitionrun`         | Fired when a CSS transition is first created.                                      |
+| **SVG-specific Events** |                                                                                    |
+| `load`                  | Fired when an external resource (e.g., image, font) has loaded.                    |
+| `error`                 | Fired when an error occurs while loading an external resource.                     |
+| `resize`                | Fired when the document view is resized (applies to `<svg>` root).                 |
+| `scroll`                | Fired when a document view or an element is scrolled.                              |
+| `unload`                | Fired when the document is being unloaded.                                         |
+
+:::
+
+
+
+In addition to the standard events, **Grapper** supports the following additional events:
+
+- **Initialization**: The `init` event is fired for `grapper-view` when the component and each element are loaded, and
+before the template has been processed.
+
+::: details Example
+
+<ClientOnly>
+<grapper-view id="example-event-init" style="width: 150px;">
+  <svg viewBox="0 0 100 100" g-on:init="init">
+    <rect x="10" y="10" width="80" height="80" fill="blue"/>
+    <text x="18" y="52" fill="white"></text>
+  </svg>
+  <g-script type="data">
+    {
+      value: 'uninitialized'
+    }
+  </g-script>
+  <g-script type="methods">
+    function init() {
+      $.svg.querySelector('text').g_content('value');
+      $.data.value = 'initialized';
+    }
+  </g-script>
+</grapper-view>
+<g-editor href="#example-event-init" lines-highlight="3;12-15"></g-editor>
+</ClientOnly>
+
+:::
+
+- **Render**: The `render` event is fired when the template has been processed; therefore, you can change the
+render process result.
+
+::: details Example
+
+<ClientOnly>
+<grapper-view id="example-event-render" style="width: 150px;">
+  <svg viewBox="0 0 100 100" 
+       g-on:render="render">
+    <rect x="10" y="10" width="80" height="80" fill="blue"></rect>
+    <text x="18" y="52" fill="white"></text>
+  </svg>
+  <g-script type="methods">
+    function render() {
+      $.svg.querySelector('text').innerHTML('rendered');
+    }
+  </g-script>
+</grapper-view>
+<g-editor href="#example-event-render" lines-highlight="3;9-11"></g-editor>
+</ClientOnly>
+
+:::
+
+- **Intersection**: ehen the `intersection-ratio` attribute is set in `grapper-view` between `0` and `1`:
+  - the `intersection.enter` event is emitted when that proportion of the element is visible in the
+    viewport.
+  - the `intersection.exit` event is emitted when that proportion of the element is no longer visible
+    in the viewport.
+
+::: details Example
+
+<ClientOnly>
+<grapper-view id="example-event-intersection" style="width: 150px;" intersection-ratio="1" >
+  <svg viewBox="0 0 100 100" g-on:intersection.enter="enter" g-on:intersection.exit="exit">
+    <rect x="5" y="5" width="90" height="90" fill="red"/>
+  </svg>
+  <g-script type="methods">
+    const rect = $.svg.querySelector('rect');
+    function enter() {
+      rect.fill('green');
+    }
+    function exit () {
+      rect.fill('red');
+    }
+  </g-script>
+</grapper-view>
+<p>
+  Please scroll the page to see how the background color changes.
+</p>
+<g-editor href="#example-event-intersection" lines-highlight="5-6;13-18"></g-editor>
+</ClientOnly>
+
+:::
 
 ### Data transformation
 
@@ -1252,6 +1432,10 @@ The renaming was done to avoid conflicts with other products and to improve sear
   *Backward compatibility is maintained:* existing projects using `g-composer` will still work, but 
   it is **deprecated**.
 
+- **Access to the component from methods**:
+  In **Graphane**, the component was directly available through `$`.
+  In **Grapper**, the component is available through `$.grapperView`.
+
 - **Helper access simplified**:
   In **Graphane**, some helpers were in `$.` and others in `$$.`.
   In **Grapper**, all helpers are now accessed through `$.`.
@@ -1264,9 +1448,9 @@ The renaming was done to avoid conflicts with other products and to improve sear
 ### Migration strategy
 
 1. Replace `<g-composer>` with `<grapper-view>`.
-2. Update helper calls from `$$.` to `$.` when possible.
-3. Test components — deprecated syntax will still work but gradually move to the new conventions.
-
+2. Update directly calls to component from methods from `$` to `$.grapperView`.
+3. Update helper calls from `$$.` to `$.` when possible.
+4. Test components — deprecated syntax will still work but gradually move to the new conventions.
 
 
 ## Additional Resources
