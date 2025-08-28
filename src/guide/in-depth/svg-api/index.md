@@ -14,7 +14,7 @@ variable.
 ## Outside the component
 
 The SVG wrapper is also accessible from outside the component with the `.svg` property that the 
-`g-component` exposes for manage the SVG generated from external Javascript.
+`grapper-view` exposes for manage the SVG generated from external Javascript.
 
 ## Goal: reduce code complexity
 

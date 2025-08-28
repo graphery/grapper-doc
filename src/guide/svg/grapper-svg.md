@@ -30,7 +30,7 @@ graphics from Javascript. The API is very close to the SVG structure.
 You can access the **SVG Grapper API** from the methods included in the component with `$.svg`.
 The `$` object is accesible from the `<script type="methods"></script>` content as a global
 variable. You can also access it from outside the component with the `.svg` property that
-the `g-component` exposes for use from external Javascript.
+the `grapper-view` exposes for use from external Javascript.
 
 In **SVG Grapper API** all are methods; thus, when you want to work with SVG attributes or
 properties, you must use methods. For example, set an `id` to an SVG element is

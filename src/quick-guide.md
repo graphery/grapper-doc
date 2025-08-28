@@ -94,7 +94,7 @@ elements. It allows you to use directives, properties, and event bindings to man
 manipulate SVG elements dynamically.
 
 ```html
-<grapper-view id="scafolding">
+<grapper-view id="scaffolding">
   <template>
     <!-- SVG with directives  -->
   </template>
@@ -904,8 +904,9 @@ template only can access to functions define as `function`.
 ### Event handling
 
 You can capture events with the directive `g-bind:[event]="<handler>"` or `@[event]="<handler>"`.
-directive. `<handler>` must be a function name defined in `<script type="methods"></script>`. You
-can handle user interactions by linking events in the template to methods.
+The `[event]` is the event name. The `<handler>` must be a function name defined in 
+`<script type="methods"></script>`. You can handle user interactions by linking events in the 
+template to methods.
 
 ```html
 <rect x="10" y="10" width="80" height="80" @click="handleClick"/>
@@ -1065,7 +1066,7 @@ render process result.
 
 :::
 
-- **Intersection**: ehen the `intersection-ratio` attribute is set in `grapper-view` between `0` and `1`:
+- **Intersection**: When the `intersection-ratio` attribute is set in `grapper-view` between `0` and `1`:
   - the `intersection.enter` event is emitted when that proportion of the element is visible in the
     viewport.
   - the `intersection.exit` event is emitted when that proportion of the element is no longer visible
@@ -1469,7 +1470,7 @@ The renaming was done to avoid conflicts with other products and to improve sear
 ### Migration strategy
 
 1. Replace `<grapper-view>` with `<grapper-view>`.
-2. Update directly calls to component from methods from `$` to `$.grapperView`.
+2. Update directly calls the component from methods from `$` to `$.grapperView`.
 3. Update helper calls from `$$.` to `$.` when possible.
 4. Test components — deprecated syntax will still work but gradually move to the new conventions.
 

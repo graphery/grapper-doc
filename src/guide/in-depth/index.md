@@ -18,4 +18,5 @@ This in-depth guide include:
 - [Animation](./animation/)
 - [Config](./config/)
 - [SVG API](./svg-api/)
+- [Best Practices](./best-practices.md)
 
