@@ -95,19 +95,20 @@ manipulate SVG elements dynamically.
 
 ```html
 <grapper-view id="scaffolding">
+  <!-- SVG with directives  -->
   <template>
-    <!-- SVG with directives  -->
   </template>
+  <!-- Data in CSV or JSON format -->
   <script type="data">
-    <!-- Data in CSV or JSON format -->
   </script>
+  <!-- Methods to handle events or transform data -->
   <script type="methods">
-    <!-- Methods to handle events or transform data -->
   </script>
+  <!-- Static configuration -->
   <script type="config">
-    <!-- Static configuration -->
   </script>
-  <g-script type="plugin" src="../plugin-url.js"></g-script> <!-- External plugin --> 
+  <!-- External plugin -->
+  <g-script type="plugin" src="../plugin-url.js"></g-script> 
 </grapper-view>
 ```
 
@@ -754,6 +755,8 @@ From the methods you can access the data with `$.data`.
 Like any array in JavaScript, you can query and manipulate its data by these functions, which are
 available in the directives and methods of `grapper-view`.
 
+<!-- remove-start -->
+
 ::: details Array JavaScript methods
 
 | Method               | Description                                                                 |
@@ -785,6 +788,8 @@ available in the directives and methods of `grapper-view`.
 | `data.some()`        | Checks if at least one element satisfies a condition                        |
 
 :::
+
+<!-- remove-end -->
 
 **Note:** Some JavaScript methods modify the array. Don't worry, the `data` in the directives is not
 reactive, you don't change the original data. If you want to update the data, you need to use
@@ -942,6 +947,8 @@ displays more circles.
 
 A wide variety of SVG events are available to you.
 
+<!-- remove-start -->
+
 ::: details Standard SVG Events
 
 | **Event**               | **Description**                                                                    |
@@ -1011,6 +1018,7 @@ A wide variety of SVG events are available to you.
 
 :::
 
+<!-- remove-end -->
 
 
 In addition to the standard events, **Grapper** supports the following additional events:
