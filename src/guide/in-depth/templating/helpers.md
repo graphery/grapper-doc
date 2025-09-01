@@ -21,6 +21,13 @@ and `g-content` expressions:
   is `class` returns and array of strings. If the attribute is `style` returns an object with `key` 
   and  `value`.
 
+- `$.polar2cartesian(cx, cy, r, angleDegrees)` this global helper returns an `x,y` point from an 
+  angular value, a center point, and a radius. Parameters: `cx` center x, `cy` center y, `r` radius,
+  `angleDegrees` angle in degrees. Returns: `{x : *, y : *}`.
+
+- `$.degrees2radians(degrees)`: this global helper converts an angle from degrees to radians.
+  Parameters: `degrees` angle in degrees. Returns: angle in radians.
+
 ## `g-bind:transform`
 
 The transform attribute values are converted in helper functions. You can use these helpers to 

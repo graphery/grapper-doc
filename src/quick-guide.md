@@ -531,6 +531,9 @@ Additionally, `$` includes specific helpers in some directives.
   With this reference it is possible to query other attributes of the element, i.e.,
   `g-bind:y="$.element.x()/2"`.
 - `$.attribute` is the name of the attribute in which the `g-bind` directive has been applied.
+- `$.polar2cartesian(<cx>, <cy>, <r>, <angleDegrees>)` returns an `{x : *, y : *}` point from a 
+  center point (`cx`, `cyp`), a radius (`r`), and an angle in degrees (`angleDegrees`).
+- `$.degrees2radians(<degrees>)`: converts an angle from degrees to radians.
 
 ::: details Example
 
