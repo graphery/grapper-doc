@@ -1447,7 +1447,53 @@ component.methods.increase(0);
   Loads external resources and includes them in the template.
 
 
-## 11. Migration From Graphane
+## 11. Common Errors
+
+- Expression is not evaluated
+
+  * **Cause**: Using `x="<expression>"` instead of `:x="<expression>"` or `g-bind:x="<expression>"`.
+  * **Fix**: Always prefix dynamic attributes with `:` or `g-bind:` so the expression is evaluated.
+
+- Wrong data access in template
+
+  * **Cause**: Using `this.data` or other incorrect variants inside the template or methods.
+  * **Fix**: Inside the template, use `data` directly. In the `<script type="methods">` section use
+    `$.data`.
+
+- Access to config error
+
+  * **Cause**: Writing `config.value` instead of `$.config.value`.
+  * **Fix**: Use the special variable `$.config` to access configuration values.
+
+- Wrong query scope
+
+  * **Cause**: Using `document.querySelector` or `this.querySelector` to access elements.
+  * **Fix**: Always scope queries with `$.svg.querySelector`.
+
+- Error using variables, constants, and arrow functions from the template
+
+  * **Cause**: `const`, `let`, or arrow functions defined in `<script type="methods">` are not
+    accessible inside the template.
+  * **Fix**: Only methods defined with the `function` keyword are accessible from the template.
+
+- Invalid path binding
+
+  * **Cause**: Passing incorrect strings instead of using helpers for `g-bind:d` in `<path>`.
+  * **Fix**: Use helpers like `$$.M(x,y)`, `$$.L(x,y)`, etc.
+
+- Invalid transform binding
+
+  * **Cause**: Passing incorrect strings instead of using helpers for `g-bind:transform`.
+  * **Fix**: Use helpers like `$$.translate(10,10).scale(0.5,0.5)`, etc.
+
+- Animations do not run on certain devices
+
+  * **Cause**: Animations depend on user preferences. If the user has disabled animations (e.g.,
+    *prefers-reduced-motion*), they will not be displayed.
+  * **Fix**: Respect the user's preferences or ask the user to enable animations.
+
+
+## 12. Migration From Graphane
 
 The previous version of **Grapper** was called **Graphane**.
 The renaming was done to avoid conflicts with other products and to improve search visibility.
@@ -1488,7 +1534,7 @@ The renaming was done to avoid conflicts with other products and to improve sear
 
 ## Additional Resources
 
-- [In-Depth Guide](/guide/in-depth/).
+- [In-Depth Guide](https://grapper.io/guide/in-depth/).
 - [Grapper Playground](https://playground.grapper.io)
 - [Grapper on GitHub](https://github.com/graphery/grapper)
 - [Grapper on NPM](https://www.npmjs.com/package/grapper)
