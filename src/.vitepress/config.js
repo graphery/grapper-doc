@@ -24,7 +24,7 @@ export default defineConfig({
   title       : 'Grapper',
   description : `Graphic Wrapper for data visualization - version ${ VERSION }`,
   sitemap     : {
-    hostname : 'https://grapper.dev'
+    hostname : 'https://grapper.io'
   },
   base        : URL,
   vite        : {
