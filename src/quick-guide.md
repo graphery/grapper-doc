@@ -798,24 +798,34 @@ available in the directives and methods of `grapper-view`.
 reactive, you don't change the original data. If you want to update the data, you need to use
 `$.data` instead.
 
-### Data array helpers: `$sum`, `$avg`, `$count`, `$min`, `$max`, `$distinct`.
+### Data array helpers
 
 When data is an array, we may need auxiliary functions to get the maximum, minimum, average, unique
-values, etc. **Grapper** offers a series of helpers that allow us to collect this information
-efficiently. To access these auxiliary functions, we will use `data.$min()`, `data.$max()`, etc.
+values, etc. **Grapper** offers in the template (not in methods section) a series of helpers that
+allow us to collect this information efficiently. To access these auxiliary functions, we will use
+`data.$min()`, `data.$max()`, etc.
 
-| Method                  | Description                             |
-|-------------------------|-----------------------------------------|
-| `data.$min([key])`      | Retrieve the minimum value of the array |
-| `data.$max([key])`      | Obtain the maximum value of the array   |
-| `data.$count([key])`    | Get the number of values in the array   |
-| `data.$sum([key])`      | Calculate the sum of the array values   |
-| `data.$avg([key])`      | Compute the average value of the array  |
-| `data.$distinct([key])` | Retrieve the unique values of the array |
+| Method                             | Description                                                        |
+|------------------------------------|--------------------------------------------------------------------|
+| `data.$min([key])`                 | Retrieve the minimum value in the array                            |
+| `data.$max([key])`                 | Obtain the maximum value in the array                              |
+| `data.$count([key])`               | Get the number of values in the array                              |
+| `data.$sum([key])`                 | Calculate the sum in the array values                              |
+| `data.$avg([key])`                 | Compute the average value in the array                             |
+| `data.$distinct([key])`            | Retrieve the unique values in the array                            |
+ | `data.$minBefore(idx, [key])`      | Retrieves the minimum value in the array before the `idx` position |
+ | `data.$maxBefore(idx, [key])`      | Obtain the maximum value in the array before the `idx` position    |
+ | `data.$countBefore(idx, [key])`    | Get the number of values in the array before the `idx` position    |
+ | `data.$sumBefore([idx, key])`      | Calculate the sum of the array values before the `idx` position    |
+ | `data.$avgBefore(idx, [key])`      | Compute the average value in the array before the `idx` position   |
+ | `data.$distinctBefore(idx, [key])` | Retrieve the unique values in the array before the `idx` position  |
 
-If the helper does not receive a key, it assumes that the array contents are numeric. If it does
-receive a key, it uses this key to get the value of each object in the array. The key can include
+If the helper does not receive a key, it assumes that the array contents are numeric. If the array contain 
+objects it does you must indicate the key to get the value of each object in the array. The key can include
 dots to access values in nested objects, e.g., `key.subkey.subkey`.
+
+These helper functions are only available from the template at the first level of data. If the data
+contain deep arrays, you cannot use `data.subarray.$min()`.
 
 ### Transformations with `function data() {}`
 

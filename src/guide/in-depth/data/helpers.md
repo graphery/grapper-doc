@@ -12,10 +12,15 @@ To access these helper functions we will use `data.$min()`, `data.$max()`, etc.,
 template. 
 
 ::: warning
-These helper functions are only available from the template.
+
+These helper functions are only available from the template at the first level of data. If the data
+contain deep arrays, you cannot use `data.subarray.$min()`.
+
+These helpers are not available in methods section.
+
 ::: 
 
-## `data.$min([key])`
+## `data.$min([key])` and `data.$minBefore(idx, [key])`
 
 Retrieve the minimum value of the array. If no parameter is provided, it defaults to treating the
 array data as numeric. 
@@ -31,7 +36,9 @@ key.
 <tspan g-content="data.$min('val')"></tspan>
 ```
 
-## `data.$max([key])`
+The `Before` version returns the min value before the specified position `idx`.
+
+## `data.$max([key])` and `data.$maxBefore(idx, [key])`
 
 Obtain the maximum value of the array. If no parameter is given, it treats the array data as a
 numeric value.
@@ -47,7 +54,9 @@ key.
 <tspan g-content="data.$max('val')"></tspan>
 ```
 
-## `data.$count([key])`
+The `Before` version returns the max value before the specified position `idx`.
+
+## `data.$count([key])` and `data.$countBefore(idx, [key])`
 
 Get the count of values in the array. If no parameter is specified, it treats the array data as a
 numeric value.
@@ -58,11 +67,13 @@ numeric value.
 
 When a key is passed, it evaluates the objects within the array using the specified key.
 
+The `Before` version returns the count values before the specified position `idx`.
+
 ```svg
 <tspan g-content="data.$count('val')"></tspan>
 ```
 
-## `data.$sum([key])`
+## `data.$sum([key])` and `data.$sumBefore(idx, [key])`
 
 Calculate the sum value of the array. If no parameter is given, it treats the array data as a
 numeric value.
@@ -77,7 +88,9 @@ When a key is provided, it evaluates the objects within the array using the spec
 <tspan g-content="data.$sum('val')"></tspan>
 ```
 
-## `data.$avg([key])`
+The `Before` version returns the sum value before the specified position `idx`.
+
+## `data.$avg([key])` and `data.$avgBefore(idx, [key])` 
 
 Compute the average value of the array. If no parameter is supplied, it treats the array data as a
 numeric value.
@@ -92,7 +105,9 @@ When a key is passed, it evaluates the objects within the array using the specif
 <tspan g-content="data.$avg('val')"></tspan>
 ```
 
-## `data.$distinct([key])`
+The `Before` version returns the average value before the specified position `idx`.
+
+## `data.$distinct([key])` and `data.$distinctBefore(idx, [key])`
 
 Retrieve the unique values of the array. If no parameter is provided, it treats the array data as a
 numeric value. 
@@ -108,7 +123,9 @@ case, the result is an array of values, not objects.
 <tspan g-content="data.$distinct('val')"></tspan>
 ```
 
-## Deep objects
+The `Before` version returns the unique values before the specified position `idx`. 
+
+## Deep objects into the array
 
 In all cases, the key can include dots for get values in deep objects, e.g., `key.subkey.otherkey`.
 
