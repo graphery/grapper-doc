@@ -1545,6 +1545,7 @@ The renaming was done to avoid conflicts with other products and to improve sear
 ## Additional Resources
 
 - [In-Depth Guide](https://grapper.io/guide/in-depth/).
+- [Blog](https://blog.grapper.io/)
 - [Grapper Playground](https://playground.grapper.io)
 - [Grapper on GitHub](https://github.com/graphery/grapper)
 - [Grapper on NPM](https://www.npmjs.com/package/grapper)

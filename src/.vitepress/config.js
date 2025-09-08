@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress';
 import { routex } from '@itznotabug/routex'
 
 const URL     = '/';
-const VERSION = '1.0.0';
+const VERSION = '1.1.0';
 
 const MarkdownOptions = {
   languageAlias : {
@@ -98,6 +98,7 @@ export default defineConfig({
         ]
       },
       {link : 'https://playground.grapper.io/gallery/', text : 'Examples & Playground'},
+      {link : 'https://blog.grapper.io', text : 'Blog'},
       {link : 'https://github.com/graphery/grapper/blob/main/CHANGELOG.md', text : VERSION},
     ],
     sidebar     : {
@@ -420,13 +421,13 @@ export default defineConfig({
     },
     socialLinks : [
       {
-        link : 'https://blog.grapper.io',
-        icon : 'medium'},
-      {
         link : 'https://www.npmjs.com/package/grapper',
         icon : {svg : `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" xml:space="preserve"><g><path d="M10,10v980h980V10H10z M806.3,806.3H683.8v-490H500v490H193.8V193.8h612.5V806.3z"/></g> </svg>`}
       },
-      {link : 'https://github.com/graphery/grapper', icon : 'github'},
+      {
+        link : 'https://github.com/graphery/grapper',
+        icon : 'github'
+      },
     ]
   }
 });
