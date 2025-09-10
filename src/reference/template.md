@@ -869,22 +869,22 @@ It is the name of the attribute in which the `g-bind` directive has been include
       stroke="black"/>
 ```
 
-**`g-bind:d="$$.v(dy)`**
+**`g-bind:d="$.v(dy)`**
 
 - **Description**: Draws a relative vertical line by dy from the current position.
 
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).v(50)"
+<path g-bind:d="$.M(50, 50).v(50)"
       stroke="black"/>
 ```
 
 ---
 
-##### `$$.C()` `$$.c()` Cubic Bézier curve
+##### `$.C()` `$.c()` Cubic Bézier curve
 
-**`g-bind:d="$$.C(x1, y1, x2, y2, dx, dy)`**
+**`g-bind:d="$.C(x1, y1, x2, y2, dx, dy)`**
 
 - **Description**: Draws a cubic Bézier curve from the current point to (`x`, `y`), using (`x1`,
   `y1`) as the control point for the start and (x2, y2) as the control point for the end.
@@ -892,11 +892,11 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(0, 50).C(10, 10, 90, 90, 100, 50)"
+<path g-bind:d="$.M(0, 50).C(10, 10, 90, 90, 100, 50)"
       stroke="black" fill="none"/>
 ```
 
-**`g-bind:d="$$.c(dx1, dy1, dx2, dy2, dx, dy)`**
+**`g-bind:d="$.c(dx1, dy1, dx2, dy2, dx, dy)`**
 
 - **Description**: Draws a relative cubic Bézier curve using relative offsets for control points and
   end point.
@@ -904,15 +904,15 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(0, 50).c(10, -40, 90, 40, 100, 0)"
+<path g-bind:d="$.M(0, 50).c(10, -40, 90, 40, 100, 0)"
       stroke="black" fill="none"/>
 ```
 
 ---
 
-##### `$$.S()` `$$.s()` Cubic Bézier curve
+##### `$.S()` `$.s()` Cubic Bézier curve
 
-**`g-bind:d="$$.S(x2, y2, x, y)`**
+**`g-bind:d="$.S(x2, y2, x, y)`**
 
 - **Description**: Draws a smooth cubic Bézier curve to the point (`x`, `y`), using (`x2`, `y2`) as
   the control point for the end. It assumes the second control point is a reflection of the first
@@ -921,10 +921,10 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 30).S(0,60,50,100)" stroke="black" fill="none"/>
+<path g-bind:d="$.M(50, 30).S(0,60,50,100)" stroke="black" fill="none"/>
 ```
 
-**`g-bind:d="$$.s(dx2, dy2, dx, dy)`**
+**`g-bind:d="$.s(dx2, dy2, dx, dy)`**
 
 - **Description**: Draws a relative smooth cubic Bézier curve using relative offsets for the control
   and end points.
@@ -932,15 +932,15 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 30).s(-50, 30, 0, 70)"
+<path g-bind:d="$.M(50, 30).s(-50, 30, 0, 70)"
       stroke="black" fill="none"/>
 ```
 
 ---
 
-##### `$$.Q()` `$$.q()` Quadratic Bézier curve
+##### `$.Q()` `$.q()` Quadratic Bézier curve
 
-**`g-bind:d="$$.Q(x1, y1, x, y)`**
+**`g-bind:d="$.Q(x1, y1, x, y)`**
 
 - **Description**: Draws a quadratic Bézier curve from the current point to (`x`, `y`), using
   (`x1`, `y1`) as the control point.
@@ -948,11 +948,11 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).Q(100, 50, 100, 100)"
+<path g-bind:d="$.M(50, 50).Q(100, 50, 100, 100)"
       stroke="black" fill="none"/>
 ```
 
-**`g-bind:d="$$.q(dx1, dy1, dx, dy)`**
+**`g-bind:d="$.q(dx1, dy1, dx, dy)`**
 
 - **Description**: Draws a relative quadratic Bézier curve using relative offsets for the control
   and end points.
@@ -960,15 +960,15 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).q(50, 0, 50, 50)"
+<path g-bind:d="$.M(50, 50).q(50, 0, 50, 50)"
       stroke="black" fill="none"/>
 ```
 
 ---
 
-##### `$$.T()` `$$.t()` Quadratic Bézier curve
+##### `$.T()` `$.t()` Quadratic Bézier curve
 
-**`g-bind:d="$$.T(x, y)`**
+**`g-bind:d="$.T(x, y)`**
 
 - **Description**: Draws a smooth quadratic Bézier curve to (`x`, `y`), assuming the control point is
   the reflection of the previous curve's control point.
@@ -976,11 +976,11 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path :d="$$.M(10,50).Q(25,25,40,50).T(70,50).T(100,50).T(130,50).T(160,50).T(190,50)"
+<path :d="$.M(10,50).Q(25,25,40,50).T(70,50).T(100,50).T(130,50).T(160,50).T(190,50)"
       stroke="black" fill="none"/>
 ```
 
-**`g-bind:d="$$.t(dx, dy)`**
+**`g-bind:d="$.t(dx, dy)`**
 
 - **Description**: Draws a relative smooth quadratic Bézier curve to (`dx`, `dy`) using relative
   offsets.
@@ -988,15 +988,15 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path :d="$$.M(10,50).Q(25,25,40,50).t(30,0,30,0,30,0,30,0,30,0)"
+<path :d="$.M(10,50).Q(25,25,40,50).t(30,0,30,0,30,0,30,0,30,0)"
       stroke="black" fill="none"/>
 ```
 
 ---
 
-##### `$$.A()` `$$.a()` Elliptical Arc
+##### `$.A()` `$.a()` Elliptical Arc
 
-**`g-bind:d="$$.A(rx, ry, a, arcflag, sweepflag, x, y)`**
+**`g-bind:d="$.A(rx, ry, a, arcflag, sweepflag, x, y)`**
 
 - **Description**: Draws an arc from the current position to (`x`, `y`) with the specified radii (
   `rx`, `ry`), rotation (`a`), and flags (`arcflag`, `sweepflag`).
@@ -1004,36 +1004,36 @@ It is the name of the attribute in which the `g-bind` directive has been include
 **Example**:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).A(50, 50, 0, 0, 1, 100, 100)"
+<path g-bind:d="$.M(50, 50).A(50, 50, 0, 0, 1, 100, 100)"
       stroke="black" fill="none"/>
 ```
 
-**`g-bind:d="$$.a(rx, ry, a, arcflag, sweepflag, dx, dy)`**
+**`g-bind:d="$.a(rx, ry, a, arcflag, sweepflag, dx, dy)`**
 
 - **Description**: Draws a relative arc using relative coordinates for the end point and specified
   radii and flags Example:
  ```svg    
-<path g-bind:d="$$.M(50, 50).a(50, 50, 0, 0, 1, 50, 50)" 
+<path g-bind:d="$.M(50, 50).a(50, 50, 0, 0, 1, 50, 50)" 
       stroke="black" fill="none"/>
 ```
 
 ---
 
-##### `$$.Z()` `$$.z()` Close Path
+##### `$.Z()` `$.z()` Close Path
 
-**`g-bind:d="$$.Z()"`**
+**`g-bind:d="$.Z()"`**
 
-**`g-bind:d="$$.z()`**
+**`g-bind:d="$.z()`**
 
 - **Description**: Closes the current path by drawing a straight line from the current position to
   the starting point of the path Example:
 
 ```svg
-<path g-bind:d="$$.M(50, 50).L(100, 50).L(100, 100).Z()"
+<path g-bind:d="$.M(50, 50).L(100, 50).L(100, 100).Z()"
       stroke="black" fill="violet"/>
 ```
 
-##### `$$.arc(cx, cy, r, grades, [start = 0] )` Section of Circumference
+##### `$.arc(cx, cy, r, grades, [start = 0] )` Section of Circumference
 
 Creates an arc (section of circumference) based on a center (`cx` and `cy`), a radius (`r`),
 positive or negative number of grades (`grades`), and optionally a start angle (in degrees).
@@ -1051,7 +1051,7 @@ Parameters:
   <template>
     <svg viewBox="0 0 100 100">
       <path stroke="black" stroke-width="1" fill="none" 
-            g-bind:d="$$.arc(50, 50, 48, grades, start)"/>
+            g-bind:d="$.arc(50, 50, 48, grades, start)"/>
     </svg>
   </template>
   <script type="data">
@@ -1060,7 +1060,7 @@ Parameters:
 </grapper-view>
 ```
 
-##### `$$.barArc(cx, cy, r, width, grades, [start = 0] )` Section of Circumference Bar
+##### `$.barArc(cx, cy, r, width, grades, [start = 0] )` Section of Circumference Bar
 
 Creates a bar with arc form (section of the circumference) based on a center (`cx` and `cy`), a
 radius (`r`), and width (`width`), positive or negative number of grades (`grades`), and optionally
@@ -1080,7 +1080,7 @@ Parameters:
   <template>
     <svg viewBox="0 0 100 100">
       <path stroke="black" stroke-width="1" fill="none" 
-            g-bind:d="$$.barArc(50, 50, 40, 10, grades, start)"/>
+            g-bind:d="$.barArc(50, 50, 40, 10, grades, start)"/>
     </svg>
   </template>
   <script type="data">
@@ -1089,7 +1089,7 @@ Parameters:
 </grapper-view>
 ```
 
-##### `$$.circleSlice(cx, cy, r, grades, [start = 0] )` Circle Slice
+##### `$.circleSlice(cx, cy, r, grades, [start = 0] )` Circle Slice
 
 Creates a circle slice (section of the circle) based on a center (`cx` and `cy`), a radius
 (`r`), positive or negative number of grades (`grades`), and optionally a start angle (in degrees).
@@ -1107,7 +1107,7 @@ Parameters:
   <template>
     <svg viewBox="0 0 100 100">
       <path stroke="black" stroke-width="1" fill="none" 
-            g-bind:d="$$.circleSlice(50, 50, 40, grades, start)"/>
+            g-bind:d="$.circleSlice(50, 50, 40, grades, start)"/>
     </svg>
   </template>
   <script type="data">
@@ -1229,11 +1229,11 @@ Parameters:
 #### Helpers
 
 - **Description**: The `g-content` directive has helpers functions that can be used in expressions,
-  which always begin with `$$.` followed by the name of the helper.
+  which always begin with `$.` followed by the name of the helper.
 
-##### `$$.fromURL()`
+##### `$.fromURL()`
 
-**`g-content="$$.fromURL('resource')"`**
+**`g-content="$.fromURL('resource')"`**
 
 - **Description**: This helper loads content from a specified URL (resource). It is useful when you
   want to dynamically load external content, such as SVG files, images, or text, into the component
@@ -1241,12 +1241,12 @@ Parameters:
 
 **Example**:
 ```svg
-<g g-content="$$.fromURL('https://example.com/content.svg')"></g>
+<g g-content="$.fromURL('https://example.com/content.svg')"></g>
 ```
 
-##### `$$.currentContent()`
+##### `$.currentContent()`
 
-**`g-content="$$.currentContent()"`**
+**`g-content="$.currentContent()"`**
 
 - **Description**: This helper retrieves the current content of the element, allowing you to use it
   in transformations, updates, or conditionally modifying it within the component. It is helpful
@@ -1255,14 +1255,14 @@ Parameters:
 
 **Example**:
 ```svg
-<text g-content="$$.currentContent() + ' updated'" x="50" y="50"></text>
+<text g-content="$.currentContent() + ' updated'" x="50" y="50"></text>
 ```
 
-##### `$$.element`
+##### `$.element`
 
 It is a  wrapper of the element where the `g-bind` directive has been included. With this reference
-it is possible to query other attributes of the element such as `$$.element.x()` or
-`$$.element.stroke()`.
+it is possible to query other attributes of the element such as `$.element.x()` or
+`$.element.stroke()`.
 
 ---
 

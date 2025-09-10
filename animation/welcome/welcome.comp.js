@@ -16,8 +16,8 @@ export default defineComponent(
         </text>
   
         <g g-for="(element, n) of elements">
-          <path :id="element.id" :stroke="$.config.colors[n]" :transform="$$.translate(n * 180, 0)" fill="none" stroke-width="4" opacity="0" d="M320,250L320,250L320,250L320,250L320,250L320,250Z"/>
-          <g :transform="$$.translate(320 + n * 180, 250)" >
+          <path :id="element.id" :stroke="$.config.colors[n]" :transform="$.translate(n * 180, 0)" fill="none" stroke-width="4" opacity="0" d="M320,250L320,250L320,250L320,250L320,250L320,250Z"/>
+          <g :transform="$.translate(320 + n * 180, 250)" >
             <text :id="element.id + 'Label'" transform="scale(0)" font-size="21" font-weight="500"  dominant-baseline="middle" text-anchor="middle" g-content="element.label"></text>
           </g>
           <g :id="element.id + 'Description'" opacity="0" :fill="$.config.colors[n]" font-size="24" font-weight="500" text-anchor="middle">

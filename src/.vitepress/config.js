@@ -200,7 +200,7 @@ export default defineConfig({
                   link      : '/guide/in-depth/animation/',
                   collapsed : true,
                   items     : [
-                    {link : '/guide/in-depth/animation/g-bind', text : '<code>$$.dynamic()</code> with <code>g-bind</code>'},
+                    {link : '/guide/in-depth/animation/g-bind', text : '<code>$.dynamic()</code> with <code>g-bind</code>'},
                     {link : '/guide/in-depth/animation/viewport', text : 'Animation in and out the viewport'},
                     {link : '/guide/in-depth/animation/api', text : 'Animation API'}
                   ]
