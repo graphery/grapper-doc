@@ -54,11 +54,11 @@ export default defineConfig({
     ['script', {
       // src : 'http://localhost:7000/src/component/composer.js',
       // type : 'module'
-      src : `https://cdn.jsdelivr.net/npm/grapper@1.1.0-beta.9/dist/view.js`
+      src : `https://cdn.jsdelivr.net/npm/grapper@1.1.0-beta.12/dist/view.js`
     }],
     ['script', {
       // src : 'http://localhost:8000/editor/src/component/editor.js',
-      src  : 'https://cdn.jsdelivr.net/npm/grapper-editor@1.0.0-beta.1/dist/editor.js',
+      src  : 'https://cdn.jsdelivr.net/npm/grapper-editor@1.1.0-beta.4.1/dist/editor.js',
       type : 'module'
     }],
     ['script', {
