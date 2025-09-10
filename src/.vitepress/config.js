@@ -62,7 +62,7 @@ export default defineConfig({
       type : 'module'
     }],
     ['script', {
-      src : './components/welcome.comp.js',
+      src : '/components/welcome.comp.js',
       type : 'module'
     }],
     ['script', {
