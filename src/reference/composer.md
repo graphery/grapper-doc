@@ -64,7 +64,9 @@ visualization and is responsible for rendering the final SVG output.
 **External Template Example**:
 
 ```html
-<grapper-view svg-src="template.svg"></grapper-view>
+<grapper-view>
+  <template src="template.svg"></template>
+</grapper-view>
 ```
 
 ---
@@ -91,10 +93,6 @@ visualization and is responsible for rendering the final SVG output.
 
 ```html
 <script type="data" src="data.json"></script>
-```
-
-```html
-<grapper-view data-src="data.json"></grapper-view>
 ```
 
 ---
@@ -132,10 +130,6 @@ visualization and is responsible for rendering the final SVG output.
 <script type="methods" src="methods.js"></script>
 ```
 
-```html
-<grapper-view methods-src="methods.js"></grapper-view>
-```
-
 ---
 
 ## `<script type="config"></script>`
@@ -158,10 +152,6 @@ visualization and is responsible for rendering the final SVG output.
 
 ```html
 <script type="config" src="config.json"></script>
-```
-
-```html
-<grapper-view config-src="config.json"></grapper-view>
 ```
 
 ---

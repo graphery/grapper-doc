@@ -32,16 +32,9 @@ and other customizable parameters that are applied globally throughout the templ
 **Example**:
 
 ```html
-<script type="config" src="config.json"></script>
-```
-
-- **Description**: You can load configuration settings from an external file using the **`config-src`** attribute of 
-`<grapper-view>`.
-
-**Example**:
-
-```html
-<grapper-view config-src="config.json"></grapper-view>
+<grapper-view>
+  <script type="config" src="config.json"></script>
+</grapper-view>
 ```
 
 ---

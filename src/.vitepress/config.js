@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress';
 import { routex } from '@itznotabug/routex'
 
 const URL     = '/';
-const VERSION = '1.1.0';
+const VERSION = '1.1.0-beta-12';
 
 const MarkdownOptions = {
   languageAlias : {
@@ -225,6 +225,7 @@ export default defineConfig({
                   ]
                 },
                 {text : 'Best Practices', link : '/guide/in-depth/best-practices',},
+                {text : 'Migration from Graphane', link : '/guide/in-depth/migration-from-graphane',},
               ],
             }]
         },

@@ -10,7 +10,7 @@ facilitating the seamless integration of data updates with the visual output.
 You can load the data with several methods:
 
 - [Embebed](embebed.md) with `<script type="data"></script>`.
-- [Load as resource](external.md) with the `data-src` attribute.
+- [Load as resource](external.md) with the `src` attribute.
 - [`data` attribute](attribute.md) with a simple key-value expression.
 - [`.data` property](property.md) direct access.
 

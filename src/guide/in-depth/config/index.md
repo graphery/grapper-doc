@@ -27,7 +27,8 @@ separate data and configuration in data visualization systems.
 You can load the config with several methods:
 
 - with `<script type="config"></script>` with the [embebed configuration](embebed.md).
-- with the `methods-src`  for [load as external resource](external.md) a CSV, JSON or JSON5 file.
+- with the `<script type="config" src="<url>"></script>`
+  for [load as external resource](external.md) a JSON file.
 
 In Grapper, the configuration defined is accesibles from the template directives, and also be called
 from the property [`.config`](property.md).

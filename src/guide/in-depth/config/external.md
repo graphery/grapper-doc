@@ -30,19 +30,3 @@ of the functions.
 </grapper-view>
 <g-editor href="#config-02" lines-highlight="24"></g-editor>
 </ClientOnly>
-
-
-It is possible to directly include the `config-src` properties within the `grapper-view` component
-itself, simplifying the overall code structure by eliminating the `script` tag.
-
-<ClientOnly>
-<g-editor lines-highlight="4" keep-format  mode="readonly">
-<textarea><grapper-view 
-  svg-src="/svg/circle.svg" 
-  methods-src="/methods/circle.js"
-  config-src="/config/config.json">
-</grapper-view></textarea>
-</g-editor>
-</ClientOnly>
-
-

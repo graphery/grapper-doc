@@ -686,7 +686,9 @@ data. Each line in a CSV file represents a single record, and fields within the 
 by commas or semicolons.
 
 **Grapper** supports both JSON/JSON5 and CSV and detects the format automatically. The data is then
-parsed and converted to an array of objects or an object, depending on the structure.
+parsed and converted to an array of objects or an object, depending on the structure. 
+
+*Note*: JSON5 is supported only for embedded data, not for external data.
 
 ::: details Example
 
@@ -1529,6 +1531,15 @@ The renaming was done to avoid conflicts with other products and to improve sear
   In **Graphane**, some helpers were in `$.` and others in `$$.`.
   In **Grapper**, all helpers are now accessed through `$.`.
   The `$$.` namespace still exists for compatibility, but is **deprecated**.
+
+- **External resources**:
+  In **Graphane**, external resources can be loaded with
+  `<g-composer data-src="<url>" svg-src="<url>" config-src="<url>" method-src="<url>">`. 
+  In **Grapper**, external resources are loaded with only with `src` attributes in the
+  `<template src="<url>">`, `<script type="data" src="<url>">`,
+  `<script type="methods" src="<url>">`, and `<script type="config"  src="<url>">`. By default, the
+  `src="<url>"` attribute must be a reference to the same origin. If you want to load resources from
+  another domain, you must add the `trust-origin` attribute.
 
 - **Importing**:
   Graphane 1.0.x packages will continue to be available on **NPM** and **CDN**, but new projects are 

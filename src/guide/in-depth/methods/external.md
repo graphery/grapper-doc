@@ -19,15 +19,3 @@ with the `src` attribute makes it straightforward to indicate the source of the 
 </grapper-view>
 <g-editor href="#load-methods-1" lines-highlight="18"></g-editor>
 </ClientOnly>
-
-It is possible to directly include the `methods-src` properties within the `grapper-view` component
-itself, simplifying the overall code structure by eliminating the `script` tag.
-
-<g-editor mode="readonly" lines-highlight="3">
-<textarea><grapper-view 
-  svg-src="/svg/circle.svg" 
-  methods-src="/methods/circle.js">
-</grapper-view></textarea>
-</g-editor>
-
-

@@ -5,7 +5,7 @@ outline: deep
 # Load external data
 
 In production environments or when accessing remote servers, the `<script type="data">`
-with the `src` attribute makes it very easy to indicate the source of the data. By utilizing these
+with the `src` attribute makes it straightforward to indicate the source of the data. By using these
 attributes, you can seamlessly incorporate external data into their visualization.
 
 <ClientOnly>
@@ -22,17 +22,3 @@ attributes, you can seamlessly incorporate external data into their visualizatio
 </grapper-view>
 <g-editor href="#circles1" lines-highlight="14"></g-editor>
 </ClientOnly>
-
-To streamline the process further, it is even possible to forego the explicit use of the `script`
-tag. Instead, designer and developers can directly include the `data-src` properties within
-the `grapper-view` component itself, simplifying the overall structure of the code.
-
-<grapper-view id="circles2" style="width: 150px"
-  svg-src="/svg/template.svg" 
-  data-src="/data/circles.csv">
-</grapper-view>
-
-<g-editor href="#circles2" lines-highlight="4"></g-editor>
-
-
-

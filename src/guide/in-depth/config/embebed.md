@@ -5,7 +5,7 @@ outline: deep
 # Embebed configuration
 
 Grapper allow defining the data visualization configuration into `<script type="config">` with
-formats CSV, JSON and JSON5. 
+formats JSON or JSON5. 
 
 <ClientOnly>
 <grapper-view style="width: 50%" id="config-01">

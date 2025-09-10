@@ -71,13 +71,6 @@ You can also load methods from an external JavaScript file:
 <script type="methods" src="methods.js"></script>
    ```
 
-**Example**: Load methods via `grapper-view` attribute:
-
-   ```html
-
-<grapper-view methods-src="methods.js"></grapper-view>
-   ```
-
 ---
 
 ## Data Transformation in Grapper

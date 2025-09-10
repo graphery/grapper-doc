@@ -6,10 +6,10 @@ outline: deep
 
 In Grapper, data is the backbone of dynamic visualizations. It is defined using the
 `<script type="data">` tag or loaded as external resource using
-`<script type="data" src="data.json"></script>` or `<grapper-view data-src="data.json">`. The data can
-be in JSON, JSON5 or CSV formats. Inside the template, data is accessed as data, while in the
-methods section, it is accessed as $.data. This allows for dynamic rendering of elements based on
-the values within the dataset.
+`<script type="data" src="data.json"></script>`. The data can be in JSON, JSON5 (only embebed) or
+CSV formats. Inside the template, data is accessed as `data`, while in the methods section, it is
+accessed as `$.data`. This allows for dynamic rendering of elements based on the values within the
+dataset.
 
 **Inline Data Example**:
 
@@ -27,10 +27,6 @@ the values within the dataset.
 
 ```html
 <script type="data" src="data.json"></script>
-```
-
-```html
-<grapper-view data-src="data.json"></grapper-view>
 ```
 
 ---

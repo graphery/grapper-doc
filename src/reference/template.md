@@ -15,15 +15,19 @@ The template can be inserted inline or loaded as an external resource:
 **Inline Template Example**:
 
 ```html
-<template>
-  <!-- SVG with Grapper directives -->
-</template>
+<grapper-view>
+  <template>
+    <!-- SVG with Grapper directives -->
+  </template>
+</grapper-view>
 ```
 
 **External Template Example**:
 
 ```html
-<grapper-view svg-src="template.svg"></grapper-view>
+<grapper-view>
+  <template src="template.svg"></template>
+</grapper-view>
 ```
 
 ---

@@ -11,7 +11,7 @@ complex algorithm, data manipulation or event handling.
 You can load the method with several methods:
 
 - with `<script type="methods"></script>` with the [code embebed](embebed.md).
-- with the `methods-src`  for [load a resource](external.md) with the Javascript functions.
+- with the `src` attribute for [load a resource](external.md) with the Javascript functions.
 
 In Grapper, the methods defined are accesibles from the template directives, and also be called
 from the property [`.methods`](property.md).
