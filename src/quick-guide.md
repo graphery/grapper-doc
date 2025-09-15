@@ -107,8 +107,6 @@ manipulate SVG elements dynamically.
   <!-- Static configuration -->
   <script type="config">
   </script>
-  <!-- External plugin -->
-  <g-script type="plugin" src="../plugin-url.js"></g-script> 
 </grapper-view>
 ```
 
@@ -673,7 +671,14 @@ The `<script type="data">` section defines the dataset for the component.
 </script>
 ```
 
-Also, you can use `<script type="data" src="url">` to load data from a remote source.
+Also, you can use `<script type="data" src="url">` to load data from a remote source. 
+If the URL points to a different domain than the current one, we must include the `trust-origin` 
+attribute: 
+
+```html
+<script type="data" src="http://server.com/data.csv" trust-origin></script>
+```
+
 
 ### Supported formats: JSON/JSON5, CSV
 
@@ -815,12 +820,12 @@ allow us to collect this information efficiently. To access these auxiliary func
 | `data.$sum([key])`                 | Calculate the sum in the array values                              |
 | `data.$avg([key])`                 | Compute the average value in the array                             |
 | `data.$distinct([key])`            | Retrieve the unique values in the array                            |
- | `data.$minBefore(idx, [key])`      | Retrieves the minimum value in the array before the `idx` position |
- | `data.$maxBefore(idx, [key])`      | Obtain the maximum value in the array before the `idx` position    |
- | `data.$countBefore(idx, [key])`    | Get the number of values in the array before the `idx` position    |
- | `data.$sumBefore([idx, key])`      | Calculate the sum of the array values before the `idx` position    |
- | `data.$avgBefore(idx, [key])`      | Compute the average value in the array before the `idx` position   |
- | `data.$distinctBefore(idx, [key])` | Retrieve the unique values in the array before the `idx` position  |
+| `data.$minBefore(idx, [key])`      | Retrieves the minimum value in the array before the `idx` position |
+| `data.$maxBefore(idx, [key])`      | Obtain the maximum value in the array before the `idx` position    |
+| `data.$countBefore(idx, [key])`    | Get the number of values in the array before the `idx` position    |
+| `data.$sumBefore([idx, key])`      | Calculate the sum of the array values before the `idx` position    |
+| `data.$avgBefore(idx, [key])`      | Compute the average value in the array before the `idx` position   |
+| `data.$distinctBefore(idx, [key])` | Retrieve the unique values in the array before the `idx` position  |
 
 If the helper does not receive a key, it assumes that the array contents are numeric. If the array contain 
 objects it does you must indicate the key to get the value of each object in the array. The key can include
@@ -920,6 +925,14 @@ template only can access to functions define as `function`.
 </grapper-view></textarea>
 </g-editor>
 </ClientOnly>
+
+Also, you can use `<script type="methods" src="url">` to load methods from a remote source.
+If the URL points to a different domain than the current one, we must include the `trust-origin`
+attribute:
+
+```html
+<script type="methods" src="http://server.com/methods.js" trust-origin></script>
+```
 
 ### Event handling
 
@@ -1243,13 +1256,21 @@ You can write the configuration inline, or load it from an external file with `s
 </script>
 ```
 
+If the `src="<url>"` points to a different domain than the current one, we must include the 
+`trust-origin` attribute:
+
+```html
+<script type="config" src="http://server.com/methods.js" trust-origin></script>
+```
+
+
 ### Config structure (JSON/JSON5)
 
 The configuration is expressed in **JSON** or **JSON5**.
 
 * **JSON** is strict and requires quoted keys and values.
 * **JSON5** is more flexible: it allows comments, unquoted keys, trailing commas, and single-quoted
-  strings.
+  strings (allow only with embebed configuration).
 
 Both formats are supported by **Grapper**.
 
@@ -1444,16 +1465,16 @@ component.methods.increase(0);
   Loads the template from an external file. The file must be an **SVG with Grapper directives**.
 
 - `<script type="data" src="...">`
-  Loads data from an external file. The file must be in **CSV**, **JSON** or **JSON5** format.
+  Loads data from an external file. The file must be in **CSV** or **JSON** format.
 
 - `<script type="methods" src="...">`
   Loads methods from an external file. The file must be **JavaScript**.
 
 - `<script type="config" src="...">`
-  Loads configuration from an external file. The file must be in **JSON** or **JSON5** format.
+  Loads configuration from an external file. The file must be in **JSON** format.
 
-- `<script type="plugin" src="...">`
-  Loads a plugin from an external file.
+If the URL points to a different domain than the current one, we must include the `trust-origin`
+attribute.
 
 - `$.fromURL(<url>)` helper in `g-content` directive.
   Loads external resources and includes them in the template.
