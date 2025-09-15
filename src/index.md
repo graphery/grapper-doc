@@ -12,7 +12,7 @@ hero:
       link: /quick-guide
     - theme: alt
       text: Examples
-      link: https://playground.grapper.io/gallery/@grapper
+      link: https://playground.grapper.io/gallery/
 
 features:
   - title: Declarative Syntax

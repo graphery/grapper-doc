@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress';
 import { routex } from '@itznotabug/routex'
 
 const URL     = '/';
-const VERSION = '1.1.0-beta-12';
+const VERSION = '1.1.0-rc.1';
 
 const MarkdownOptions = {
   languageAlias : {
@@ -54,7 +54,7 @@ export default defineConfig({
     ['script', {
       // src : 'http://localhost:7000/src/component/composer.js',
       // type : 'module'
-      src : `https://cdn.jsdelivr.net/npm/grapper@1.1.0-beta.12/dist/view.js`
+      src : `https://cdn.jsdelivr.net/npm/grapper@1.1.0-rc.1/dist/view.js`
     }],
     ['script', {
       // src : 'http://localhost:8000/editor/src/component/editor.js',
